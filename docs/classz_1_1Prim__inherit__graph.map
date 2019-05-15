@@ -1,0 +1,9 @@
+<map id="z.Prim" name="z.Prim">
+<area shape="rect" id="node3" href="$classz_1_1Num.html" title="number " alt="" coords="39,155,101,181"/>
+<area shape="rect" id="node7" href="$classz_1_1Str.html" title="string " alt="" coords="125,155,175,181"/>
+<area shape="rect" id="node8" href="$classz_1_1Sym.html" title="symbol " alt="" coords="200,155,260,181"/>
+<area shape="rect" id="node2" href="$classz_1_1Frame.html" title="frame (object) shares universal knowledge representation, and any data/container " alt="" coords="115,5,185,32"/>
+<area shape="rect" id="node4" href="$classz_1_1Int.html" title="integer " alt="" coords="46,229,94,256"/>
+<area shape="rect" id="node5" href="$classz_1_1Bin.html" title="bit string " alt="" coords="5,304,57,331"/>
+<area shape="rect" id="node6" href="$classz_1_1Hex.html" title="machine hex number " alt="" coords="81,304,139,331"/>
+</map>

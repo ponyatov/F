@@ -1,0 +1,14 @@
+<map id="z.Frame" name="z.Frame">
+<area shape="rect" id="node2" href="$classz_1_1Active.html" title="active objects has execution semantics " alt="" coords="79,80,150,107"/>
+<area shape="rect" id="node5" href="$classz_1_1Meta.html" title="metaprogramming " alt="" coords="174,80,237,107"/>
+<area shape="rect" id="node7" href="$classz_1_1Prim.html" title="primitive " alt="" coords="302,80,362,107"/>
+<area shape="rect" id="node3" href="$classz_1_1Cmd.html" title="VM command. " alt="" coords="5,155,67,181"/>
+<area shape="rect" id="node4" href="$classz_1_1VM.html" title="FORTH Virtual Machine. " alt="" coords="91,155,144,181"/>
+<area shape="rect" id="node6" href="$classz_1_1Lexer.html" title="lexer class " alt="" coords="171,155,237,181"/>
+<area shape="rect" id="node8" href="$classz_1_1Num.html" title="number " alt="" coords="261,155,323,181"/>
+<area shape="rect" id="node12" href="$classz_1_1Str.html" title="string " alt="" coords="347,155,397,181"/>
+<area shape="rect" id="node13" href="$classz_1_1Sym.html" title="symbol " alt="" coords="422,155,482,181"/>
+<area shape="rect" id="node9" href="$classz_1_1Int.html" title="integer " alt="" coords="268,229,316,256"/>
+<area shape="rect" id="node10" href="$classz_1_1Bin.html" title="bit string " alt="" coords="227,304,279,331"/>
+<area shape="rect" id="node11" href="$classz_1_1Hex.html" title="machine hex number " alt="" coords="303,304,361,331"/>
+</map>
