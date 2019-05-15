@@ -5,13 +5,11 @@
 
 github: https://github.com/ponyatov/F
 
-manual: https://ponyatov.github.io/F/
-
-* @ref metaL : very simple @ref FORTH -like language
-* @ref homoiconic
-* @ref metaprogramming
+* metaL : very simple FORTH-like language
+* homoiconic
+* metaprogramming
 * implemented in Python 
   * as a language simplest to learn
   * very light and fast runtime
   * portable
-  * easy to write extensions and intergate extra libraries
+  * easy to write extensions and integrate extra libraries
