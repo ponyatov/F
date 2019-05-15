@@ -1,5 +1,7 @@
 ## @file
 
+import os,sys,re
+
 ## @defgroup frame Marvin Minsky frame model
 ## `e`xtended with `nest[]`ed elements for attribute grammar and AST
 ## @{
@@ -69,6 +71,13 @@ class Frame:
     ## top element
     def top(self):
         return self.nest[-1]
+    
+    ## @name execution / code generation
+    
+    ## evaluate/execute self in the given context
+    ## (by default only push self to context stack)
+    def eval(self,context):
+        context.push(self)
 
 ## primitive
 class Prim(Frame): pass
@@ -173,6 +182,7 @@ class VM(Active):
         token = self.lexer.token()
         if not token:   return False
         self // token ; return True
+    ## `FIND ( token -- object )` search object in vocabulary by its name
     def find(self):
         token = self.pop().val
         try: self // self[token]
@@ -180,6 +190,9 @@ class VM(Active):
             try: self // self[token.upper()]
             except KeyError:
                 raise SyntaxError(token)
+    ## `EVAL ( object -- )` evaluate/execute object
+#     def eval(self):
+#         self.pop().eval(self)
     ## `INTERPRET ( str -- )` interpet string as source code
     ## /feeds whole string to @ref Lexer/
     def interpret(self):
@@ -187,6 +200,7 @@ class VM(Active):
         while True:
             if not self.word(): break
             if isinstance(self.top(),Sym): self.find()
+            self.pop().eval(self)
             print self
     ## `REPL ( -- )` user console
     def repl(self):
@@ -200,10 +214,20 @@ glob = VM('metaL')
 
 ## @}
 
-## @defgroup web web engine /Flask/
+## @defgroup web web engine
+## Flask-powered
 ## @{
 
-class Web(Frame): pass
+class Web(Frame):
+    def eval(self,context):
+        import flask
+        app = flask.Flask(self.val)
+        @app.route('/')
+        def index():
+            return self.pre(context.dump())
+        app.run(host='127.0.0.1',port=8888,debug=True,use_reloader=False)
+    def pre(self,str):
+        return '<pre>\n'+str.replace('<', '&lt;').replace('>','&gt;')
 
 glob['web'] = Web('Flask')
 

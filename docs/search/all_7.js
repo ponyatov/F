@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['head',['head',['../classz_1_1Frame.html#ad86beeebb4a3e87bd20db4e41a4c77b0',1,'z::Frame']]],
-  ['hex',['Hex',['../classz_1_1Hex.html',1,'z']]],
-  ['homoiconic',['homoiconic',['../homoiconic.html',1,'']]]
+  ['glob',['glob',['../group__forth.html#ga2a3c8ed7514ec0b58d99959bd0cebcea',1,'z']]]
 ];

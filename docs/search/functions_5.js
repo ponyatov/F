@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['repl',['repl',['../classz_1_1VM.html#ae2f93f75823a7ca8a31a735b11432211',1,'z::VM']]]
+  ['input',['input',['../classz_1_1Lexer.html#a93ae7b05f476e4edc50583adcc1decf6',1,'z::Lexer']]],
+  ['interpret',['interpret',['../classz_1_1VM.html#afc07b4f00f7279466da2972663434e1f',1,'z::VM']]]
 ];
