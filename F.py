@@ -1,4 +1,5 @@
 import os,sys
+from threading import Thread
 
 print sys.argv
 
@@ -37,31 +38,94 @@ class Frame:
         self[that.val] = that ; return self
     def __setitem__(self,key,that):
         self.slot[key] = that ; return self
+    def __getitem__(self,key):
+        return self.slot[key]
+        
+    def pop(self):
+        return self.nest.pop()
+    
+class Prim(Frame): pass
+    
+class Sym(Prim): pass
 
-class Stack(Frame): pass
+class Str(Prim): pass
 
-class Dict(Frame): pass
+class Num(Prim):
+    def __init__(self,V):
+        Prim.__init__(self, float(V))
 
-class Vector(Frame): pass
+class Int(Num):
+    def __init__(self,V):
+        Prim.__init__(self, int(V))
 
-class Cmd(Frame):
+class Cont(Frame): pass
+
+class Stack(Cont): pass
+
+class Dict(Cont): pass
+
+class Vect(Cont): pass
+
+class Active(Frame): pass
+
+class Cmd(Active):
     def __init__(self,F):
         Frame.__init__(self, F.__name__)
         self.fn = F
+        
+class IO(Frame): pass
             
-class File(Frame): pass
+class File(IO): pass
 
 W = Dict('FORTH') ; W['W'] = W
 
 S = Stack('DATA') ; W['S'] = S
 
-W << ( Vector('ARGV') // File(sys.argv[0]) )
+W << ( Vect('ARGV') // File(sys.argv[0]) )
 for i in sys.argv[1:]: W['ARGV'] // i
+
+import ply.lex as lex
+
+tokens = ['int','sym']
+
+t_ignore = ' \t\r\n'
+
+def t_int(t):
+    r'[\+\-]?[0-9]+'
+    return Int(t.value)
+
+def t_sym(t):
+    r'[^ \t\r\n]+'
+    return Sym(t.value)
+
+def t_error(t): raise SyntaxError(t)
+
+lexer = lex.lex()
+
+def WORD():
+    token = lexer.token()
+    if not token: return False
+    S // token ; return True
+W << WORD
+
+def FIND():
+    token = S.pop().val
+    S // W[token]
+W << FIND
+
+def INTERPRET():
+    lexer.input(S.pop().val)
+    while True:
+        if not WORD(): break
+        FIND()
+        print S
+W << INTERPRET
                       
 def REPL():
     while True:
         print W
         S // raw_input('\nok> ')
+        Thread(target=INTERPRET).start()
 W << REPL
 REPL()
 
