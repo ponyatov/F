@@ -16,9 +16,9 @@ class Frame:
         self.type = self.__class__.__name__.lower()
         ## implementation language scalar type
         self.val  = V
-        ## slots = `attr{}`ibutes = string-keyed associative array
+        ## `slot{}`s = attributes = string-keyed associative array
         self.slot = {}
-        ## `nest[]`ed elements = vector = stack
+        ## `nest[]`ed elements = vector = stack = queue
         self.nest = []
         ## reference count
         self.ref  = 0

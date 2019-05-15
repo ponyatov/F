@@ -8,6 +8,6 @@
   * can modify parts of programs including itself in runtime
 * **executable data** *must be implemented by an interpreter*
   * as an external entity
-    * written in say Python and hidden as part of the homoiconic engine), or
+    * written in say Python and hidden as part of the homoiconic engine, or
   * written in the form of executable data:
     * some part of the homoiconic system can interpret other parts
