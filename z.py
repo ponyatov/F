@@ -85,8 +85,10 @@ class Lexer(Meta):
         return Sym(t.value)
     def t_error(t): raise SyntaxError(t)
     lex = ply.lex()
+    ## @param[in] command source code
     def input(self,command):
         self.lex.input(command)
+    ## @returns parsed token as **lexeme frame**: Sym Str Num ...
     def token(self):
         return self.lex.token()
     
@@ -103,15 +105,18 @@ class VM(Active):
         Active.__init__(self, V)
         self['lexer'] = self.lexer
         self['REPL'] = self.repl
+    ## `WORD ( -- token)`
     def word(self):
         token = self.lexer.token()
         if not token:   return False
         self // token ; return True
+    ## `INTERPRET ( str -- )`
     def interpret(self):
         self.lexer.input( self.pop().val )
         while True:
             if not self.word(): break
             print self
+    ## `REPL ( -- )` user console
     def repl(self):
         while True:
             print self
