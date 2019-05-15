@@ -54,6 +54,8 @@ class Frame:
     ## `A[str] = B`
     def __setitem__(self,key,that):
         if callable(that): self[key] = Cmd(that) ; return self
+        if isinstance(that,str): self[key] = Str(that) ; return self
+        if isinstance(that,int): self[key] = Int(that) ; return self
         self.slot[key] = that ; that.ref += 1 ; return self
     ## `A[str]`
     def __getitem__(self,key):
@@ -190,9 +192,6 @@ class VM(Active):
             try: self // self[token.upper()]
             except KeyError:
                 raise SyntaxError(token)
-    ## `EVAL ( object -- )` evaluate/execute object
-#     def eval(self):
-#         self.pop().eval(self)
     ## `INTERPRET ( str -- )` interpet string as source code
     ## /feeds whole string to @ref Lexer/
     def interpret(self):
@@ -218,18 +217,32 @@ glob = VM('metaL')
 ## Flask-powered
 ## @{
 
+## web server instance
 class Web(Frame):
+    def __init__(self,V):
+        Frame.__init__(self, V)
+        self['ip'] = '127.0.0.1'
+        self['port'] = 8888
     def eval(self,context):
         import flask
         app = flask.Flask(self.val)
+        
         @app.route('/')
         def index():
-            return self.pre(context.dump())
-        app.run(host='127.0.0.1',port=8888,debug=True,use_reloader=False)
-    def pre(self,str):
-        return '<pre>\n'+str.replace('<', '&lt;').replace('>','&gt;')
+            return flask.render_template('dump.html',dump=context.dump())
+        
+        @app.route('/css/<path:css>')
+        def css(css):
+            return app.send_static_file(css)
+        
+        @app.route('/<path:path>')
+        def path(path):
+            return flask.render_template('dump.html',dump=context[path].dump())
+        
+        app.run(host=self['ip'].val,port=self['port'].val,debug=True,use_reloader=False)
 
 glob['web'] = Web('Flask')
+# glob['web'].eval(glob)
 
 ## @}
 

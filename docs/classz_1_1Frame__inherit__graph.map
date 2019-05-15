@@ -2,7 +2,7 @@
 <area shape="rect" id="node2" href="$classz_1_1Active.html" title="active objects has execution semantics " alt="" coords="81,80,151,107"/>
 <area shape="rect" id="node5" href="$classz_1_1Meta.html" title="metaprogramming " alt="" coords="175,80,238,107"/>
 <area shape="rect" id="node7" href="$classz_1_1Prim.html" title="primitive " alt="" coords="262,80,322,107"/>
-<area shape="rect" id="node14" href="$classz_1_1Web.html" title="z.Web" alt="" coords="346,80,406,107"/>
+<area shape="rect" id="node14" href="$classz_1_1Web.html" title="web server instance " alt="" coords="346,80,406,107"/>
 <area shape="rect" id="node3" href="$classz_1_1Cmd.html" title="VM command. " alt="" coords="5,155,67,181"/>
 <area shape="rect" id="node4" href="$classz_1_1VM.html" title="FORTH Virtual Machine. " alt="" coords="91,155,144,181"/>
 <area shape="rect" id="node6" href="$classz_1_1Lexer.html" title="lexer class " alt="" coords="170,155,235,181"/>
