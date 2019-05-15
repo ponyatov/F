@@ -134,8 +134,11 @@ class Lexer(Meta):
     def t_bin(t):
         r'0b[01]+'
         return Bin(t.value)
+    def t_num_exp(t):
+        r'[\+\-]?[0-9]+(\.[0-9]*)?[eE][\+\-]?[0-9]+'
+        return Num(t.value)
     def t_num(t):
-        r'[\+\-]?[0-9]+\.[0-9]*'
+        r'[\+\-]?([0-9]+\.[0-9]*|\.[0-9]+)'
         return Num(t.value)
     def t_int(t):
         r'[\+\-]?[0-9]+'
