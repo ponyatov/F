@@ -8,6 +8,7 @@
 ## shares universal knowledge representation, and any data/container
 class Frame:
     
+    ## @param[in] V frame name/scalar value
     def __init__(self,V):
         ## type/class tag
         self.type = self.__class__.__name__.lower()
@@ -20,8 +21,15 @@ class Frame:
         ## reference count
         self.ref  = 0
         
+    ## @name printing
+    
     def __repr__(self):
         return self.dump()
+    ## short header-only dump
+    def head(self,prefix=''):
+        return '%s<%s:%s> /%i @%x' % \
+            (prefix,self.type,self.val,self.ref,id(self))
+    ## full tree text dump 
     def dump(self,depth=0,prefix=''):
         tree = self.pad(depth) + self.head(prefix)
         for i in self.slot:
@@ -29,21 +37,25 @@ class Frame:
         for j in self.nest:
             tree += j.dump(depth+1)
         return tree
-    def head(self,prefix=''):
-        return '%s<%s:%s> /%i @%x' % \
-            (prefix,self.type,self.val,self.ref,id(self))
+    ## pad dump tree with tabs
     def pad(self,n):
         return '\n' + '\t' * n
     
+    ## @name operators
+    
+    ## `A // B`
     def __floordiv__(self,that):
         return self.push(that)
+    ## `A[str] = B`
     def __setitem__(self,key,that):
         if callable(that): self[key] = Cmd(that) ; return self
         self.slot[key] = that ; that.ref += 1 ; return self
 
+    ## push to frame as stack
     def push(self,that):
         if isinstance(that,str): return self.push(Str(that))
         self.nest.append(that) ; that.ref += 1
+    ## pop from frame as stack
     def pop(self):
         return self.nest.pop()
 
