@@ -5,6 +5,8 @@
 
 github: https://github.com/ponyatov/F
 
+manual: https://ponyatov.github.io/F/
+
 * very simple FORTH-like language
 * [homoiconic](http://en.wikipedia.org/wiki/Homoiconicity)
 * metaprogramming
