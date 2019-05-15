@@ -1,11 +1,23 @@
+## @file
 
+## @defgroup frame Marvin Minsky frame model
+## `e`xtended with `nest[]`ed elements for attribute grammar and AST
+## @{
+
+## frame (object)
+## shares universal knowledge representation, and any data/container
 class Frame:
     
     def __init__(self,V):
+        ## type/class tag
         self.type = self.__class__.__name__.lower()
+        ## implementation language scalar type
         self.val  = V
+        ## slots = `attr{}`ibutes = string-keyed associative array
         self.slot = {}
+        ## `nest[]`ed elements = vector = stack
         self.nest = []
+        ## reference count
         self.ref  = 0
         
     def __repr__(self):
@@ -34,24 +46,37 @@ class Frame:
         self.nest.append(that) ; that.ref += 1
     def pop(self):
         return self.nest.pop()
-    
+
+## primitive
 class Prim(Frame): pass
 
+## symbol
 class Sym(Prim): pass
 
+## string
 class Str(Prim): pass
 
+## active objects has execution semantics
 class Active(Frame): pass
-        
+
+## VM command        
 class Cmd(Active):
     def __init__(self,F):
         Active.__init__(self, F.__name__)
         self.fn = F
-        
+
+## metaprogramming        
 class Meta(Frame): pass
+
+## @}
+
+## @defgroup ply PLY-powered lexer
+## FORTH has no syntax: it's lexer-only language
+## @{
 
 import ply.lex as ply
 
+## lexer class
 class Lexer(Meta):
     tokens = ['sym','str']
     t_ignore = ' \t\r\n'
@@ -64,7 +89,14 @@ class Lexer(Meta):
         self.lex.input(command)
     def token(self):
         return self.lex.token()
-        
+    
+## @}
+
+## @defgroup forth FORTH Virtual Machine
+## @{
+
+## FORTH Virtual Machine
+## @ingroup frame        
 class VM(Active):
     lexer = Lexer('FORTH')
     def __init__(self,V):
@@ -89,3 +121,5 @@ class VM(Active):
 vm = VM('metaL')
 
 vm.repl()
+
+## @}
