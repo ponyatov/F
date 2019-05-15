@@ -198,6 +198,20 @@ class VM(Active):
 ## global virtual machine
 glob = VM('metaL')
 
+## @}
+
+## @defgroup web web engine /Flask/
+## @{
+
+class Web(Frame): pass
+
+glob['web'] = Web('Flask')
+
+## @}
+
+## @defgroup init system startup
+## @{
+
 if __name__ == '__main__':
     glob.repl()
 
