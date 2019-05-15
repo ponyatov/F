@@ -25,13 +25,13 @@ class Frame:
     
     def __floordiv__(self,that):
         return self.push(that)
-    def __setitem__(self,key,obj):
-        if callable(obj): self[key] = Cmd(obj) ; return self
-        self.slot[key] = obj ; return self
+    def __setitem__(self,key,that):
+        if callable(that): self[key] = Cmd(that) ; return self
+        self.slot[key] = that ; that.ref += 1 ; return self
 
     def push(self,that):
         if isinstance(that,str): return self.push(Str(that))
-        self.nest.append(that)
+        self.nest.append(that) ; that.ref += 1
     def pop(self):
         return self.nest.pop()
     
@@ -73,8 +73,8 @@ class VM(Active):
         self['REPL'] = self.repl
     def word(self):
         token = self.lexer.token()
-        if not token: return False
-        self // token
+        if not token:   return False
+        self // token ; return True
     def interpret(self):
         self.lexer.input( self.pop().val )
         while True:
