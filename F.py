@@ -84,6 +84,8 @@ S = Stack('DATA') ; W['S'] = S
 W << ( Vect('ARGV') // File(sys.argv[0]) )
 for i in sys.argv[1:]: W['ARGV'] // i
 
+W['TH'] = Vect('threadpool')
+
 import ply.lex as lex
 
 tokens = ['int','sym']
@@ -117,7 +119,7 @@ def INTERPRET():
     lexer.input(S.pop().val)
     while True:
         if not WORD(): break
-        FIND()
+        if isinstance(S.top(),Sym): FIND()
         print S
 W << INTERPRET
                       
@@ -125,7 +127,7 @@ def REPL():
     while True:
         print W
         S // raw_input('\nok> ')
-        Thread(target=INTERPRET).start()
+        i = Thread(target=INTERPRET) ; i.start() ; i.join(timeout=1)
 W << REPL
 REPL()
 
