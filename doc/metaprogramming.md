@@ -20,3 +20,12 @@ the meta-enabled language with extra tools targets to
     * can set hooks on compiler events, 
     * modify and analyze intermediate program representations, and 
     * modify compiler library itself
+* **code generation**:
+  * homoiconic interpretive languages tend to be extra slow
+  * to avoid slowness and overtake any mainstream compilers we can use
+    * **model compiler** converts highest level models into 
+      low-level and high optimizing languages (C,C++,Java)
+    * generate low-level code via LLVM with a lot of optimizations
+      available off-the-shelf
+    * in some rare cases generate target machine code
+      (data crunching using specific hardware features)

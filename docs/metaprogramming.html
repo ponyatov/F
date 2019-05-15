@@ -76,7 +76,17 @@ $(function() {
 <li>has full access to compiler structures on every stage,</li>
 <li>can set hooks on compiler events,</li>
 <li>modify and analyze intermediate program representations, and</li>
-<li>modify compiler library itself </li>
+<li>modify compiler library itself</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><b>code generation</b>:<ul>
+<li>homoiconic interpretive languages tend to be extra slow</li>
+<li>to avoid slowness and overtake any mainstream compilers we can use<ul>
+<li><b>model compiler</b> converts highest level models into low-level and high optimizing languages (C,C++,Java)</li>
+<li>generate low-level code via LLVM with a lot of optimizations available off-the-shelf</li>
+<li>in some rare cases generate target machine code (data crunching using specific hardware features) </li>
 </ul>
 </li>
 </ul>
