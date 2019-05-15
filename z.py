@@ -29,9 +29,6 @@ class Frame:
     def head(self,prefix=''):
         return '%s<%s:%s> /%i @%x' % \
             (prefix,self.type,self.str(),self.ref,id(self))
-    ## format `val` for printing
-    def str(self):
-        return self.val
     ## full tree text dump 
     def dump(self,depth=0,prefix=''):
         tree = self.pad(depth) + self.head(prefix)
@@ -43,6 +40,9 @@ class Frame:
     ## pad dump tree with tabs
     def pad(self,n):
         return '\n' + '\t' * n
+    ## format `val` for printing
+    def str(self):
+        return self.val
     
     ## @name operators
     
@@ -100,6 +100,9 @@ class Hex(Int):
 class Bin(Int):
     def __init__(self,N):
         Int.__init__(self, int(N[2:],0x02))
+    ## format `val` for printing
+    def str(self):
+        return bin(self.val)[2:]
 
 ## active objects has execution semantics
 class Active(Frame): pass
