@@ -7,8 +7,8 @@ github: https://github.com/ponyatov/F
 
 manual: https://ponyatov.github.io/F/
 
-* very simple FORTH-like language
-* [homoiconic](http://en.wikipedia.org/wiki/Homoiconicity)
+* very simple @ref FORTH -like language
+* @ref homoiconic
 * metaprogramming
 * implemented in Python 
   * as a language simplest to learn
