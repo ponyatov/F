@@ -66,13 +66,19 @@ class Frame:
     ## push (to `nest[]`ed)
     def push(self,that):
         if isinstance(that,str): return self.push(Str(that))
-        self.nest.append(that) ; that.ref += 1
+        self.nest.append(that) ; #that.ref += 1
     ## pop
     def pop(self):
         return self.nest.pop()
     ## top element
     def top(self):
         return self.nest[-1]
+    ## dup element
+    def dup(self):
+        return self // self.top()
+    ## drop element
+    def drop(self):
+        self.nest.pop() ; return self
     
     ## @name execution / code generation
     
