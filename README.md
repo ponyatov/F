@@ -1,5 +1,5 @@
-# pyz
-## FORTH/py
+# FORTH/py
+## homoiconic script language /on top of Python/
 
 (c) Dmitry Ponyatov <<dponyatov@gmail.com>> CC BY-NC-ND
 
