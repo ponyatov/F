@@ -117,12 +117,13 @@ class VM(Active):
         Active.__init__(self, V)
         self['lexer'] = self.lexer
         self['REPL'] = self.repl
-    ## `WORD ( -- token)`
+    ## `WORD ( -- token )` parse next token from a source stream
     def word(self):
         token = self.lexer.token()
         if not token:   return False
         self // token ; return True
-    ## `INTERPRET ( str -- )`
+    ## `INTERPRET ( str -- )` interpet string as source code
+    ## /feeds whole string to @ref Lexer/
     def interpret(self):
         self.lexer.input( self.pop().val )
         while True:
