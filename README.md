@@ -3,7 +3,7 @@
 
 (c) Dmitry Ponyatov <<dponyatov@gmail.com>> CC BY-NC-ND
 
-git: https://bitbucket.org/ponyatov/pyz
+github: https://github.com/ponyatov/F
 
 * very simple FORTH-like language
 * [homoiconic](http://en.wikipedia.org/wiki/Homoiconicity)
