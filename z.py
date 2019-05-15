@@ -24,10 +24,22 @@ class Frame:
         return '\n' + '\t' * n
     
     def __floordiv__(self,that):
-        self.nest.append(that)
+        return self.push(that)
     def __setitem__(self,key,obj):
         if callable(obj): self[key] = Cmd(obj) ; return self
         self.slot[key] = obj ; return self
+
+    def push(self,that):
+        if isinstance(that,str): return self.push(Str(that))
+        self.nest.append(that)
+    def pop(self):
+        return self.nest.pop()
+    
+class Prim(Frame): pass
+
+class Sym(Prim): pass
+
+class Str(Prim): pass
 
 class Active(Frame): pass
         
@@ -36,14 +48,38 @@ class Cmd(Active):
         Active.__init__(self, F.__name__)
         self.fn = F
         
+class Meta(Frame): pass
+
+import ply.lex as ply
+
+class Lexer(Meta):
+    tokens = ['sym','str']
+    t_ignore = ' \t\r\n'
+    def t_sym(t):
+        r'[^ \t\r\n]+'
+        return Sym(t.value)
+    def t_error(t): raise SyntaxError(t)
+    lex = ply.lex()
+    def input(self,command):
+        self.lex.input(command)
+    def token(self):
+        return self.lex.token()
+        
 class VM(Active):
+    lexer = Lexer('FORTH')
     def __init__(self,V):
         Active.__init__(self, V)
+        self['lexer'] = self.lexer
         self['REPL'] = self.repl
+    def word(self):
+        token = self.lexer.token()
+        if not token: return False
+        self // token
     def interpret(self):
-        lexer = lexer.input( self.pop().val )
+        self.lexer.input( self.pop().val )
         while True:
             if not self.word(): break
+            print self
     def repl(self):
         while True:
             print self
