@@ -28,7 +28,10 @@ class Frame:
     ## short header-only dump
     def head(self,prefix=''):
         return '%s<%s:%s> /%i @%x' % \
-            (prefix,self.type,self.val,self.ref,id(self))
+            (prefix,self.type,self.str(),self.ref,id(self))
+    ## format `val` for printing
+    def str(self):
+        return self.val
     ## full tree text dump 
     def dump(self,depth=0,prefix=''):
         tree = self.pad(depth) + self.head(prefix)
@@ -50,14 +53,22 @@ class Frame:
     def __setitem__(self,key,that):
         if callable(that): self[key] = Cmd(that) ; return self
         self.slot[key] = that ; that.ref += 1 ; return self
+    ## `A[str]`
+    def __getitem__(self,key):
+        return self.slot[key]
+    
+    ## @name treat frame = stack
 
-    ## push to frame as stack
+    ## push (to `nest[]`ed)
     def push(self,that):
         if isinstance(that,str): return self.push(Str(that))
         self.nest.append(that) ; that.ref += 1
-    ## pop from frame as stack
+    ## pop
     def pop(self):
         return self.nest.pop()
+    ## top element
+    def top(self):
+        return self.nest[-1]
 
 ## primitive
 class Prim(Frame): pass
@@ -67,6 +78,28 @@ class Sym(Prim): pass
 
 ## string
 class Str(Prim): pass
+
+## number
+class Num(Prim):
+    def __init__(self,N):
+        Prim.__init__(self, float(N))
+        
+## integer
+class Int(Num):
+    def __init__(self,N):
+        Prim.__init__(self, int(N))
+        
+## machine hex number
+class Hex(Int):
+    def __init__(self,N):
+        Int.__init__(self, int(N[2:],0x10))
+    def str(self):
+        return '%X' % self.val
+        
+## bit string
+class Bin(Int):
+    def __init__(self,N):
+        Int.__init__(self, int(N[2:],0x02))
 
 ## active objects has execution semantics
 class Active(Frame): pass
@@ -90,8 +123,20 @@ import ply.lex as ply
 
 ## lexer class
 class Lexer(Meta):
-    tokens = ['sym','str']
+    tokens = ['sym','str','num','int','hex','bin']
     t_ignore = ' \t\r\n'
+    def t_hex(t):
+        r'0x[0-9a-fA-F]+'
+        return Hex(t.value)
+    def t_bin(t):
+        r'0b[01]+'
+        return Bin(t.value)
+    def t_num(t):
+        r'[\+\-]?[0-9]+\.[0-9]*'
+        return Num(t.value)
+    def t_int(t):
+        r'[\+\-]?[0-9]+'
+        return Int(t.value)
     def t_sym(t):
         r'[^ \t\r\n]+'
         return Sym(t.value)
@@ -122,12 +167,20 @@ class VM(Active):
         token = self.lexer.token()
         if not token:   return False
         self // token ; return True
+    def find(self):
+        token = self.pop().val
+        try: self // self[token]
+        except KeyError:
+            try: self // self[token.upper()]
+            except KeyError:
+                raise SyntaxError(token)
     ## `INTERPRET ( str -- )` interpet string as source code
     ## /feeds whole string to @ref Lexer/
     def interpret(self):
         self.lexer.input( self.pop().val )
         while True:
             if not self.word(): break
+            if isinstance(self.top(),Sym): self.find()
             print self
     ## `REPL ( -- )` user console
     def repl(self):
@@ -136,8 +189,10 @@ class VM(Active):
             self // raw_input('ok> ')
             self.interpret()
 
-vm = VM('metaL')
+## global virtual machine
+glob = VM('metaL')
 
-vm.repl()
+if __name__ == '__main__':
+    glob.repl()
 
 ## @}
