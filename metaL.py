@@ -66,6 +66,9 @@ class Frame:
         
     def eval(self):
         S // self
+        
+    def tosrc(self):
+        return self.val
     
 ############################################################## primitive types
 
@@ -114,17 +117,24 @@ class Cmd(Active):
 
 class IO(Frame): pass
             
-class File(IO): pass
+class File(IO):
+    def tosrc(self):
+        src = '=========== %s ============\n' % self.val
+        for i in self.nest: src += i.tosrc() + '\n'
+        return src + '='*40
 
 ############################################################## metaprogramming
 
 class Meta(Frame): pass
 
-
 ######################################################## FORTH Virtual Machine
 
 W = Dict('FORTH') ; W['W'] = W
 S = Stack('DATA') ; W['S'] = S
+
+def LD():
+    S // W[S.pop().val]
+W['@'] = Cmd(LD)
 
 def ST():
     B = S.pop() ; W[B.val] = S.pop()
@@ -153,11 +163,26 @@ W['+'] = Cmd(ADD)
 
 def BYE():
     sys.exit(0)
+    
+def Q():
+    print S
+W['?'] = Cmd(Q)
 
 def QQ():
-    print W ; BYE()
+    print S ; BYE()
 W['??'] = Cmd(QQ)
-    
+
+########################################################################## I/O
+
+def FILE():
+    S // File(S.pop().val)
+W << FILE
+
+######################################################################### meta
+
+def toSRC():
+    print S.pop().tosrc()
+W['>src'] = Cmd(toSRC)
 
 ############################################################ PLY-powered lexer
 
@@ -203,7 +228,9 @@ def WORD():
 def FIND():
     token = S.pop().val
     try: S // W[token]
-    except KeyError: S // W[token.upper()]
+    except KeyError:
+        try: S // W[token.upper()]
+        except KeyError: raise SyntaxError(token)
     
 def EVAL():
     S.pop().eval()
