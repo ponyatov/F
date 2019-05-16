@@ -1,29 +1,3 @@
-    ## top element
-    def top(self):
-        return self.nest[-1]
-    ## dup element
-    def dup(self):
-        return self // self.top()
-    ## drop element
-    def drop(self):
-        self.nest.pop() ; return self
-    
-    ## @name execution / code generation
-    
-    ## evaluate/execute self in the given context
-    ## (by default only push self to context stack)
-    def eval(self,context):
-        context.push(self)
-
-## primitive
-class Prim(Frame): pass
-
-## symbol
-class Sym(Prim): pass
-
-## string
-class Str(Prim): pass
-
 ## number
 class Num(Prim):
     def __init__(self,N):
@@ -49,25 +23,11 @@ class Bin(Int):
     def str(self):
         return bin(self.val)[2:]
 
-## active objects has execution semantics
-class Active(Frame): pass
-
 ## VM command        
 class Cmd(Active):
     def __init__(self,F):
         Active.__init__(self, F.__name__)
         self.fn = F
-
-## metaprogramming        
-class Meta(Frame): pass
-
-## @}
-
-## @defgroup ply PLY-powered lexer
-## FORTH has no syntax: it's lexer-only language
-## @{
-
-import ply.lex as ply
 
 ## lexer class
 class Lexer(Meta):

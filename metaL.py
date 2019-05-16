@@ -49,6 +49,19 @@ class Frame:
         self.nest.append(that) ; return self
     def pop(self):
         return self.nest.pop()
+    def top(self):
+        return self.nest[-1]
+    def dup(self):
+        return self // self.top()
+    def drop(self):
+        self.nest.pop() ; return self
+    def dropall(self):
+        self.nest = [] ; return self
+        
+    def __add__(self,that): raise SyntaxError((self,'+',that))
+        
+    def eval(self):
+        S // self
     
 ############################################################## primitive types
 
@@ -56,7 +69,15 @@ class Prim(Frame): pass
 
 class Sym(Prim): pass
 
-class Str(Prim): pass
+class Str(Prim):
+    def str(self):
+        dump = ''
+        for c in self.val:
+            if c == '\n': dump += '\\n'
+            else: dump += c
+        return dump
+    def __add__(self,that):
+        return Str(self.val + that.val)
 
 class Num(Prim): pass
 
@@ -78,7 +99,12 @@ class Dict(Cont): pass
 
 class Active(Frame): pass
 
-class Cmd(Active): pass
+class Cmd(Active):
+    def __init__(self,F):
+        Frame.__init__(self, F.__name__)
+        self.fn = F
+    def eval(self):
+        self.fn()
 
 ################################################################# input/output
 
@@ -86,38 +112,113 @@ class IO(Frame): pass
             
 class File(IO): pass
 
+############################################################## metaprogramming
+
+class Meta(Frame): pass
+
+
 ######################################################## FORTH Virtual Machine
 
 W = Dict('FORTH') ; W['W'] = W
 S = Stack('DATA') ; W['S'] = S
 
+def ST():
+    B = S.pop() ; W[B.val] = S.pop()
+W['!'] = Cmd(ST)
+
+def LL():
+    B = S.pop() ; S.top() << B
+W['<<'] = Cmd(LL)
+
+def PUSH():
+    B = S.pop() ; S.top() // B
+W['//'] = Cmd(PUSH)
+
+def DROPALL():
+    S.dropall()
+W['.'] = Cmd(DROPALL)
+
+def ADD():
+    B = S.pop() ; S // ( S.pop() + B )
+W['+'] = Cmd(ADD)
+
+
+
+######################################################################## debug
+
+def BYE():
+    sys.exit(0)
+
+def QQ():
+    print W ; BYE()
+W['??'] = Cmd(QQ)
+    
+
 ############################################################ PLY-powered lexer
 
 import ply.lex as lex
 
-tokens = ['sym']
+tokens = ['sym','str']
 
 t_ignore = ' \t\r\n'
 
+states = (('str','exclusive'),)
+t_str_ignore = ''
+def t_string(t):
+    r'\''
+    t.lexer.string=''
+    t.lexer.push_state('str')
+def t_str_string(t):
+    r'\''
+    t.lexer.pop_state()
+    return Str(t.lexer.string)
+def t_str_char(t):
+    r'.'
+    t.lexer.string += t.value
+
 def t_sym(t):
-    r'[^ \t\r\n]+'
+    r'[`~]|[^ \t\r\n]+'
     return Sym(t.value)
 
-def t_error(t): raise SyntaxError(t)
+def t_ANY_error(t): raise SyntaxError(t)
 
 lexer = lex.lex()
 
 ################################################################## interpreter
+
+def QUOTE():
+    WORD()
+W['`'] = Cmd(QUOTE)
+
+def WORD():
+    token = lexer.token()
+    if not token: return False
+    S // token ; return True
+
+def FIND():
+    token = S.pop().val
+    S // W[token]
+    
+def EVAL():
+    S.pop().eval()
 
 def INTERPRET():
     lexer.input(S.pop().val)
     while True:
         if not WORD(): break
         if isinstance(S.top(),Sym): FIND()
-        print S
+        EVAL()
+
+def REPL():
+    while True:
+        print W
+        S // raw_input('\nok> ')
+        INTERPRET()
 
 ################################################################## system init
 
 for i in sys.argv[1:]:
-    S // open(i).read() ; print S ; INTERPRET()
-REPL()
+    S // open(i).read() ; INTERPRET() ; print W
+if not sys.argv[1:]:
+    S // open('metaL.ml').read() ; INTERPRET()
+    REPL()
