@@ -26,7 +26,7 @@ wiki: https://github.com/ponyatov/F/wiki
     * as a language simplest to learn
     * very light and fast runtime
     * portable
-    * easy to write extensions and integrate extra libraries  * [[Smalltalk]] and Self
+    * easy to write extensions and integrate extra libraries
   * [[Lisp]]
     * [[homoiconic]] from the roots
   * [[Smalltalk]] & Self
