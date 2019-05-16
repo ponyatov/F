@@ -18,7 +18,7 @@ wiki: https://github.com/ponyatov/F/wiki
     * **no plain text source code** at all
       * [[metaL]] is an auxiliary tool (command/DDL language)
 * multiparadigm
-  * [[parallel]] [[message passing]]
+  * [[parallel]] via [[message passing]]
   * [[declarative]]
   * [[imperative]] but [[avoid sequential programming]]
 * multilanguage inspired
@@ -40,7 +40,17 @@ wiki: https://github.com/ponyatov/F/wiki
     * [[metaL]] : very simple FORTH-like language solves most problems with classical [[FORTH]]
       * no direct memory faults
       * *is not programming but command and **frame definition** language*
-* designed for [[embedded system]]s (meta)programming via [[code generation]]
-  * [[CortexM]] (STM32,..)
-  * [[MSP430]]
-  * [[emLinux]]
+* designed for [[embedded system]]s (meta)programming
+  * via [[code generation]]
+    * [[emC]] / [[C++]]
+    * [[IoT]] specific
+      * [[Java]]
+  * hardware
+    * [[CortexM]] (STM32,..)
+    * [[MSP430]]
+    * [[AVR8]] Arduino legacy
+    * [[emLinux]]
+  * cross-compiler toolchains
+    * [[GNU]]
+    * [[IAR]]
+    * [[LLVM]]

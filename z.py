@@ -137,13 +137,3 @@ class Web(Frame):
 
 glob['web'] = Web('Flask')
 # glob['web'].eval(glob)
-
-## @}
-
-## @defgroup init system startup
-## @{
-
-if __name__ == '__main__':
-    glob.repl()
-
-## @}
