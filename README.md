@@ -1,5 +1,5 @@
-# FORTH/py
-## metaL: homoiconic script language /on top of Python/
+# metaL
+## homoiconic metaprogramming language /on top of Python/
 
 (c) Dmitry Ponyatov <<dponyatov@gmail.com>> CC BY-NC-ND
 
