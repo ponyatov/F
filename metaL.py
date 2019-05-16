@@ -38,7 +38,7 @@ class Frame:
         return self.push(that)
         
     def __lshift__(self,that):
-#         if callable(that): return self << Cmd(that)
+        if callable(that): return self << Cmd(that)
         self[that.val] = that ; return self
     def __setitem__(self,key,that):
         self.slot[key] = that ; return self
@@ -134,6 +134,9 @@ def PUSH():
     B = S.pop() ; S.top() // B
 W['//'] = Cmd(PUSH)
 
+def DUP(): S.dup()
+W << DUP
+
 def DROPALL():
     S.dropall()
 W['.'] = Cmd(DROPALL)
@@ -197,7 +200,8 @@ def WORD():
 
 def FIND():
     token = S.pop().val
-    S // W[token]
+    try: S // W[token]
+    except KeyError: S // W[token.upper()]
     
 def EVAL():
     S.pop().eval()
