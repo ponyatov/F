@@ -59,6 +59,10 @@ class Frame:
         self.nest = [] ; return self
         
     def __add__(self,that): raise SyntaxError((self,'+',that))
+    def __sub__(self,that): raise SyntaxError((self,'-',that))
+    def __mul__(self,that): raise SyntaxError((self,'*',that))
+    def __div__(self,that): raise SyntaxError((self,'/',that))
+    def __pow__(self,that): raise SyntaxError((self,'^',that))
         
     def eval(self):
         S // self
@@ -126,9 +130,9 @@ def ST():
     B = S.pop() ; W[B.val] = S.pop()
 W['!'] = Cmd(ST)
 
-def LL():
+def LSHIFT():
     B = S.pop() ; S.top() << B
-W['<<'] = Cmd(LL)
+W['<<'] = Cmd(LSHIFT)
 
 def PUSH():
     B = S.pop() ; S.top() // B
@@ -144,8 +148,6 @@ W['.'] = Cmd(DROPALL)
 def ADD():
     B = S.pop() ; S // ( S.pop() + B )
 W['+'] = Cmd(ADD)
-
-
 
 ######################################################################## debug
 
@@ -215,7 +217,7 @@ def INTERPRET():
 
 def REPL():
     while True:
-        print W
+        print S
         S // raw_input('\nok> ')
         INTERPRET()
 
