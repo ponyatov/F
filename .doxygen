@@ -1,6 +1,6 @@
 PROJECT_NAME           = "F"
 PROJECT_BRIEF          = "FORTH-inspired script engine"
-PROJECT_LOGO           = doc/logo.png
+PROJECT_LOGO           = vscode/logo.png
 HTML_OUTPUT            = doc/html
 OUTPUT_DIRECTORY       =
 INPUT                  = README.md inc lib src doc hw os cpu arch
