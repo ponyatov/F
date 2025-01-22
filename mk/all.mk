@@ -1,5 +1,5 @@
 # all
 .PHONY: all run
-all: bin/$(BINFILE) $(S)
-run: bin/$(BINFILE) $(S)
+all: bin/$(BINFILE)$(EXE) $(S)
+run: bin/$(BINFILE)$(EXE) $(S)
 	$^
