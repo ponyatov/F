@@ -18,6 +18,7 @@ class Int : public Prim {
 
    public:
     Int(char *s);
+    std::string val();
 };
 
 /// @}
