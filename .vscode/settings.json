@@ -51,6 +51,12 @@
     "clang-format.fallbackStyle":  "Google",
     "clang-format.style":          "file",
 
+    // JavaScript
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave":     false
+    },
+
     // C++
     "[c]": {
         "editor.defaultFormatter": "xaver.clang-format",

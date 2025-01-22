@@ -10,7 +10,10 @@ Object::~Object() { assert(ref == 0); }
 
 std::string Object::tag() {
     int status;
-    return abi::__cxa_demangle(typeid(*this).name(), NULL, NULL, &status);
+    std::string s =
+        abi::__cxa_demangle(typeid(*this).name(), NULL, NULL, &status);
+
+    return s;
 }
 
 std::string Object::val() { return value; }
