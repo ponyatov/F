@@ -39,7 +39,7 @@
             "inherits": "common",
             "displayName": "mingw-w64-ucrt-x86_64",
             "description": "native win64",
-            "toolchainFile": "${sourceDir}/cmake/x86_64-linux-gnu.cmake",
+            "toolchainFile": "${sourceDir}/cmake/mingw-w64-ucrt-x86_64.cmake",
             "cacheVariables": {
                 "HW":"pc", "CPU":"i5", "ARCH":"x86_64", "OS":"mingw"
             }
