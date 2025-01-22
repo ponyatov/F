@@ -14,4 +14,5 @@ set(CMAKE_RC_COMPILER  windres)
 
 add_compile_options(
     "-march=native"
+    "-mconsole"
 )

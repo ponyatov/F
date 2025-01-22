@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
+# get_filename_component(CMAKE_PROJECT_NAME F)
 get_filename_component(CMAKE_PROJECT_NAME ${CMAKE_SOURCE_DIR} NAME_WE)
 project(${CMAKE_PROJECT_NAME} LANGUAGES C CXX ASM)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
@@ -15,9 +16,11 @@ set(TMP ${CWD}/tmp)
 
 file(GLOB_RECURSE C
     "${CWD}/src/*.c*"
+    "${CWD}/tmp/*.lexer.c*" "${CWD}/tmp/*.parser.c*"
     "${CWD}/hw/${HW}/src/*.c*"
     "${CWD}/cpu/${CPU}/src/*.c*"
     "${CWD}/arch/${ARCH}/src/*.c*"
+    "${CWD}/os/src/*.c*"
     "${CWD}/os/${OS}/src/*.c*"
     "${CWD}/lib/core/src/*.c*"
     "${CWD}/lib/cli/src/*.c*"
@@ -27,6 +30,7 @@ file(GLOB_RECURSE H
     "${CWD}/hw/${HW}/inc/*.h*"
     "${CWD}/cpu/${CPU}/inc/*.h*"
     "${CWD}/arch/${ARCH}/inc/*.h*"
+    "${CWD}/os/inc/*.h*"
     "${CWD}/os/${OS}/inc/*.h*"
     "${CWD}/lib/core/src/*.h*"
     "${CWD}/lib/cli/src/*.h*"
@@ -37,11 +41,13 @@ include_directories(
     "${CWD}/hw/${HW}/inc"
     "${CWD}/cpu/${CPU}/inc"
     "${CWD}/arch/${ARCH}/inc"
+    "${CWD}/os/inc"
     "${CWD}/os/${OS}/inc"
     "${CWD}/lib/core/inc"
     "${CWD}/lib/cli/inc"
 )
 
+message("--       dir: " ${CWD})
 message("-- toolchain: " ${CMAKE_CXX_COMPILER} " @ " ${CMAKE_TOOLCHAIN_FILE})
 message("--    target: " "hw:" ${HW} " cpu:" ${CPU} " arch:" ${ARCH})
 message("--        os: " ${OS})
@@ -58,4 +64,3 @@ target_link_libraries(${CMAKE_PROJECT_NAME})
 # target install
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES OUTPUT_NAME ${BIN_OUTPUT_NAME})
 install(TARGETS ${CMAKE_PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX})
-
