@@ -54,11 +54,11 @@
     // C++
     "[c]": {
         "editor.defaultFormatter": "xaver.clang-format",
-        "editor.formatOnSave":     false
+        "editor.formatOnSave":     true
     },
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format",
-        "editor.formatOnSave":     false
+        "editor.formatOnSave":     true
     },
     // "C_Cpp.intelliSenseEngine": "Tag Parser",
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
@@ -72,4 +72,15 @@
         "CMAKE_VERBOSE_MAKEFILE": true
     },
     "cmake.useCMakePresets"     : "always",
+
+    // MinGW/MSYS2
+    "terminal.integrated.defaultProfile.windows":  "UCRT64",
+    "terminal.integrated.profiles.windows": {
+      "UCRT64": {
+        "path": "C:\\msys64\\usr\\bin\\bash.exe",
+        "args": ["--login","-i"],
+        "env": {
+          "MSYSTEM": "UCRT64",
+          "CHERE_INVOKING": "1",
+        }}},
 }

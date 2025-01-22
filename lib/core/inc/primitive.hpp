@@ -1,11 +1,18 @@
 #pragma once
 
+#include "core.hpp"
+
 /// @defgroup prim prim
 /// @brief Primitive types
 /// @{
 
-class Prim : public Object {};
+/// @brief any primitive commons
+class Prim : public Object {
+   public:
+    Prim() : Object() {}
+};
 
+/// @brief integer
 class Int : public Prim {
     int value;
 
