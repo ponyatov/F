@@ -1,7 +1,8 @@
 #pragma once
 
 #include <stdio.h>
-#include "object.hpp"
+#include <iostream>
+#include "core.hpp"
 
 /// @defgroup cli cli
 /// @brief CLI: Command Line Interface
@@ -16,5 +17,9 @@ extern FILE* yyin;
 extern int yyparse();
 extern void yyerror(const char* msg);
 #include "cli.parser.hpp"
-
+#define TOKEN(C, X)               \
+    {                             \
+        yylval.o = new C(yytext); \
+        return X;                 \
+    }
 /// @}

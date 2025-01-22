@@ -17,3 +17,5 @@ C += $(wildcard lib/core/src/*.c*)
 H += $(wildcard lib/core/inc/*.h*)
 C += $(wildcard lib/cli/src/*.c*)
 H += $(wildcard lib/cli/inc/*.h*)
+
+S += $(wildcard lib/*.ini) $(wildcard lib/*.f)

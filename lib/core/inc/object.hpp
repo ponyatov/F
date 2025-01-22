@@ -23,6 +23,17 @@ class Object {
     Object(char *literal);
     virtual ~Object();
     /// @}
+    /// @name dump / stringify
+    /// @{
+    /// @brief type/class tag
+    virtual std::string tag();
+    /// @brief @ref value in string format
+    virtual std::string val();
+    /// @brief `<T:V>` header
+    virtual std::string head();
+    /// @brief full text tree dump
+    virtual std::string dump();
+    /// @}
 };
 
 /// @}
