@@ -28,7 +28,7 @@
     "files.associations": {
         "*.openocd": "properties", "*.gdb*": "properties",
         "*.ld": "linkerscript", "*.ld.fix": "linkerscript",
-        "*.ini": "properties", "*.f": "properties",
+        "*.ini": "flang", "*.f": "flang",
     },
 
     // editor
