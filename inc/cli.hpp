@@ -34,5 +34,10 @@ extern void yyerror(const char* msg);
         yylval.o = new C(&yytext[2]); \
         return X;                     \
     }
+#define TOCMD(C, X)         \
+    {                       \
+        yylval.o = new C(); \
+        return X;           \
+    }
 /// @}
 /// @}

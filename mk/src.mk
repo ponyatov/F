@@ -13,9 +13,4 @@ H += $(wildcard   os/$(OS)/inc/*.h*) 	$(wildcard os/inc/*.h*)
 CP += $(TMP)/cli.parser.cpp $(TMP)/cli.lexer.cpp
 HP += $(TMP)/cli.parser.hpp
 
-C += $(wildcard lib/core/src/*.c*)
-H += $(wildcard lib/core/inc/*.h*)
-C += $(wildcard lib/cli/src/*.c*)
-H += $(wildcard lib/cli/inc/*.h*)
-
 S += $(wildcard lib/*.ini) $(wildcard lib/*.f)

@@ -1,5 +1,6 @@
 %{
     #include "cli.hpp"
+    #include "vm.hpp"
     char* yyfile = nullptr;
 %}
 
@@ -17,7 +18,7 @@ n [0-9]
 "0b"[01]+           TOKE2(Bin,INT)
 {s}?{n}+            TOKEN(Int,INT)  // /
 
-"nop"               TOKEN(Nop,CMD)
-"halt"              TOKEN(Halt,CMD)
+"nop"               TOCMD(Nop,CMD)
+"halt"              TOCMD(Halt,CMD)
 
 .                   {yyerror("");}  // any undetected char
