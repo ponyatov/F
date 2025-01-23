@@ -18,7 +18,26 @@ class Int : public Prim {
 
    public:
     Int(char *s);
+    Int(int n);
     std::string val();
+};
+
+/// @brief hexadecimal
+class Hex : public Int {
+   public:
+    Hex(char *s);
+};
+
+/// @brief octal
+class Oct : public Int {
+   public:
+    Oct(char *s);
+};
+
+/// @brief binary
+class Bin : public Int {
+   public:
+    Bin(char *s);
 };
 
 /// @}

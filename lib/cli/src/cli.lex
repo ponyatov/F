@@ -9,9 +9,12 @@ s [+\-]
 n [0-9]
 
 %%
-#[^\n]*     {}              // line comment
-[ \t\r\n]+  {}              // drop spaces
+#[^\n]*             {}              // line comment
+[ \t\r\n]+          {}              // drop spaces
 
-{s}?{n}+    TOKEN(Int,INT)
+0x{s}?[0-9a-fA-F]+  TOKEN(Int,INT)  // \ integer
+0o{s}?[0-7]+        TOKEN(Hex,INT)
+0b{s}?[01]+         TOKEN(Oct,INT)
+{s}?{n}+            TOKEN(Bin,INT)  // /
 
-.           {yyerror("");}  // any undetected char
+.                   {yyerror("");}  // any undetected char
