@@ -3,7 +3,8 @@
 #include "core.hpp"
 
 /// @defgroup prim prim
-/// @brief Primitive types
+/// @ingroup object
+/// @brief primitive types
 /// @{
 
 /// @brief any primitive commons
@@ -12,13 +13,21 @@ class Prim : public Object {
     Prim() : Object() {}
 };
 
+/// @}
+
+/// @defgroup int int
+/// @brief integer
+/// @ingroup prim
+/// @{
+
 /// @brief integer
 class Int : public Prim {
+   protected:
     int value;
 
    public:
-    Int(char *s);
     Int(int n);
+    Int(char *s);
     std::string val();
 };
 
@@ -26,18 +35,21 @@ class Int : public Prim {
 class Hex : public Int {
    public:
     Hex(char *s);
+    std::string val();
 };
 
 /// @brief octal
 class Oct : public Int {
    public:
     Oct(char *s);
+    std::string val();
 };
 
 /// @brief binary
 class Bin : public Int {
    public:
     Bin(char *s);
+    std::string val();
 };
 
 /// @}

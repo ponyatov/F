@@ -29,5 +29,10 @@ extern void yyerror(const char* msg);
         yylval.o = new C(yytext); \
         return X;                 \
     }
+#define TOKE2(C, X)                   \
+    {                                 \
+        yylval.o = new C(&yytext[2]); \
+        return X;                     \
+    }
 /// @}
 /// @}

@@ -3,18 +3,27 @@
 #include <stddef.h>
 #include <string>
 
+/// @defgroup gc gc
+/// @brief garbage collection
+/// @ingroup core
+
 /// @defgroup object object
+/// @brief core @ref Object
 /// @ingroup core
 /// @{
 
+/// @brief core @ref Object
+/// @details provides common behaviour like @ref gc etc
 class Object {
     /// @ingroup gc
     /// @{
-    size_t ref;
+    size_t ref;  ///< reference counter
     /// @}
+
     /// @name `<T:V>`
     /// @{
-    std::string value;
+    std::string value;  ///< object name / literal value
+
     /// @}
    public:
     /// @name constructor / destructor

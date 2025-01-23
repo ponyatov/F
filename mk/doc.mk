@@ -1,5 +1,5 @@
 .PHONY: doxy
-doxy: .doxygen doc/DoxygenLayout.xml doc/logo.png
+doxy: .doxygen doc/DoxygenLayout.xml vscode/logo.png
 	rm -rf doc/html ; doxygen $< 1>/dev/null
 
 .PHONY: doc
