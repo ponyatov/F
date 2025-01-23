@@ -8,7 +8,7 @@
 /// @ingroup core
 
 /// @defgroup object object
-/// @brief core @ref Object
+/// @brief @ref ograph elements
 /// @ingroup core
 /// @{
 

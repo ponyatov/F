@@ -3,13 +3,16 @@
 #include "object.hpp"
 
 /// @defgroup vm vm
+/// @brief Virtual Machine
 /// @ingroup core
 /// @{
+/// @brief Virtual Machine
 class VM : public Object {};
 /// @}
 
 /// @defgroup cmd cmd
 /// @ingroup vm
+/// @brief @ref VM commands
 /// @{
 
 /// @brief @ref VM command

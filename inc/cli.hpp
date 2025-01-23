@@ -5,7 +5,7 @@
 #include "core.hpp"
 
 /// @defgroup cli cli
-/// @brief CLI: Command Line Interface
+/// @brief CLI: Command Line Interface (REPL)
 /// @ingroup core
 /// @{
 /// @name lexer

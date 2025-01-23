@@ -1,5 +1,5 @@
 PROJECT_NAME           = "F"
-PROJECT_BRIEF          = "FORTH-inspired script engine"
+PROJECT_BRIEF          = "script engine"
 PROJECT_LOGO           = vscode/logo.png
 HTML_OUTPUT            = doc/html
 OUTPUT_DIRECTORY       =
