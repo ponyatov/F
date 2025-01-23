@@ -17,4 +17,7 @@ n [0-9]
 "0b"[01]+           TOKE2(Bin,INT)
 {s}?{n}+            TOKEN(Int,INT)  // /
 
+"nop"               TOKEN(Nop,CMD)
+"halt"              TOKEN(Halt,CMD)
+
 .                   {yyerror("");}  // any undetected char
