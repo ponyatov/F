@@ -22,34 +22,34 @@ class Prim : public Object {
 
 /// @brief integer
 class Int : public Prim {
-   protected:
-    int value;
-
    public:
     Int(int n);
     Int(char *s);
-    std::string val();
+    std::string val() const;
+
+   protected:
+    int value;
 };
 
 /// @brief hexadecimal
 class Hex : public Int {
    public:
     Hex(char *s);
-    std::string val();
+    std::string val() const;
 };
 
 /// @brief octal
 class Oct : public Int {
    public:
     Oct(char *s);
-    std::string val();
+    std::string val() const;
 };
 
 /// @brief binary
 class Bin : public Int {
    public:
     Bin(char *s);
-    std::string val();
+    std::string val() const;
 };
 
 /// @}

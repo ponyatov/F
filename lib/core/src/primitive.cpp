@@ -5,7 +5,7 @@
 
 Int::Int(int n) : Prim(), value(n) {}
 
-std::string Int::val() {
+std::string Int::val() const {
     std::ostringstream os;
     os << value;
     return os.str();
@@ -16,19 +16,19 @@ Hex::Hex(char *s) : Int(std::stol(s, nullptr, 0x10)) {}
 Oct::Oct(char *s) : Int(std::stol(s, nullptr, 0x08)) {}
 Bin::Bin(char *s) : Int(std::stol(s, nullptr, 0x02)) {}
 
-std::string Hex::val() {
+std::string Hex::val() const {
     std::ostringstream os;
     os << std::hex << value;
     return os.str();
 }
 
-std::string Oct::val() {
+std::string Oct::val() const {
     std::ostringstream os;
     os << std::oct << value;
     return os.str();
 }
 
-std::string Bin::val() {
+std::string Bin::val() const {
     std::ostringstream os;
     std::bitset<sizeof(value * 8)> b(value);
     os << b;
