@@ -1,7 +1,7 @@
 {
     "name":        "flang",
     "displayName": "F",
-    "description": "F.lang",
+    "description": "F.lang script engine",
     "version":     "0.0.1",
     "icon":        "logo.png",
     "publisher":   "dponyatov",
