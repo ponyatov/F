@@ -1,9 +1,8 @@
 bin/$(BINFILE)$(EXE): $(C) $(H) $(CP) $(HP)
 	$(CXX) $(CFLAGS) -o $@ $(C) $(CP) $(L)
-# cmake           --preset mingw -S . -B tmp/mingw
-# cmake --build   --preset mingw         tmp/mingw
-# cmake --install                        tmp/mingw
-$(TMP)/%.lexer.cpp: $(LIB)/cli/src/%.lex
+$(TMP)/%.lexer.cpp: $(SRC)/%.lex
 	flex -o $@ $<
-$(TMP)/%.parser.cpp: $(LIB)/cli/src/%.yacc
+$(TMP)/%.parser.cpp: $(SRC)/%.yacc
 	bison -o $@ $<
+$(TMP)/%.ragel.cpp: $(SRC)/%.ragel
+	ragel -G2 -o $@ $<

@@ -1,6 +1,7 @@
 #pragma once
 
 /// @defgroup os os
+/// @ingroup cross
 
 #include <stdio.h>
 #include <stdlib.h>

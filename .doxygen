@@ -1,10 +1,10 @@
 PROJECT_NAME           = "F"
-PROJECT_BRIEF          = "FORTH-inspired script engine"
-PROJECT_LOGO           = doc/logo.png
+PROJECT_BRIEF          = "script engine"
+PROJECT_LOGO           = vscode/logo.png
 HTML_OUTPUT            = doc/html
 OUTPUT_DIRECTORY       =
-INPUT                  = README.md inc lib src doc hw os cpu arch
-INCLUDE_PATH           = inc lib/core/inc lib/cli/inc
+INPUT                  = README.md inc src doc hw os cpu arch
+INCLUDE_PATH           = inc
 EXCLUDE                = ref/* *.pdf *.djvu
 WARN_IF_UNDOCUMENTED   = NO
 RECURSIVE              = YES
