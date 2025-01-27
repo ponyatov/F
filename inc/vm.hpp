@@ -16,7 +16,13 @@ class VM : public Object {};
 /// @{
 
 /// @brief @ref VM command
-class Cmd : public Object {};
+class Cmd : public Object {
+   public:
+    /// @brief `<cmd:`
+    std::string tag() const;
+    /// @brief `:cmd_name>`
+    std::string val() const;
+};
 
 /// @brief `( -- )` do nothing
 class Nop : public Cmd {};

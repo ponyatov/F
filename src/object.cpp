@@ -9,11 +9,10 @@ Object::~Object() { assert(ref == 0); }
 #include <cxxabi.h>
 
 std::string Object::tag() const {
-    int status;
-    std::string s =
-        abi::__cxa_demangle(typeid(*this).name(), NULL, NULL, &status);
-
-    return s;
+    std::string ret =
+        abi::__cxa_demangle(typeid(*this).name(), NULL, NULL, nullptr);
+    for (char &c : ret) c = tolower(c);
+    return ret;
 }
 
 std::string Object::val() const { return value; }
