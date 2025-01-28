@@ -1,15 +1,10 @@
 
-# OBJ += $(wildcard src/*.c*)
-# OBJ := $(patsubst %.cpp,%.o,$(OBJ))
-# OBJ := $(patsubst %.c,%.o,$(OBJ))
-# OBJ := $(patsubst src/%,tmp/%,$(OBJ))
-
 .PHONY: obj
-obj:
-	echo $(OBJ)
+obj: $(OBJ)
+	echo $^
 
 bin/$(BINFILE): $(MK) $(OBJ)
-	$(TCXX) $(CPUFLAGS) $(LDFLAGS) -o $@ $(L) $(OBJ)
+	$(TCC) $(CPUFLAGS) $(LDFLAGS) -o $@ $(L) $(OBJ)
 tmp/%.o: src/%.cpp $(H) $(HP) $(MK)
 	$(TCXX) $(CPUFLAGS) $(CFLAGS) $(CXXFLAGS) -o $@ -c $<
 tmp/%.o: tmp/%.cpp $(H) $(HP) $(MK)

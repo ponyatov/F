@@ -2,6 +2,7 @@
 #include "cli.hpp"
 #include <iostream>
 
+#ifdef POSIX
 int main(int argc, char* argv[]) {
     arg(0, argv[0]);
     for (int i = 1; i < argc; i++) {  //
@@ -14,6 +15,7 @@ int main(int argc, char* argv[]) {
     }
     return 0;
 }
+#endif  // POSIX
 
 void arg(int argc, char* argv) {  //
     std::cerr << "argv[" << argc << "] = <" << argv << ">" << std::endl;

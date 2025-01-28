@@ -14,13 +14,17 @@ extern int yylex();
 extern int yylineno;
 extern char* yytext;
 extern char* yyfile;
+#ifdef POSIX
 extern FILE* yyin;
+#endif  // POSIX
 /// @}
 /// @name parser
 /// @{
 extern int yyparse();
 extern void yyerror(const char* msg);
+#ifdef POSIX
 #include "cli.parser.hpp"
+#endif  // POSIX
 /// @}
 /// @name lexer
 /// @{

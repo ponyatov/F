@@ -1,3 +1,3 @@
 .PHONY: clean
 clean:
-	rm -f $(BIN)/$(MODULE)_$(HW)_* $(CP) $(HP)
+	rm -f tmp/*.o $(BIN)/$(MODULE)_$(HW)_* $(CP) $(HP)

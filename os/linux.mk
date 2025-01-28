@@ -1,4 +1,4 @@
-CFLAGS += -DLINUX
+CFLAGS += -DLINUX -DPOSIX
 EXE =
 
 TCC  = $(CC)
