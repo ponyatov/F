@@ -1,6 +1,6 @@
-HW ?= pc
+# HW ?= pc
 # HW ?= pillF030
-# HW ?= pillF103
+HW ?= pillF103
 # HW ?= IskraJS
 # HW ?= F4DISCO
 
@@ -23,3 +23,5 @@ AS      = $(CC)
 LD      = ld
 SIZE    = size
 OBJDUMP = objdump
+
+S = 
