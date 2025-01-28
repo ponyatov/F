@@ -25,7 +25,7 @@ file(GLOB_RECURSE A
     "${CWD}/os/${OS}/src/*.s*"
 )
 file(GLOB_RECURSE C
-    "${CWD}/src/*.c*"
+    # "${CWD}/src/*.c*"
     "${CWD}/hw/${HW}/src/*.c*"
     "${CWD}/cpu/${CPU}/src/*.c*"
     "${CWD}/arch/${ARCH}/src/*.c*"
@@ -84,3 +84,11 @@ install(TARGETS ${CMAKE_PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX})
 # cross compiler binaries
 set(ELF ${CMAKE_INSTALL_PREFIX}/${BIN_OUTPUT_NAME}.elf)
 set(DFU ${CMAKE_INSTALL_PREFIX}/${BIN_OUTPUT_NAME}.dfu)
+
+add_custom_target(clean_all
+    COMMAND rm -rf
+        ${ELF} ${DFU}
+        # ${TMP}/${CMAKE_PROJECT_NAME}*
+        # ${CMAKE_INSTALL_PREFIX}/${CMAKE_PROJECT_NAME}*
+        # ${CMAKE_BINARY_DIR}
+)

@@ -9,7 +9,7 @@ include  cpu/$(CPU).mk
 include arch/$(ARCH).mk
 include   os/$(OS).mk
 
-BINFILE = $(MODULE)_$(HW)_$(BRANCH)_$(NOW)$(EXE)
+BINFILE = $(MODULE)_$(HW)_$(BRANCH)_$(NOW)
 
 # CC      = $(TARGET)-gcc
 # CXX     = $(TARGET)-g++
@@ -26,3 +26,10 @@ OBJDUMP = objdump
 
 CCFLAGS += -Wno-int-to-pointer-cast
 CCFLAGS += -Wno-pointer-to-int-cast
+
+ELF     = $(BIN)/$(BINFILE).elf
+
+.PHONY: elf
+elf: $(ELF)
+
+DFU     = $(BIN)/$(BINFILE).dfu

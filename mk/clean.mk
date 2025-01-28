@@ -1,3 +1,3 @@
 .PHONY: clean
 clean:
-	rm -f tmp/*.o $(BIN)/$(MODULE)_$(HW)_* $(CP) $(HP)
+	rm -rf $(TMP)/linux $(TMP)/$(HW) $(BIN)/$(BINFILE) $(ELF) $(DFU)

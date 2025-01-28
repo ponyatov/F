@@ -1,0 +1,9 @@
+include(arch/cortexM.cmake)
+add_compile_options(
+    -mcpu=cortex-m3
+    -DPREFETCH_ENABLE=1
+    -DLSI_VALUE=40000
+)
+add_link_options(
+    -mcpu=cortex-m3
+)
