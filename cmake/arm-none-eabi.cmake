@@ -10,6 +10,7 @@ add_compile_options(
     -nostdlib
     -ffunction-sections -fdata-sections
     -DCORTEX -D${SERIES}
+    $<$<COMPILE_LANGUAGE:CXX>:-nostdinc++>
     $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
     $<$<COMPILE_LANGUAGE:CXX>:-fno-exceptions>
 #     $<$<COMPILE_LANGUAGE:CXX>:-fno-threadsafe-statics>
@@ -25,7 +26,6 @@ add_link_options(
     -Wl,--start-group -lc -lm -lnosys -Wl,--end-group
     -Wl,--start-group -lstdc++ -lsupc++ -Wl,--end-group
     -Wl,-Map=${CMAKE_PROJECT_NAME}.map -Wl,--gc-sections
-    -Wl,--print-memory-usage
 )
 
 set(CMAKE_EXECUTABLE_SUFFIX_ASM ".elf")

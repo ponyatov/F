@@ -25,7 +25,7 @@ file(GLOB_RECURSE A
     "${CWD}/os/${OS}/src/*.s*"
 )
 file(GLOB_RECURSE C
-    # "${CWD}/src/*.c*"
+    "${CWD}/src/*.c*"
     "${CWD}/hw/${HW}/src/*.c*"
     "${CWD}/cpu/${CPU}/src/*.c*"
     "${CWD}/arch/${ARCH}/src/*.c*"
