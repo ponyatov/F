@@ -23,3 +23,6 @@ AS      = $(CC)
 LD      = ld
 SIZE    = size
 OBJDUMP = objdump
+
+CCFLAGS += -Wno-int-to-pointer-cast
+CCFLAGS += -Wno-pointer-to-int-cast

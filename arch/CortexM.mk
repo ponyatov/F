@@ -21,9 +21,16 @@ LDFLAGS += -specs=nano.specs -Thw/$(HW)/$(CPU)x_FLASH.ld
 
 L += -lc -lm -lnosys
 
-OBJ += $(wildcard hw/$(HW)/Core/Src/*.c*)
-
 F=
 
 CFLAGS += -Ihw/$(HW)/Core/Inc
 CFLAGS += -Ihw/$(HW)/Drivers/CMSIS/Include
+
+CORE = hw/$(HW)/Core/Src
+O    = $(wildcard $(CORE)/*.c*)
+O   := $(patsubst %.c,%.o,$(O))
+O   := $(subst $(CORE)/,tmp/,$(O))
+OBJ += $(O)
+
+tmp/%.o: $(CORE)/%.c $(H) $(HP) $(MK)
+	$(TCC) $(CPUFLAGS) $(CFLAGS) $(CCFLAGS) -o $@ -c $<
