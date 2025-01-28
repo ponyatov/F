@@ -10,7 +10,7 @@ H += $(wildcard arch/$(ARCH)/inc/*.h*)
 C += $(wildcard   os/$(OS)/src/*.c*) 	$(wildcard os/src/*.c*)
 H += $(wildcard   os/$(OS)/inc/*.h*) 	$(wildcard os/inc/*.h*)
 
-CP += $(TMP)/cli.parser.cpp $(TMP)/cli.lexer.cpp $(TMP)/lexer.ragel.cpp
+CP += $(TMP)/cli.parser.cpp $(TMP)/cli.lexer.cpp
 HP += $(TMP)/cli.parser.hpp
 
 S += $(wildcard lib/*.ini) $(wildcard lib/*.f)

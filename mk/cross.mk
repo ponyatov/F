@@ -1,11 +1,15 @@
 HW ?= pc
+# HW ?= pillF030
+# HW ?= pillF103
+# HW ?= IskraJS
+# HW ?= F4DISCO
 
 include   hw/$(HW).mk
 include  cpu/$(CPU).mk
 include arch/$(ARCH).mk
 include   os/$(OS).mk
 
-BINFILE = $(MODULE)_$(HW)_$(BRANCH)_$(NOW)
+BINFILE = $(MODULE)_$(HW)_$(BRANCH)_$(NOW)$(EXE)
 
 # CC      = $(TARGET)-gcc
 # CXX     = $(TARGET)-g++

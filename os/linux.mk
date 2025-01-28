@@ -1,1 +1,4 @@
 CFLAGS += -DLINUX
+EXE =
+
+TCXX = $(CXX)
