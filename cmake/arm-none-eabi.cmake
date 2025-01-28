@@ -5,17 +5,17 @@ set(CMAKE_CROSS_COMPILING  true)
 
 include(cmake/any_toolchain.cmake)
 
-# add_compile_options(
-#     -mthumb
-#     -ffunction-sections -fdata-sections
-#     -DCORTEX -D${SERIES}
-#     $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
-#     $<$<COMPILE_LANGUAGE:CXX>:-fno-exceptions>
+add_compile_options(
+    -mthumb
+    -ffunction-sections -fdata-sections
+    -DCORTEX -D${SERIES}
+    $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
+    $<$<COMPILE_LANGUAGE:CXX>:-fno-exceptions>
 #     $<$<COMPILE_LANGUAGE:CXX>:-fno-threadsafe-statics>
 #     $<$<COMPILE_LANGUAGE:ASM>:-x$<SEMICOLON>assembler-with-cpp>
 #     $<$<COMPILE_LANGUAGE:ASM>:-MMD>
 #     $<$<COMPILE_LANGUAGE:ASM>:-MP>
-# )
+)
 
 # set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
