@@ -1,6 +1,6 @@
 /// @defgroup cortexM cortexM
 /// @ingroup arch
 
-/// @defgroup cortexM3 cortexM3
+/// @defgroup cortexM0 cortexM0
 /// @ingroup cortexM
-/// @brief `cpu:` @ref STM32F103C8T
+/// @brief `cpu:` @ref STM32F030T4P

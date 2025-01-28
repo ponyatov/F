@@ -3,6 +3,6 @@
 /// @defgroup STM32F STM32F
 /// @ingroup cpu
 
-/// @defgroup STM32F103C8T STM32F103C8T
+/// @defgroup STM32F030T4P STM32F030T4P
 /// @ingroup STM32F
-/// @brief `arch:` @ref cortexM3
+/// @brief `arch:` @ref cortexM0
