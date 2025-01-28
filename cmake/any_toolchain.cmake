@@ -26,13 +26,13 @@ string(TOUPPER ${OS}   OS_  )
 
 add_compile_options(
     "-D${HW_}" "-D${CPU_}" "-D${ARCH_}" "-D${OS_}"
-#     -Wall -Wextra -Wpedantic
+    -Wall -Wextra -Wpedantic
     $<$<CONFIG:Debug>:-DDEBUG>
 )
 
-# if(CMAKE_BUILD_TYPE MATCHES Debug)
-#     add_compile_options(-O0 -g3)
-# endif()
-# if(CMAKE_BUILD_TYPE MATCHES Release)
-#     add_compile_options(-Os -g0)
-# endif()
+if(CMAKE_BUILD_TYPE MATCHES Debug)
+    add_compile_options(-Og -g3)
+endif()
+if(CMAKE_BUILD_TYPE MATCHES Release)
+    add_compile_options(-Os -g0)
+endif()

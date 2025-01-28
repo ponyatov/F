@@ -2,6 +2,7 @@ set(CMAKE_SYSTEM_NAME      Generic)
 set(CMAKE_SYSTEM_PROCESSOR arm)
 set(TOOLCHAIN_PREFIX       arm-none-eabi)
 set(CMAKE_CROSS_COMPILING  true)
+set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 include(cmake/any_toolchain.cmake)
 
@@ -17,18 +18,16 @@ add_compile_options(
 #     $<$<COMPILE_LANGUAGE:ASM>:-MP>
 )
 
-# set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+add_link_options(
+    -mthumb
+    -T ${CMAKE_SOURCE_DIR}/hw/${HW}/${CPU_}x_FLASH.ld
+    --specs=nano.specs
+    -Wl,--start-group -lc -lm -Wl,--end-group
+    -Wl,--start-group -lstdc++ -lsupc++ -Wl,--end-group
+    -Wl,-Map=${CMAKE_PROJECT_NAME}.map -Wl,--gc-sections
+    -Wl,--print-memory-usage
+)
 
-# add_link_options(
-#     -mthumb
-#     -T ${CMAKE_SOURCE_DIR}/hw/${HW}/${CPU_}x_FLASH.ld
-#     --specs=nano.specs
-#     -Wl,--start-group -lc -lm -Wl,--end-group
-#     -Wl,--start-group -lstdc++ -lsupc++ -Wl,--end-group
-#     -Wl,-Map=${CMAKE_PROJECT_NAME}.map -Wl,--gc-sections
-#     -Wl,--print-memory-usage
-# )
-
-# set(CMAKE_EXECUTABLE_SUFFIX_ASM ".elf")
-# set(CMAKE_EXECUTABLE_SUFFIX_C   ".elf")
-# set(CMAKE_EXECUTABLE_SUFFIX_CXX ".elf")
+set(CMAKE_EXECUTABLE_SUFFIX_ASM ".elf")
+set(CMAKE_EXECUTABLE_SUFFIX_C   ".elf")
+set(CMAKE_EXECUTABLE_SUFFIX_CXX ".elf")
