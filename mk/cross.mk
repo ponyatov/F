@@ -23,5 +23,3 @@ AS      = $(CC)
 LD      = ld
 SIZE    = size
 OBJDUMP = objdump
-
-S = 

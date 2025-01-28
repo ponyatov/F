@@ -17,6 +17,13 @@ CFLAGS   += -DUSE_FULL_LL_DRIVER
 
 # CFLAGS  += -MMD -MP -MF"$(@:%.o=%.d)"
 
-LDFLAGS += -Thw/$(HW)/$(CPU)x_FLASH.ld -specs=nano.specs
+LDFLAGS += -specs=nano.specs -Thw/$(HW)/$(CPU)x_FLASH.ld
 
 L += -lc -lm -lnosys
+
+OBJ += $(wildcard hw/$(HW)/Core/Src/*.c*)
+
+F=
+
+CFLAGS += -Ihw/$(HW)/Core/Inc
+CFLAGS += -Ihw/$(HW)/Drivers/CMSIS/Include
