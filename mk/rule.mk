@@ -1,8 +1,8 @@
 
-OBJ += $(wildcard src/*.c*)
-OBJ := $(patsubst %.cpp,%.o,$(OBJ))
-OBJ := $(patsubst %.c,%.o,$(OBJ))
-OBJ := $(patsubst src/%,tmp/%,$(OBJ))
+# OBJ += $(wildcard src/*.c*)
+# OBJ := $(patsubst %.cpp,%.o,$(OBJ))
+# OBJ := $(patsubst %.c,%.o,$(OBJ))
+# OBJ := $(patsubst src/%,tmp/%,$(OBJ))
 
 .PHONY: obj
 obj:
@@ -14,7 +14,6 @@ tmp/%.o: src/%.cpp $(H) $(HP) $(MK)
 	$(TCXX) $(CPUFLAGS) $(CFLAGS) $(CXXFLAGS) -o $@ -c $<
 tmp/%.o: tmp/%.cpp $(H) $(HP) $(MK)
 	$(TCXX) $(CPUFLAGS) $(CFLAGS) $(CXXFLAGS) -o $@ -c $<
-
 
 tmp/%.lexer.cpp: $(SRC)/%.lex
 	flex -o $@ $<

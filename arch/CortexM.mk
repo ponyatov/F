@@ -25,12 +25,24 @@ F=
 
 CFLAGS += -Ihw/$(HW)/Core/Inc
 CFLAGS += -Ihw/$(HW)/Drivers/CMSIS/Include
+CFLAGS += -Ihw/$(HW)/CMSIS/Device/ST/$(SERIES)xx/Include
+CFLAGS += -Ihw/$(HW)/Drivers/$(SERIES)xx_HAL_Driver/Inc
+CFLAGS += -Ihw/$(HW)/Drivers/CMSIS/Device/ST/$(SERIES)xx/Include
 
-CORE = hw/$(HW)/Core/Src
-O    = $(wildcard $(CORE)/*.c*)
-O   := $(patsubst %.c,%.o,$(O))
-O   := $(subst $(CORE)/,tmp/,$(O))
-OBJ += $(O)
+CORE_ = hw/$(HW)/Core/Src
+CORE  = $(wildcard $(CORE_)/*.c)
+CORE := $(patsubst %.c,%.o,$(CORE))
+CORE := $(subst $(CORE_)/,tmp/,$(CORE))
+OBJ  += $(CORE)
 
-tmp/%.o: $(CORE)/%.c $(H) $(HP) $(MK)
+tmp/%.o: $(CORE_)/%.c $(H) $(HP) $(MK)
+	$(TCC) $(CPUFLAGS) $(CFLAGS) $(CCFLAGS) -o $@ -c $<
+
+HAL_ := hw/$(HW)/Drivers/$(SERIES)xx_HAL_Driver/Src
+HAL   = $(wildcard $(HAL_)/*.c)
+HAL  := $(patsubst %.c,%.o,$(HAL))
+HAL  := $(subst $(HAL_)/,tmp/,$(HAL))
+OBJ  += $(HAL)
+
+tmp/%.o: $(HAL_)/%.c $(H) $(HP) $(MK)
 	$(TCC) $(CPUFLAGS) $(CFLAGS) $(CCFLAGS) -o $@ -c $<

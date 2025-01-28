@@ -1,4 +1,2 @@
-OBJ += $(TMP)/lexer.ragel.o
-S=
-
-CXXFLAGS += 
+OBJ += tmp/lexer.ragel.o
+F=
