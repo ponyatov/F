@@ -10,7 +10,7 @@
             "name":              "pillF103",
             "configurePreset":   "pillF103",
             "targets":          ["all","install"]
-        },
+        }
     ],
     "configurePresets": [
         {
@@ -42,14 +42,18 @@
             "cacheVariables": {"OS":"bare"}
         },
         {
-            "name": "cortexM0",
-            "hidden": true,
-            "inherits": "cortexM",
-            "cacheVariables": {"ARCH":"cortexM0"}
-        },
-        {
             "name": "cortexM3",
             "hidden": true,
             "inherits": "cortexM",
             "cacheVariables": {"ARCH":"cortexM3"}
         },
+        {
+            "name": "pillF103",
+            "inherits": "cortexM3",
+            "cacheVariables": {
+                "HW" :"pillF103",
+                "CPU":"stm32f103c8t", "SERIES": "STM32F1"
+            }
+        }
+    ]
+}
