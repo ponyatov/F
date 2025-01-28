@@ -1,3 +1,10 @@
+MK += Makefile
+MK += $(wildcard   mk/*.mk)
+MK += $(wildcard   hw/$(HW).mk)
+MK += $(wildcard  cpu/$(CPU).mk)
+MK += $(wildcard arch/$(ARCH).mk)
+MK += $(wildcard   os/$(OS).mk)
+
 C += $(wildcard src/*.c*)
 H += $(wildcard inc/*.h*)
 

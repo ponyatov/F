@@ -1,2 +1,4 @@
-CP += $(TMP)/lexer.ragel.cpp
+OBJ += $(TMP)/lexer.ragel.o
 S=
+
+CXXFLAGS += 

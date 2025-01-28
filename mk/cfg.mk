@@ -1,4 +1,4 @@
-CFLAGS   += -I$(INC) -I$(TMP) -O0 -ggdb
+CFLAGS   += -I$(INC) -I$(TMP) -Og -ggdb
 CXXFLAGS += -std=gnu++17
 
 CFLAGS   += -I$(CWD)/hw/$(HW)/inc     -I$(CWD)/hw/inc

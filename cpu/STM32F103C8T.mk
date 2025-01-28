@@ -1,0 +1,3 @@
+ARCH = CortexM3
+
+CFLAGS += -DSTM32F103xB
