@@ -17,10 +17,15 @@ std::string Object::tag() const {
 
 std::string Object::val() const { return value; }
 
-std::string Object::head() const {
+std::string Object::head(std::string prefix) const {
     std::ostringstream os;
-    os << '<' << tag() << ':' << val() << '>';
+    os << prefix << '<' << tag() << ':' << val() << '>';
     return os.str();
 }
 
 std::string Object::dump() const { return head(); }
+
+#include "vm.hpp"
+
+void Object::exec() { vm.push(this); }
+void Object::comp() { abort(); }

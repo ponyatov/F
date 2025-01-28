@@ -7,7 +7,27 @@
 /// @ingroup core
 /// @{
 /// @brief Virtual Machine
-class VM : public Object {};
+class VM : public Object {
+   public:
+    VM();
+    std::string val() const;
+    /// @name stack operations
+    /// @{
+    /// @brief `( -- o)`
+    void push(Object* o);
+    /// @}
+
+   private:
+    /// @brief @ref D size
+    static const size_t Dsz = 0x10;
+    /// @brief data stack
+    Object* D[Dsz];
+    /// @brief @ref D pointer
+    size_t Dp;
+};
+
+/// @brief global main @ref VM
+extern VM vm;
 /// @}
 
 /// @defgroup cmd cmd

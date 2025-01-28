@@ -30,9 +30,17 @@ class Object {
     /// @brief @ref value in string format
     virtual std::string val() const;
     /// @brief `<T:V>` header
-    virtual std::string head() const;
+    virtual std::string head(std::string prefix = "") const;
     /// @brief full text tree dump
     virtual std::string dump() const;
+    /// @}
+
+    /// @name exec/compile
+    /// @{
+    /// @brief execute in @ref vm context
+    virtual void exec();
+    /// @brief compile in @ref vm context
+    virtual void comp();
     /// @}
 
    protected:
