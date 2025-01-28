@@ -11,7 +11,7 @@
         { "command": "multiCommand.altx",
             "sequence": [ "workbench.action.files.saveAll",
                 { "command": "workbench.action.terminal.sendSequence",
-                    "args": {"text": "\u000D clear ; LANG=C make all \u000D"}}]},
+                    "args": {"text": "\u000D clear ; LANG=C make run \u000D"}}]},
         { "command": "multiCommand.alts",
             "sequence": [ "workbench.action.files.saveAll",
                 { "command": "workbench.action.terminal.sendSequence",
@@ -60,14 +60,24 @@
     // C++
     "[c]": {
         "editor.defaultFormatter": "xaver.clang-format",
-        "editor.formatOnSave":     true
+        "editor.formatOnSave":     false
     },
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format",
-        "editor.formatOnSave":     true
+        "editor.formatOnSave":     false
     },
     // "C_Cpp.intelliSenseEngine": "Tag Parser",
-    // "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+
+    // cmake
+    "cmake.sourceDirectory"  : "${workspaceFolder}",
+    "cmake.buildDirectory"   : "${workspaceFolder}/tmp/${workspaceFolderBasename}",
+    "cmake.generator"        : "Unix Makefiles",
+    "cmake.parallelJobs"     : 4,
+    "cmake.configureSettings": {
+        "CMAKE_VERBOSE_MAKEFILE": true
+    },
+    "cmake.useCMakePresets"     : "always",
 
     // MinGW/MSYS2
     "terminal.integrated.defaultProfile.windows":  "UCRT64",
