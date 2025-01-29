@@ -18,7 +18,8 @@ n [0-9]
 "0b"[01]+           TOKE2(Bin,INT)
 {s}?{n}+            TOKEN(Int,INT)  // /
 
-"nop"               TOCMD(Nop,CMD)
+"nop"               TOCMD(Nop ,CMD)
 "halt"              TOCMD(Halt,CMD)
+"."                 TOCMD(Dot ,CMD)
 
 .                   {yyerror("");}  // any undetected char

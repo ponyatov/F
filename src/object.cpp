@@ -1,5 +1,6 @@
 #include "object.hpp"
 #include <assert.h>
+#include <iostream>
 #include <sstream>
 
 Object::Object() : ref(0) {}

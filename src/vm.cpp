@@ -23,9 +23,24 @@ void VM::push(Object *o) {
     D[Dp++] = o;
 }
 
-void Nop::exec(void) { std::cerr << "nop" << std::endl; }
+void VM::clean() {
+    for (int i = Dp - 1; i >= 0; i--) {
+        std::cerr << D[i]->head("del: ") << std::endl;
+        delete D[i];
+    }
+    Dp = 0;
+}
 
-void Halt::exec(void) {
+void Nop::exec() {  //
+    std::cerr << "nop" << std::endl;
+}
+
+void Halt::exec() {
     std::cerr << "halt" << std::endl;
     exit(0);
+}
+
+void Dot::exec() {
+    std::cerr << "." << std::endl;
+    vm.clean();
 }

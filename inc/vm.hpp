@@ -15,6 +15,8 @@ class VM : public Object {
     /// @{
     /// @brief `( -- o)`
     void push(Object* o);
+    /// @brief `( ... -- )`
+    void clean(void);
     /// @}
 
    private:
@@ -44,15 +46,23 @@ class Cmd : public Object {
     std::string val() const;
 };
 
-/// @brief `( -- )` do nothing
+/// @brief `nop ( -- )` do nothing
 class Nop : public Cmd {
    public:
     void exec(void);
 };
 
-/// @brief `( -- )` stop system
+/// @brief `halt ( -- )` stop system
 class Halt : public Cmd {
    public:
     void exec(void);
 };
+
+/// @brief `. ( ... -- )` clean stack
+class Dot : public Cmd {
+   public:
+    void exec(void);
+};
+
+/// @brief `dump ( -- )` print stack
 /// @}
