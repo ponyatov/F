@@ -21,6 +21,7 @@
         "daohong-emilio.yash",
         "rreverser.ragel",
         // embedded
+        "ms-vscode.hexeditor",
         "zixuanwang.linkerscript",
         "dan-c-underwood.arm",
         // ESP32
