@@ -28,6 +28,7 @@
                 "${workspaceFolder}/cpu/i5/inc/**",
                 "${workspaceFolder}/arch/x86_64/inc/**",
                 "${workspaceFolder}/os/linux/inc/**"
+                //
             ],
             "compilerArgs": ["-march=native"],
             "defines": [
@@ -49,7 +50,7 @@
             ],
             "compilerArgs": ["-mthumb -march=armv7-m -mcpu=cortex-m3"],
             "defines": [
-                "PILLF030", "STM32F040F4P", "CORTEXM", "CORTEXM0", "BARE"
+                "PILLF030", "STM32F040F4P", "CORTEXM", "CORTEXM0", "BARE",
             ],
             "cStandard": "gnu17", "cppStandard": "gnu++17",
             "intelliSenseMode": "gcc-arm",

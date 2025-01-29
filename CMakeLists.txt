@@ -80,6 +80,12 @@ target_link_libraries(${CMAKE_PROJECT_NAME})
 # target install
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES OUTPUT_NAME ${BIN_OUTPUT_NAME})
 install(TARGETS ${CMAKE_PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX})
+install(CODE "
+            file(CREATE_LINK
+                ${CMAKE_INSTALL_PREFIX}/${BIN_OUTPUT_NAME}
+                ${CMAKE_INSTALL_PREFIX}/${CMAKE_PROJECT_NAME}.debug
+                SYMBOLIC)
+")
 
 # cross compiler binaries
 set(ELF ${CMAKE_INSTALL_PREFIX}/${BIN_OUTPUT_NAME}.elf)
@@ -88,7 +94,6 @@ set(DFU ${CMAKE_INSTALL_PREFIX}/${BIN_OUTPUT_NAME}.dfu)
 add_custom_target(clean_all
     COMMAND rm -rf
         ${ELF} ${DFU}
-        # ${TMP}/${CMAKE_PROJECT_NAME}*
-        # ${CMAKE_INSTALL_PREFIX}/${CMAKE_PROJECT_NAME}*
-        # ${CMAKE_BINARY_DIR}
+        ${CMAKE_INSTALL_PREFIX}/${CMAKE_PROJECT_NAME}*
+        ${CMAKE_BINARY_DIR}
 )
