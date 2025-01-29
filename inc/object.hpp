@@ -38,9 +38,9 @@ class Object {
     /// @name exec/compile
     /// @{
     /// @brief execute in @ref vm context
-    virtual void exec();
+    virtual void exec(void);
     /// @brief compile in @ref vm context
-    virtual void comp();
+    virtual void comp(void);
     /// @}
 
    protected:

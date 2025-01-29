@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <sstream>
+#include <iostream>
 #include "vm.hpp"
 #include "object.hpp"
 
@@ -20,4 +21,11 @@ VM vm;
 void VM::push(Object *o) {
     assert(Dp < Dsz);
     D[Dp++] = o;
+}
+
+void Nop::exec(void) { std::cerr << "nop" << std::endl; }
+
+void Halt::exec(void) {
+    std::cerr << "halt" << std::endl;
+    exit(0);
 }

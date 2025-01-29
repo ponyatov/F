@@ -10,7 +10,7 @@
             "args": ["${workspaceFolder}/lib/${workspaceFolderBasename}.ini"],
             "cwd": "${workspaceFolder}",
             "externalConsole": false,
-            "stopAtEntry": true,
+            // "stopAtEntry": true,
             "MIMode": "gdb",
             "setupCommands": [
                 {"text": "-enable-pretty-printing", "ignoreFailures": true}

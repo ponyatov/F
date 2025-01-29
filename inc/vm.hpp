@@ -45,7 +45,14 @@ class Cmd : public Object {
 };
 
 /// @brief `( -- )` do nothing
-class Nop : public Cmd {};
+class Nop : public Cmd {
+   public:
+    void exec(void);
+};
+
 /// @brief `( -- )` stop system
-class Halt : public Cmd {};
+class Halt : public Cmd {
+   public:
+    void exec(void);
+};
 /// @}
