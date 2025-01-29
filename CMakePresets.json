@@ -19,9 +19,10 @@
             "binaryDir": "${sourceDir}/tmp/${presetName}",
             "generator": "Unix Makefiles",
             "cacheVariables": {
-                "CMAKE_VERBOSE_MAKEFILE": true,
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/bin",
-                "CMAKE_BUILD_TYPE": "Debug"
+                "CMAKE_COLOR_DIAGNOSTICS": true,
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_VERBOSE_MAKEFILE": true
             }
         },
         {

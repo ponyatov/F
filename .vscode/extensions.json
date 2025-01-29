@@ -4,6 +4,7 @@
         "ryuta46.multi-command",
         "tabnine.tabnine-vscode",
         "ms-vscode.makefile-tools",
+        "IBM.output-colorizer",
         // formatters
         "xaver.clang-format",
         "foxundermoon.shell-format",

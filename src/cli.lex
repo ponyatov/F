@@ -4,7 +4,7 @@
     char* yyfile = nullptr;
 %}
 
-%option yylineno noyywrap
+%option yylineno noyywrap nounput
 
 s [+\-]
 n [0-9]

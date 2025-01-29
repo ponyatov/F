@@ -26,9 +26,12 @@
         "ref/**": true,
     },
     "files.associations": {
+        "*.mk": "makefile",
+        "*.ini": "flang", "*.f": "flang",
         "*.openocd": "properties", "*.gdb*": "properties",
         "*.ld": "linkerscript", "*.ld.fix": "linkerscript",
-        "*.ini": "flang", "*.f": "flang",
+        "*.ioc": "properties",
+        "*.s": "arm", "*.S": "arm",
     },
 
     // editor
@@ -53,6 +56,11 @@
 
     // JavaScript
     "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave":     false
+    },
+    // JSON
+    "[json,jsonc]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave":     false
     },

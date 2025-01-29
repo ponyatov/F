@@ -1,24 +1,69 @@
 {
     "version": 4,
+    "env":{
+        "coreIncludes": [
+            "${workspaceFolder}/inc/**",
+            "${workspaceFolder}/tmp/**",
+            "${workspaceFolder}/src/**"
+        ]
+    },
     "configurations": [
         {
             "name": "x86_64-linux-gnu",
             "includePath": [
-                "${workspaceFolder}/inc/**",
-                "${workspaceFolder}/tmp/**",
-                "${workspaceFolder}/src/**",
+                "${coreIncludes}",
+                //
+                "${workspaceFolder}/hw/inc",
+                "${workspaceFolder}/cpu/inc/**",
+                "${workspaceFolder}/arch/inc/**",
                 "${workspaceFolder}/os/inc/**",
+                //
+                "${workspaceFolder}/hw/pc/inc/**",
+                "${workspaceFolder}/cpu/i5/inc/**",
+                "${workspaceFolder}/arch/x86_64/inc/**",
                 "${workspaceFolder}/os/linux/inc/**"
             ],
             "forcedInclude": [],
-            "compilerArgs": ["-march=native"],
+            "compilerArgs": [
+                "-march=native"
+            ],
             "defines": [
-                "PC", "I5", "X86_64", "LINUX"
+                "PC", "I5", "X86_64", "LINUX", "POSIX"
+            ],
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerPath": "/usr/bin/x86_64-linux-gnu-g++"
+        },
+        {
+            "name": "pillF103",
+            "includePath": [
+                "${workspaceFolder}/inc/**",
+                "${workspaceFolder}/tmp/**",
+                "${workspaceFolder}/src/**",
+                //
+                "${workspaceFolder}/hw/inc",
+                "${workspaceFolder}/cpu/inc/**",
+                "${workspaceFolder}/arch/inc/**",
+                "${workspaceFolder}/os/inc/**",
+                //
+                "${workspaceFolder}/hw/pillF103/inc/**",
+                "${workspaceFolder}/cpu/stm32f103c8t/inc/**",
+                "${workspaceFolder}/arch/cortexM3/inc/**",
+                "${workspaceFolder}/os/bare/inc/**"
+            ],
+            "compilerArgs": [
+                "-mthumb =march=armv7-m -mcpu=cortex-m3"
+            ],
+            "defines": [
+                "PILLF030", "STM32F040F4P", "CORTEXM", "CORTEXM0", "BARE",
+                "HAVE_INITFINI_ARRAY", "HAVE_INIT_FINI", "DEFINE_MALLOC",
+                "RCC"
             ],
             "cStandard": "gnu17",
             "cppStandard": "gnu++17",
             "intelliSenseMode": "gcc-x64",
-            "compilerPath": "/usr/bin/x86_64-linux-gnu-g++"
+            "compilerPath": "/usr/bin/arm-none-eabi-g++"
         }
     ]
 }
