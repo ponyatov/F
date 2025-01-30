@@ -19,7 +19,7 @@ class Object {
     /// @name constructor / destructor
     /// @{
     Object();
-    Object(char *literal);
+    Object(char* literal);
     virtual ~Object();
     /// @}
 
@@ -41,6 +41,15 @@ class Object {
     virtual void exec(void);
     /// @brief compile in @ref vm context
     virtual void comp(void);
+    /// @}
+
+    /// @name unimplemented stubs
+    /// @{
+    virtual Object* add(Object*) { abort(); }  ///< @ref Add
+    virtual Object* sub(Object*) { abort(); }  ///< @ref Sub
+    virtual Object* mul(Object*) { abort(); }  ///< @ref Mul
+    virtual Object* div(Object*) { abort(); }  ///< @ref Div
+
     /// @}
 
    protected:

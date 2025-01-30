@@ -25,7 +25,16 @@ class Int : public Prim {
    public:
     Int(int n);
     Int(char *s);
-    std::string val() const;
+    std::string val() const override;
+
+    /// @name math
+    /// @{
+    Object* add(Object* o) override;
+    Object* sub(Object* o) override;
+    Object* mul(Object* o) override;
+    Object* div(Object* o) override;
+    /// @}
+
 
    protected:
     int value;

@@ -16,3 +16,5 @@ C += $(wildcard arch/$(ARCH)/src/*.c*) $(wildcard arch/src/*.c*)
 H += $(wildcard arch/$(ARCH)/inc/*.h*) $(wildcard arch/inc/*.h*)
 C += $(wildcard   os/$(OS)/src/*.c*)   $(wildcard   os/src/*.c*)
 H += $(wildcard   os/$(OS)/inc/*.h*)   $(wildcard   os/inc/*.h*)
+
+P += $(wildcard src/*.lex)  $(wildcard src/*.yacc)

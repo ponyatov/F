@@ -1,6 +1,7 @@
 %{
     #include "cli.hpp"
     #include "vm.hpp"
+    #include "cmd.hpp"
     char* yyfile = nullptr;
 %}
 
@@ -21,5 +22,10 @@ n [0-9]
 "nop"               TOCMD(Nop ,CMD)
 "halt"              TOCMD(Halt,CMD)
 "."                 TOCMD(Dot ,CMD)
+
+"add"               TOCMD(Add ,CMD)
+"mul"               TOCMD(Mul ,CMD)
+"sub"               TOCMD(Sub ,CMD)
+"div"               TOCMD(Div ,CMD)
 
 .                   {yyerror("");}  // any undetected char

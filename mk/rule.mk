@@ -1,4 +1,4 @@
-$(BIN)/$(BINFILE): $(C) $(H)
+$(BIN)/$(BINFILE): $(C) $(H) $(P)
 	cmake         --preset linux
 	cmake --build --preset linux -j
 

@@ -2,6 +2,7 @@
 #include <sstream>
 #include <iostream>
 #include "vm.hpp"
+#include "cmd.hpp"
 #include "object.hpp"
 
 std::string Cmd::tag() const { return "cmd:"; }
@@ -11,16 +12,21 @@ VM::VM() : Object(), Dp(0) {}
 
 std::string VM::val() const {
     std::ostringstream os;
-    for (int i = 0; i < Dp; i++) os << D[i]->head(" ");
+    for (uint8_t i = 0; i < Dp; i++) os << D[i]->head(" ");
     os << ' ';
     return os.str();
 }
 
 VM vm;
 
-void VM::push(Object *o) {
+void VM::push(Object* o) {
     assert(Dp < Dsz);
     D[Dp++] = o;
+}
+
+Object* VM::pop() {
+    assert(Dp > 0);
+    return D[--Dp];
 }
 
 void VM::clean() {
@@ -29,18 +35,4 @@ void VM::clean() {
         delete D[i];
     }
     Dp = 0;
-}
-
-void Nop::exec() {  //
-    std::cerr << "nop" << std::endl;
-}
-
-void Halt::exec() {
-    std::cerr << "halt" << std::endl;
-    exit(0);
-}
-
-void Dot::exec() {
-    std::cerr << "." << std::endl;
-    vm.clean();
 }
