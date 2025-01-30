@@ -38,8 +38,8 @@ class Object {
 
     /// @name exec/compile
     /// @{
-    virtual void exec(void);  ///< @brief execute in @ref vm context
-    virtual void comp(void);  ///< @brief compile in @ref vm context
+    virtual void exec();  ///< @brief execute in @ref vm context
+    virtual void comp();  ///< @brief compile in @ref vm context
 
     /// @}
 
@@ -61,7 +61,7 @@ class Object {
     /// @name <T:V>
     /// @{
     std::string value;  ///< object name / literal value
-    ///< @details `string` is the most univeral data type
+                        ///< @details `string` is the most univeral data type
 
     /// @}
 

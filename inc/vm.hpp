@@ -18,7 +18,7 @@ class VM : public Object {
     /// @brief `( o -- )`
     Object* pop();
     /// @brief `( ... -- )`
-    void clean(void);
+    void clean();
     /// @}
 
    private:

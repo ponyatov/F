@@ -28,5 +28,5 @@ std::string Object::dump() const { return head(); }
 
 #include "vm.hpp"
 
-void Object::exec(void) { vm.push(this); }
-void Object::comp(void) { abort(); }
+void Object::exec() { vm.push(this); }
+void Object::comp() { abort(); }
