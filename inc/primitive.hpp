@@ -24,17 +24,16 @@ class Prim : public Object {
 class Int : public Prim {
    public:
     Int(int n);
-    Int(char *s);
+    Int(char* s);
     std::string val() const override;
 
     /// @name math
     /// @{
-    Object* add(Object* o) override;
-    Object* sub(Object* o) override;
-    Object* mul(Object* o) override;
-    Object* div(Object* o) override;
+    Object* add(Object* o) const override;
+    Object* sub(Object* o) const override;
+    Object* mul(Object* o) const override;
+    Object* div(Object* o) const override;
     /// @}
-
 
    protected:
     int value;
@@ -43,21 +42,21 @@ class Int : public Prim {
 /// @brief hexadecimal
 class Hex : public Int {
    public:
-    Hex(char *s);
+    Hex(char* s);
     std::string val() const;
 };
 
 /// @brief octal
 class Oct : public Int {
    public:
-    Oct(char *s);
+    Oct(char* s);
     std::string val() const;
 };
 
 /// @brief binary
 class Bin : public Int {
    public:
-    Bin(char *s);
+    Bin(char* s);
     std::string val() const;
 };
 

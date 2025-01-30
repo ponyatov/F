@@ -22,6 +22,20 @@ void Add::exec() {
     vm.push(a->add(b));
 }
 
-void Sub::exec() {}
-void Mul::exec() {}
-void Div::exec() {}
+void Sub::exec() {
+    std::cerr << "sub" << std::endl;
+    Object *a = vm.pop(), *b = vm.pop();
+    vm.push(a->sub(b));
+}
+
+void Mul::exec() {
+    std::cerr << "mul" << std::endl;
+    Object *a = vm.pop(), *b = vm.pop();
+    vm.push(a->mul(b));
+}
+
+void Div::exec() {
+    std::cerr << "div" << std::endl;
+    Object *a = vm.pop(), *b = vm.pop();
+    vm.push(a->div(b));
+}

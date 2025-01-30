@@ -1,6 +1,7 @@
 #include <string>
 #include <sstream>
 #include <bitset>
+#include <cassert>
 #include "primitive.hpp"
 
 Int::Int(int n) : Prim(), value(n) {}
@@ -33,4 +34,28 @@ std::string Bin::val() const {
     std::bitset<sizeof(value * 8)> b(value);
     os << b;
     return os.str();
+}
+
+Object *Int::add(Object *o) const {
+    Int *i = dynamic_cast<Int *>(o);
+    if (!i) throw std::invalid_argument("Int::add");
+    return new Int(value + i->value);
+}
+
+Object *Int::sub(Object *o) const {
+    Int *i = dynamic_cast<Int *>(o);
+    if (!i) throw std::invalid_argument("Int::sub");
+    return new Int(value - i->value);
+}
+
+Object *Int::mul(Object *o) const {
+    Int *i = dynamic_cast<Int *>(o);
+    if (!i) throw std::invalid_argument("Int::mul");
+    return new Int(value * i->value);
+}
+
+Object *Int::div(Object *o) const {
+    Int *i = dynamic_cast<Int *>(o);
+    if (!i) throw std::invalid_argument("Int::div");
+    return new Int(value / i->value);
 }

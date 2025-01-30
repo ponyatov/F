@@ -2,6 +2,7 @@
 
 #include <stddef.h>
 #include <string>
+#include <stdexcept>
 
 /// @defgroup gc gc
 /// @brief garbage collection
@@ -37,26 +38,33 @@ class Object {
 
     /// @name exec/compile
     /// @{
-    /// @brief execute in @ref vm context
-    virtual void exec(void);
-    /// @brief compile in @ref vm context
-    virtual void comp(void);
+    virtual void exec(void);  ///< @brief execute in @ref vm context
+    virtual void comp(void);  ///< @brief compile in @ref vm context
+
     /// @}
 
     /// @name unimplemented stubs
+    /// @brief methods not applicable for some types
     /// @{
-    virtual Object* add(Object*) { abort(); }  ///< @ref Add
-    virtual Object* sub(Object*) { abort(); }  ///< @ref Sub
-    virtual Object* mul(Object*) { abort(); }  ///< @ref Mul
-    virtual Object* div(Object*) { abort(); }  ///< @ref Div
+    /// @ref Add
+    virtual Object* add(Object*) const { throw std::invalid_argument("::add"); }
+    /// @ref Sub
+    virtual Object* sub(Object*) const { throw std::invalid_argument("::sub"); }
+    /// @ref Mul
+    virtual Object* mul(Object*) const { throw std::invalid_argument("::mul"); }
+    /// @ref Div
+    virtual Object* div(Object*) const { throw std::invalid_argument("::div"); }
 
     /// @}
 
    protected:
-    /// @name `<T:V>`
+    /// @name <T:V>
     /// @{
     std::string value;  ///< object name / literal value
-                        /// @}
+    ///< @details `string` is the most univeral data type
+
+    /// @}
+
    private:
     /// @ingroup gc
     /// @{
