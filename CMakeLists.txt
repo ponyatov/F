@@ -19,17 +19,13 @@ file(GLOB_RECURSE LD
 file(GLOB_RECURSE A
     "${CWD}/src/*.s*"
     "${CWD}/hw/${HW}/*.s*"
-    "${CWD}/hw/${HW}/src/*.s*"
-    "${CWD}/cpu/${CPU}/src/*.s*"
-    "${CWD}/arch/${ARCH}/src/*.s*"
-    "${CWD}/os/${OS}/src/*.s*"
 )
 file(GLOB_RECURSE C
     "${CWD}/src/*.c*"
-    "${CWD}/hw/${HW}/src/*.c*"
-    "${CWD}/cpu/${CPU}/src/*.c*"
-    "${CWD}/arch/${ARCH}/src/*.c*"
-    "${CWD}/os/src/*.c*" "${CWD}/os/${OS}/src/*.c*"
+    "${CWD}/hw/src/*.c*"   "${CWD}/hw/${HW}/src/*.c*"
+    "${CWD}/cpu/src/*.c*"  "${CWD}/cpu/${CPU}/src/*.c*"
+    "${CWD}/arch/src/*.c*" "${CWD}/arch/${ARCH}/src/*.c*"
+    "${CWD}/os/src/*.c*"   "${CWD}/os/${OS}/src/*.c*"
     # CortexM/CubeMX
     "${CWD}/hw/${HW}/Core/Src/*.c*"
     "${CWD}/hw/${HW}/Drivers/CMSIS/Device/ST/${SERIES}xx/Source/*.c*"
@@ -37,10 +33,10 @@ file(GLOB_RECURSE C
 )
 file(GLOB_RECURSE H
     "${CWD}/inc/*.h*"
-    "${CWD}/hw/${HW}/inc/*.h*"
-    "${CWD}/cpu/${CPU}/inc/*.h*"
-    "${CWD}/arch/${ARCH}/inc/*.h*"
-    "${CWD}/os/inc/*.h*" "${CWD}/os/${OS}/inc/*.h*"
+    "${CWD}/hw/inc/*.h*"   "${CWD}/hw/${HW}/inc/*.h*"
+    "${CWD}/cpu/inc/*.h*"  "${CWD}/cpu/${CPU}/inc/*.h*"
+    "${CWD}/arch/inc/*.h*" "${CWD}/arch/${ARCH}/inc/*.h*"
+    "${CWD}/os/inc/*.h*"   "${CWD}/os/${OS}/inc/*.h*"
     # CortexM/CubeMX
     "${CWD}/hw/${HW}/Core/Inc/*.h*"
     "${CWD}/hw/${HW}/Drivers/CMSIS/Include/*.h*"
@@ -50,10 +46,10 @@ file(GLOB_RECURSE H
 
 include_directories(
     ${INC} ${TMP} ${SRC}
-    "${CWD}/hw/${HW}/inc"
-    "${CWD}/cpu/${CPU}/inc"
-    "${CWD}/arch/${ARCH}/inc"
-    "${CWD}/os/inc" "${CWD}/os/${OS}/inc"
+    "${CWD}/hw/inc"   "${CWD}/hw/${HW}/inc"
+    "${CWD}/cpu/inc"  "${CWD}/cpu/${CPU}/inc"
+    "${CWD}/arch/inc" "${CWD}/arch/${ARCH}/inc"
+    "${CWD}/os/inc"   "${CWD}/os/${OS}/inc"
     # CortexM/CubeMX
     "${CWD}/hw/${HW}/Core/Inc"
     "${CWD}/hw/${HW}/Drivers/CMSIS/Include"
