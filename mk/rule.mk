@@ -1,6 +1,6 @@
 $(BIN)/$(BINFILE): $(C) $(H)
-	cmake         --preset linux
-	cmake --build --preset linux -j
+	cmake         --preset glibc
+	cmake --build --preset glibc -j
 
 .PHONY: $(ELF)
 $(ELF): $(C) $(H)
