@@ -1,5 +1,0 @@
-#include "cli.hpp"
-
-int yylineno = 0;
-char* yytext = nullptr;
-char* yyfile = (char*)"cli";

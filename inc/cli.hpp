@@ -23,7 +23,7 @@ extern FILE* yyin;
 extern int yyparse();
 extern void yyerror(const char* msg);
 #ifdef POSIX
-#include "cli.parser.hpp"
+#include "cli.yacc.hpp"
 #endif  // POSIX
 /// @}
 /// @name lexer
