@@ -2,8 +2,13 @@
     "version": 6,
     "buildPresets": [
         {
-            "name":              "linux",
-            "configurePreset":   "linux",
+            "name":              "glibc",
+            "configurePreset":   "glibc",
+            "targets":          ["all","install"]
+        },
+        {
+            "name":              "musl",
+            "configurePreset":   "musl",
             "targets":          ["all","install"]
         },
         {
@@ -39,28 +44,41 @@
             "binaryDir": "${sourceDir}/tmp/${presetName}",
             "generator": "Unix Makefiles",
             "cacheVariables": {
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/bin",
-                "CMAKE_COLOR_DIAGNOSTICS": true,
-                "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_VERBOSE_MAKEFILE": true
+                "CMAKE_INSTALL_PREFIX"    : "${sourceDir}/bin",
+                "CMAKE_MODULE_PATH"       : "${sourceDir}/cmake",
+                "CMAKE_COLOR_DIAGNOSTICS" : false,
+                "CMAKE_BUILD_TYPE"        : "Debug",
+                "CMAKE_VERBOSE_MAKEFILE"  : true
             }
         },
         {
             "name": "linux",
             "inherits": "common",
-            "displayName": "x86_64-linux-gnu",
-            "description": "native host",
-            "toolchainFile": "${sourceDir}/cmake/x86_64-linux-gnu.cmake",
+            "hidden": true,
             "cacheVariables": {
                 "HW":"pc", "CPU":"i5", "ARCH":"x86_64", "OS":"linux"
             }
+        },
+        {
+            "name": "glibc",
+            "inherits": "linux",
+            "displayName": "x86_64-linux-gnu",
+            "description": "native host",
+            "toolchainFile": "${sourceDir}/cmake/x86_64-linux-gnu.cmake"
+        },
+        {
+            "name": "musl",
+            "inherits": "linux",
+            "displayName": "x86_64-linux-musl",
+            "description": "busybox:musl/docker",
+            "toolchainFile": "${sourceDir}/cmake/x86_64-linux-musl.cmake"
         },
         {
             "name": "cortexM",
             "hidden": true,
             "inherits": "common",
             "toolchainFile": "${sourceDir}/cmake/arm-none-eabi.cmake",
-            "cacheVariables": {"OS":"bare"}
+            "cacheVariables": {"OS":"bare","CMAKE_EXECUTABLE_SUFFIX":".elf"}
         },
         {
             "name": "cortexM0",
