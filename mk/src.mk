@@ -19,10 +19,9 @@ H += $(wildcard arch/inc/*.h*) $(wildcard arch/$(ARCH)/inc/*.h*)
 C += $(wildcard   os/src/*.c*) $(wildcard   os/$(OS)/src/*.c*)
 H += $(wildcard   os/inc/*.h*) $(wildcard   os/$(OS)/inc/*.h*)
 
-# parser
-P  += $(wildcard src/*.lex)  $(wildcard src/*.yacc)
-CP += $(TMP)/cli.parser.cpp $(TMP)/cli.lexer.cpp
-HP += $(TMP)/cli.parser.hpp
+# libs
+C += $(wildcard lib/src/*.c*) $(wildcard lib/*/src/*.c*)
+H += $(wildcard lib/inc/*.h*) $(wildcard lib/*/inc/*.h*)
 
 # ini
 S += $(wildcard lib/*.ini) $(wildcard lib/*.f)
