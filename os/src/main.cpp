@@ -22,4 +22,4 @@ __attribute__((weak)) void arg(int argc, char *argv) {
 #endif
 }
 
-__attribute__((weak)) void loop() { nop(); }
+__attribute__((weak)) void loop() {}
