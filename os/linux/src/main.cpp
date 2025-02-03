@@ -1,6 +1,5 @@
 #include "main.hpp"
 #include "linux.hpp"
-#include "app.hpp"
 
 int main(int argc, char *argv[]) {
     setup();
