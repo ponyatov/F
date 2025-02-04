@@ -1,26 +1,15 @@
 HW ?= pc
-# HW ?= mega2560
-# HW ?= pillF030
-# HW ?= pillF103
-# HW ?= iskra
 # HW ?= f4disco
+# HW ?= iskra
 # HW ?= l496disco
+# HW ?= pillF103
+# HW ?= pillF030
+# HW ?= mega2560
 
 include   hw/$(HW).mk
 include  cpu/$(CPU).mk
 include arch/$(ARCH).mk
 include   os/$(OS).mk
-
-BINFILE = $(MODULE)_$(HW)_$(BRANCH)_$(NOW)
-ELF     = $(BIN)/$(BINFILE).elf
-DFU     = $(BIN)/$(BINFILE).dfu
-
-CC      = $(TARGET)-gcc
-CXX     = $(TARGET)-g++
-AS      = $(TARGET)-as
-LD      = $(TARGET)-ld
-SIZE    = $(TARGET)-size
-OBJDUMP = $(TARGET)-objdump
 
 .PHONY: elf
 elf: $(ELF)
