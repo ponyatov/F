@@ -1,5 +1,8 @@
-include(cmake/posix.cmake)
+set(CMAKE_EXECUTABLE_SUFFIX "")
 
 add_compile_options(
-    -DPOSIX
+)
+
+add_compile_definitions(
+    POSIX
 )

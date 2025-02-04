@@ -1,3 +1,3 @@
 /// @defgroup bare bare
+/// @brief bare-metal
 /// @ingroup os
-/// @brief bare metal
