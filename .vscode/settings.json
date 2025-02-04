@@ -7,7 +7,7 @@
         { "command": "multiCommand.f12",
             "sequence": [ "workbench.action.files.saveAll",
                 { "command": "workbench.action.terminal.sendSequence",
-                    "args": {"text": "\u000D clear ; LANG=C make update \u000D"}}]},
+                    "args": {"text": "\u000D clear ; LANG=C make docker \u000D"}}]},
         { "command": "multiCommand.altx",
             "sequence": [ "workbench.action.files.saveAll",
                 { "command": "workbench.action.terminal.sendSequence",
@@ -32,6 +32,9 @@
         "*.ld": "linkerscript", "*.ld.fix": "linkerscript",
         "*.ioc": "properties",
         "*.s": "arm", "*.S": "arm",
+        //
+        ".boot*": "javascript", ".prettierrc": "jsonc",
+        "*.service": "systemd-unit-file"
     },
 
     // editor
@@ -78,14 +81,26 @@
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
 
     // cmake
-    "cmake.sourceDirectory"  : "${workspaceFolder}",
-    "cmake.buildDirectory"   : "${workspaceFolder}/tmp/${workspaceFolderBasename}",
-    "cmake.generator"        : "Unix Makefiles",
-    "cmake.parallelJobs"     : 4,
-    "cmake.configureSettings": {
-        "CMAKE_VERBOSE_MAKEFILE": true
+    "cmake.sourceDirectory" : "${workspaceFolder}",
+    "cmake.buildDirectory"  : "${workspaceFolder}/tmp/${workspaceFolderBasename}",
+    "cmake.generator"       : "Unix Makefiles",
+    "cmake.parallelJobs"    : 4,
+    "cmake.useCMakePresets" : "always",
+    "cmake.buildBeforeRun"  : true,
+    "cmake.debugConfig"     : {
+        "args": [ "${workspaceFolder}/lib/${workspaceFolderBasename}.ini" ] },
+
+    // Python
+    "autopep8.path": ["${workspaceFolder}/bin/autopep8", "autopep8"],
+    "autopep8.args": ["--ignore E26,E302,E305,E401,E402,E701,E702"],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8",
+        "editor.formatOnSave": false
     },
-    "cmake.useCMakePresets"     : "always",
+
+    // Rust
+    "rust-analyzer.check.allTargets": false,
+    "rust-analyzer.cargo.target": "thumbv7em-none-eabihf",
 
     // MinGW/MSYS2
     "terminal.integrated.defaultProfile.windows":  "UCRT64",

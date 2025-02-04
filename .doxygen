@@ -1,21 +1,17 @@
 PROJECT_NAME           = "F"
 PROJECT_BRIEF          = "script engine"
 PROJECT_LOGO           = vscode/logo.png
-HTML_OUTPUT            = doc/html
-OUTPUT_DIRECTORY       =
-INPUT                  = README.md inc src doc hw os cpu arch
+OUTPUT_DIRECTORY       = doc
+HTML_OUTPUT            = html
+INPUT                  = README.md inc lib src doc hw os cpu arch
 INCLUDE_PATH           = inc
-EXCLUDE                = ref/* *.pdf *.djvu
-EXCLUDE               += hw/pillF030/Core
-EXCLUDE               += hw/pillF030/Drivers
-EXCLUDE               += hw/pillF103/Core
-EXCLUDE               += hw/pillF103/Drivers
+EXCLUDE                = ref/* *.pdf *.djvu Core Drivers
 WARN_IF_UNDOCUMENTED   = NO
 RECURSIVE              = YES
 USE_MDFILE_AS_MAINPAGE = README.md
 GENERATE_LATEX         = NO
-FILE_PATTERNS         += *.lex *.yacc
-EXTENSION_MAPPING      = lex=C++ yacc=C++ ino=C++
+FILE_PATTERNS         += *.lex *.yacc *.ragel *.rl
+EXTENSION_MAPPING      = lex=C++ yacc=C++ ragel=C++ rl=C++ ino=C++
 HAVE_DOT               = YES
 EXTRACT_ALL            = YES
 EXTRACT_STATIC         = YES
@@ -29,4 +25,3 @@ SORT_GROUP_NAMES       = YES
 REPEAT_BRIEF           = NO
 CALL_GRAPH             = YES
 CALLER_GRAPH           = YES
-# DISABLE_INDEX          = YES
