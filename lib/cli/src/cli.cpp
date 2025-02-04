@@ -1,9 +1,12 @@
 #include "cli.hpp"
-#include <iostream>
+#include "os.hpp"
 
 void yyerror(const char* msg) {
-    std::cerr << std::endl
-              << yyfile << ':' << yylineno << ' ' << msg << " [" << yytext
-              << ']' << std::endl;
+#ifdef POSIX
+    fprintf(stderr, "\n\n%s:%i %s\n\n", yyfile, yylineno, msg);
     exit(-1);
+#else
+    for (;;)
+        ;  // halt
+#endif  // POSIX
 }
