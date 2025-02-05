@@ -1,4 +1,7 @@
 #pragma once
+
+#include "cli/inc/vm.hpp"
+
 /// @defgroup cli cli
 /// @brief @ref cli
 /// @ingroup core

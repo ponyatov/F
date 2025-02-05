@@ -11,7 +11,7 @@ static  int   number = 0;       ///< result number
 static bool positive = true;    ///< sign flag
 
 int bin(char* p, char* pe) {
-    number = 0; positive = true;
+    eof = pe; number = 0; positive = true;
     cs = act = 0; ts = te = nullptr;
     %%write init;
     %%write exec;

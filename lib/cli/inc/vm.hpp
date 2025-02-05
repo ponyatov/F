@@ -9,9 +9,18 @@ typedef unsigned int uint;   ///< generic insigned int
 typedef unsigned char byte;  ///< byte alias
 
 /// @brief `<T:` type tag
-enum T : int { NIL, BOOL, INT, FLOAT, CHAR, STRING, ID };
+enum T : int {
+    NIL,     ///< `<nil:` null
+    BOOL,    ///< `<bool:` boolean
+    INT,     ///< `<int:` integer
+    NUM,     ///< `<num: floating poinr
+    CHAR,    ///< `<char:` single character
+    STRING,  ///< `<str:` ASCII string
+    ID,      ///< `<id:` symbol/name/identifier
+    PTR,     ///< `<ptr:` raw pointer
+};
 
-/// @brief `:V>` value union
+/// @brief `:V>` value union (tagged by @ref T)
 union V {
     bool b;
     int n;
@@ -19,6 +28,7 @@ union V {
     char c;
     char *s;
     char *id;
+    void *ptr;
 };
 
 /// @brief typed data cell on @ref D
@@ -48,36 +58,23 @@ extern uint Cp;      ///< compiler pointer
 extern uint Ip;      ///< instruction pointer
 /// @}
 
+/// @name @ref VM operations
+/// @{
+
+/// @brief push preformed @ref Cell
+extern void push(Cell c);
+/// @brief `( -- char:c )`
+extern void push(char c);
+/// @brief `( -- int:n )`
+extern void push(int n);
+/// @brief `( -- num:n )`
+extern void push(float f);
+
+extern Cell pop();
+
 /// @}
 
-// #include "object.hpp"
-
-// /// @brief Virtual Machine
-// class VM : public Object {
-//    public:
-//     VM();
-//     std::string val() const;
-//     /// @name stack operations
-//     /// @{
-//     /// @brief `( -- o)`
-//     void push(Object* o);
-//     /// @brief `( o -- )`
-//     Object* pop();
-//     /// @brief `( ... -- )`
-//     void clean();
-//     /// @}
-
-//    private:
-//     /// @brief @ref D size
-//     static const size_t Dsz = 0x10;
-//     /// @brief data stack
-//     Object* D[Dsz];
-//     /// @brief @ref D pointer
-//     uint8_t Dp;
-// };
-
-// /// @brief global main @ref VM
-// extern VM vm;
+/// @}
 
 /// @defgroup cmd cmd
 /// @ingroup vm

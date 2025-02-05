@@ -20,3 +20,17 @@ void halt() {
     POSIX
 #endif  // POSIX
 }
+
+#ifdef POSIX
+void dump() {
+    fprintf(stderr,"D:[ ");
+    for (uint i=0;i<Dp;i++) {
+        fprintf(stderr,"%i:",i);
+        Cell c = D[i];
+        switch (c.t) {
+            default: fprintf(stderr,"?:? "); break;
+        }
+    }
+    fprintf(stderr,"]\n");
+}
+#endif // POSIX

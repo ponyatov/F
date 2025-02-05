@@ -1,7 +1,5 @@
 #include "os.hpp"
 #include "cli.hpp"
-#include "vm.hpp"
-#include "cmd.hpp"
 
 %%machine cli;
 %%write  data;
@@ -38,14 +36,14 @@ void cli(char* p, char* pe) {
         nl+     => { yylineno += te-ts; dump(); };
         sp      => { };
 
-        hex     => { fprintf(stderr,"\t\t%i: hex:%x\n",yylineno,hex(ts,te)); };
-        oct     => { fprintf(stderr,"\t\t%i: oct:%o\n",yylineno,oct(ts,te)); };
-        bin     => { fprintf(stderr,"\t\t%i: bin:%i\n",yylineno,bin(ts,te)); };
-        dec     => { fprintf(stderr,"\t\t%i: int:%i\n",yylineno,dec(ts,te)); };
-        num     => { fprintf(stderr,"\t\t%i: num:%f\n",yylineno,num(ts,te)); };
+        hex     => { push(hex(ts,te)); };
+        oct     => { push(oct(ts,te)); };
+        bin     => { push(bin(ts,te)); };
+        dec     => { push(dec(ts,te)); };
+        num     => { push(num(ts,te)); };
 
-        any     => { fprintf(stderr,"\t\t%i: %c\n",yylineno,ts[0]); };
-        cmd     => { fprintf(stderr,"\t\t%i: cmd:%s\n",yylineno,strndupa(ts,te-ts)); };
-        id      => { fprintf(stderr,"\t\t%i: id:%s\n",yylineno,strndupa(ts,te-ts)); };
+        any     => { push(ts[0]); };
+        cmd     => { push(strndupa(ts,te-ts)); };
+        id      => { push(strndupa(ts,te-ts)); };
    *|;
 }%%
