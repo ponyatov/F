@@ -49,7 +49,6 @@ enum class T : int {
     ID,    ///< `<id:` symbol/name/identifier
     PTR,   ///< `<ptr:` raw pointer
     CMD,   ///< `<cmd:op>` @ref vm command with @ref Op
-
 };
 
 /// @brief dump @ref T in string representation
