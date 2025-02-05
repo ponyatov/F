@@ -2,6 +2,8 @@
 /// @brief @ref pillF030
 /// @ingroup STM32F
 /// @details
-/// - flash: 16K (page 1K)
-/// -  sram: 4K
-/// - tssop20
+/// - Flash: 16K (page 1K)
+/// -  SRAM: 4K
+/// -   HSI:  8 MHz
+/// -   LSI: 40 KHz
+/// -        tssop20

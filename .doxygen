@@ -1,4 +1,4 @@
-PROJECT_NAME           = "F"
+PROJECT_NAME           = "F.lang"
 PROJECT_BRIEF          = "script engine"
 PROJECT_LOGO           = vscode/logo.png
 OUTPUT_DIRECTORY       = doc

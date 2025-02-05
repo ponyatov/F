@@ -1,4 +1,4 @@
-# ![](vscode/logo.png) `F`
+# ![](vscode/logo.png) `F.lang`
 ## script engine
 
 (c) Dmitry Ponyatov <<dponyatov@gmail.com>> 2025 MIT

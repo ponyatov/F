@@ -16,8 +16,8 @@ void push(Cell c) {
 
 void push(int n) { push(Cell{t : T::INT, v : {n : n}}); }
 void push(float f) { push(Cell{t : T::NUM, v : {f : f}}); }
-void push(char c) { push(Cell{t : T::CHAR, v : {c:c}}); }
-
+void push(char c) { push(Cell{t : T::CHAR, v : {c : c}}); }
+void push(char *id) { push(Cell{t : T::ID, v : {s : id}}); }
 
 void nop() {}
 

@@ -9,14 +9,16 @@
 
 /// @brief `<T:` type tag
 enum class T : int {
-    NIL,     ///< `<nil:` null
-    BOOL,    ///< `<bool:` boolean
-    INT,     ///< `<int:` integer
-    NUM,     ///< `<num: floating poinr
-    CHAR,    ///< `<char:` single character
-    STRING,  ///< `<str:` ASCII string
-    ID,      ///< `<id:` symbol/name/identifier
-    PTR,     ///< `<ptr:` raw pointer
+    NIL,   ///< `<nil:` null
+    BOOL,  ///< `<bool:` boolean
+    BYTE,  ///< `<byte:>` single byte
+    INT,   ///< `<int:` integer
+    NUM,   ///< `<num: floating poinr
+    CHAR,  ///< `<char:` single character
+    STR,   ///< `<str:` ASCII string
+    ID,    ///< `<id:` symbol/name/identifier
+    PTR,   ///< `<ptr:` raw pointer
+    CMD,   ///< `<cmd:op>` @ref vm command with @ref Op
 };
 
 /// @brief `:V>` value union (tagged by @ref T)
@@ -26,35 +28,34 @@ union V {
     float f;
     char c;
     char *s;
-    char *id;
-    void *ptr;
+    void *p;  ///< @ref T::PTR
 };
 
-/// @brief typed data cell on @ref D
+/// @brief typed data cell on @ref D stack
 struct Cell {
-    T t;
-    V v;
+    T t;  ///< @ref
+    V v;  ///<
 };
 
-/// @name @ref VM config
+/// @name @ref vm config
 /// @{
-/// @ref D size
+/// @brief @ref D size
 #define Dsz 0x10
-/// @ref R size
+/// @brief @ref R size
 #define Rsz 0x100
-/// @ref M size
+/// @brief @ref M size
 #define Msz 0x1000
 /// @}
 
 /// @name @ref VM memory
 /// @{
-extern Cell D[Dsz];  ///< data stack
-extern uint Dp;      ///< data stack pointer
-extern uint R[Rsz];  ///< return stack
-extern uint Rp;      ///< return stack pointer
-extern byte M[Msz];  ///< main memory, preallocated raw bytes block
-extern uint Cp;      ///< compiler pointer
-extern uint Ip;      ///< instruction pointer
+extern Cell D[Dsz];  ///< @brief data stack
+extern uint Dp;      ///< @brief data stack pointer
+extern uint R[Rsz];  ///< @brief return stack
+extern uint Rp;      ///< @brief return stack pointer
+extern byte M[Msz];  ///< @brief main memory, preallocated raw bytes block
+extern uint Cp;      ///< @brief compiler pointer
+extern uint Ip;      ///< @brief instruction pointer
 /// @}
 
 /// @name @ref VM operations
@@ -82,15 +83,21 @@ extern Cell pop();
 /// @brief commands
 /// @{
 
+/// @brief @ref cmd opcode
+enum class Op : byte {
+    nop = 0x00,   ///< @ref nop
+    halt = 0xFF,  ///< @ref halt
+};
+
 /// @name flow control
 /// @{
-extern void nop();   ///> `( -- )` no operation
-extern void halt();  ///> `( -- )` stop system
+extern void nop();   ///> @brief `( -- )` no operation
+extern void halt();  ///> @brief `( -- )` stop system
 /// @}
 
 /// @name debug
 /// @{
-extern void dump();  ///> `( -- )` print @ref VM state
+extern void dump();  ///> @brief  `( -- )` print @ref VM state
 /// @}
 
 /// @}
