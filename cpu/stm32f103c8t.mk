@@ -1,3 +1,1 @@
-ARCH    = cortexM3
-SERIES  = STM32F1
-CFLAGS += -DSTM32F103xB
+ARCH = cortexM3

@@ -1,2 +1,1 @@
-ARCH    = x86_64
-CFLAGS += -DI5
+ARCH = x86_64

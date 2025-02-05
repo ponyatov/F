@@ -1,8 +1,7 @@
-#pragma once
-
-/// @defgroup STM32F STM32F
+/// @defgroup stm32f030t4p stm32f030t4p
+/// @brief @ref pillF030
 /// @ingroup cpu
-
-/// @defgroup stm32f030f4p stm32f030f4p
-/// @ingroup STM32F
-/// @brief `arch:` @ref cortexM0
+/// @details
+/// - flash: 16K (page 1K)
+/// -  sram: 4K
+/// - tssop20
