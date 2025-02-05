@@ -1,41 +1,42 @@
-#include "vm.hpp"
-#include "cmd.hpp"
-#include <iostream>
+// #include "vm.hpp"
+// #include "cmd.hpp"
 
-void Nop::exec() {  //
-    std::cerr << "nop" << std::endl;
-}
+// // #include <iostream>
 
-void Halt::exec() {
-    std::cerr << "halt" << std::endl;
-    exit(0);
-}
+// // void Nop::exec() {  //
+// //     std::cerr << "nop" << std::endl;
+// // }
 
-void Dot::exec() {
-    std::cerr << "." << std::endl;
-    vm.clean();
-}
+// // void Halt::exec() {
+// //     std::cerr << "halt" << std::endl;
+// //     exit(0);
+// // }
 
-void Add::exec() {
-    std::cerr << "add" << std::endl;
-    Object *a = vm.pop(), *b = vm.pop();
-    vm.push(a->add(b));
-}
+// // void Dot::exec() {
+// //     std::cerr << "." << std::endl;
+// //     vm.clean();
+// // }
 
-void Sub::exec() {
-    std::cerr << "sub" << std::endl;
-    Object *a = vm.pop(), *b = vm.pop();
-    vm.push(a->sub(b));
-}
+// // void Add::exec() {
+// //     std::cerr << "add" << std::endl;
+// //     Object *a = vm.pop(), *b = vm.pop();
+// //     vm.push(a->add(b));
+// // }
 
-void Mul::exec() {
-    std::cerr << "mul" << std::endl;
-    Object *a = vm.pop(), *b = vm.pop();
-    vm.push(a->mul(b));
-}
+// // void Sub::exec() {
+// //     std::cerr << "sub" << std::endl;
+// //     Object *a = vm.pop(), *b = vm.pop();
+// //     vm.push(a->sub(b));
+// // }
 
-void Div::exec() {
-    std::cerr << "div" << std::endl;
-    Object *a = vm.pop(), *b = vm.pop();
-    vm.push(a->div(b));
-}
+// // void Mul::exec() {
+// //     std::cerr << "mul" << std::endl;
+// //     Object *a = vm.pop(), *b = vm.pop();
+// //     vm.push(a->mul(b));
+// // }
+
+// // void Div::exec() {
+// //     std::cerr << "div" << std::endl;
+// //     Object *a = vm.pop(), *b = vm.pop();
+// //     vm.push(a->div(b));
+// // }

@@ -1,5 +1,7 @@
 #include "os.hpp"
 #include "cli.hpp"
+#include "vm.hpp"
+#include "cmd.hpp"
 
 %%machine cli;
 %%write  data;
@@ -33,7 +35,7 @@ void cli(char* p, char* pe) {
 
     cli := |*
         comment => { };
-        nl+     => { yylineno += te-ts; /* count line */ };
+        nl+     => { yylineno += te-ts; dump(); };
         sp      => { };
 
         hex     => { fprintf(stderr,"\t\t%i: hex:%x\n",yylineno,hex(ts,te)); };
