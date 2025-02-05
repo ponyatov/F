@@ -1,2 +1,2 @@
 /// @defgroup stm32f405rgt stm32f405rgt
-/// @ingroup STM32F4
+/// @ingroup STM32F

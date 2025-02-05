@@ -4,7 +4,7 @@
 
 /// @defgroup cli cli
 /// @brief @ref cli
-/// @ingroup core
+/// @ingroup lib
 /// @{
 
 /// @defgroup parser parser
@@ -34,6 +34,8 @@ extern int hex(char *ts, char *te);    ///< hexadecimal token
 extern int oct(char *ts, char *te);    ///< octal
 extern int bin(char *ts, char *te);    ///< binary
 extern float num(char *ts, char *te);  ///< floating point
+/// @}
+
 /// @}
 
 /// @}

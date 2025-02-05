@@ -4,7 +4,7 @@
 
 /// @defgroup vm vm
 /// @brief Virtual Machine
-/// @ingroup core
+/// @ingroup cli
 /// @{
 
 /// @brief `<T:` type tag
@@ -62,12 +62,14 @@ extern uint Ip;      ///< instruction pointer
 
 /// @brief push preformed @ref Cell
 extern void push(Cell c);
-/// @brief `( -- char:c )`
-extern void push(char c);
 /// @brief `( -- int:n )`
 extern void push(int n);
 /// @brief `( -- num:n )`
 extern void push(float f);
+/// @brief `( -- char:c )` @ref T::CHAR
+extern void push(char c);
+/// @brief `( -- str:s )`
+extern void push(char *c);
 
 extern Cell pop();
 
@@ -77,7 +79,7 @@ extern Cell pop();
 
 /// @defgroup cmd cmd
 /// @ingroup vm
-/// @brief @ref commands
+/// @brief commands
 /// @{
 
 /// @name flow control
