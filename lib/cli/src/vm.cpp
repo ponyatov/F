@@ -9,6 +9,16 @@ byte M[Msz];  ///< main memory, bytes
 uint Cp = 0;  ///< compiler pointer
 uint Ip = 0;  ///< instruction pointer
 
+void push(Cell c) {
+    assert(Dp < Dsz);
+    D[Dp++] = c;
+}
+
+void push(int n) { push(Cell{t : T::INT, v : {n : n}}); }
+void push(float f) { push(Cell{t : T::NUM, v : {f : f}}); }
+void push(char c) { push(Cell{t : T::CHAR, v : {c:c}}); }
+
+
 void nop() {}
 
 void halt() {

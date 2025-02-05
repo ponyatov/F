@@ -8,7 +8,7 @@
 /// @{
 
 /// @brief `<T:` type tag
-enum T : int {
+enum class T : int {
     NIL,     ///< `<nil:` null
     BOOL,    ///< `<bool:` boolean
     INT,     ///< `<int:` integer
