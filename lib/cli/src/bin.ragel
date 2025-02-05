@@ -1,0 +1,29 @@
+%%machine bin;
+%%write  data;
+
+static int   cs  = 0;           ///< current state
+static int   act = 0;           ///< ???
+static char* eof = nullptr;     ///< end of file marker
+static char* ts  = nullptr;     ///< token start
+static char* te  = nullptr;     ///< token end
+
+static  int   number = 0;       ///< result number
+static bool positive = true;    ///< sign flag
+
+int bin(char* p, char* pe) {
+    number = 0; positive = true;
+    cs = act = 0; ts = te = nullptr;
+    %%write init;
+    %%write exec;
+    if (positive) return +number; else return -number;
+}
+
+%%{
+    bin := |*
+        "0b" => {                           };
+        '+'  => { positive =  true;         };
+        '-'  => { positive = false;         };
+        '0'  => { number = number << 1 | 0; };
+        '1'  => { number = number << 1 | 1; };
+    *|;
+}%%

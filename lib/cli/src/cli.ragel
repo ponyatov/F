@@ -2,17 +2,16 @@
 #include "cli.hpp"
 
 %%machine cli;
+%%write  data;
 
-%%write data;
-
-static int cs = 0;           ///< current state
-static int act = 0;          ///< ???
-static char* eof = nullptr;  ///< end of file marker
-static char* ts = nullptr;   ///< token start
-static char* te = nullptr;   ///< token end
+static int   cs  = 0;           ///< current state
+static int   act = 0;           ///< ???
+static char* eof = nullptr;     ///< end of file marker
+static char* ts  = nullptr;     ///< token start
+static char* te  = nullptr;     ///< token end
 
 void cli(char* p, char* pe) {
-    eof = pe;
+    eof = pe; cs = act = 0; ts = te = nullptr;
     %%write init;
     %%write exec;
 }
@@ -32,7 +31,7 @@ void cli(char* p, char* pe) {
     cmd     = "nop"|"halt"|".";             # VM command
     id      = [_a-zA-Z][_a-zA-Z0-9]*;       # variable/name
 
-    main := |*
+    cli := |*
         comment => { };
         nl+     => { yylineno += te-ts; /* count line */ };
         sp      => { };

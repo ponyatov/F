@@ -1,0 +1,30 @@
+%%machine hex;
+%%write  data;
+
+static int   cs  = 0;           ///< current state
+static int   act = 0;           ///< ???
+static char* eof = nullptr;     ///< end of file marker
+static char* ts  = nullptr;     ///< token start
+static char* te  = nullptr;     ///< token end
+
+static  int   number = 0;       ///< result number
+static bool positive = true;    ///< sign flag
+
+int hex(char* p, char* pe) {
+    number = 0; positive = true;
+    cs = act = 0; ts = te = nullptr;
+    %%write init;
+    %%write exec;
+    if (positive) return +number; else return -number;
+}
+
+%%{
+    hex := |*
+        "0x"  => {                                              };
+        '+'   => { positive =  true;                            };
+        '-'   => { positive = false;                            };
+        [0-9] => { number = number << 4 | (ts[0] - '0'       ); };
+        [a-f] => { number = number << 4 | (ts[0] - 'a' + 0x0A); };
+        [A-F] => { number = number << 4 | (ts[0] - 'A' + 0x0A); };
+    *|;
+}%%
