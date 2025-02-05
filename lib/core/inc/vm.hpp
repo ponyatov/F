@@ -1,8 +1,8 @@
 // #pragma once
 
-// /// @defgroup vm vm
-// /// @brief Virtual Machine
-// /// @ingroup core
+/// @defgroup vm vm
+/// @brief Virtual Machine
+/// @ingroup core
 // /// @{
 
 // typedef unsigned int uint;   ///< generic insigned int

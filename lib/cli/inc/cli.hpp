@@ -1,6 +1,6 @@
 #pragma once
 
-#include "cli/inc/vm.hpp"
+#include "cvm.hpp"
 
 /// @defgroup cli cli
 /// @brief @ref cli

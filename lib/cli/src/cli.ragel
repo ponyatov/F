@@ -28,7 +28,6 @@ void cli(char* p, char* pe) {
     bin     = "0b" [01]+;                   # binary
     num     = sign ? digit+ '.' digit+;     # floating point
 
-    cmd     = "nop"|"halt"|".";             # VM command
     id      = [_a-zA-Z][_a-zA-Z0-9]*;       # variable/name
 
     cli := |*
@@ -36,14 +35,19 @@ void cli(char* p, char* pe) {
         nl+     => { yylineno += te-ts; dump(); };
         sp      => { };
 
-        hex     => { push(hex(ts,te)); };
-        oct     => { push(oct(ts,te)); };
-        bin     => { push(bin(ts,te)); };
-        dec     => { push(dec(ts,te)); };
-        num     => { push(num(ts,te)); };
+        num     => { push(Cell{t:T::NUM,v:{f:num(ts,te)}}); };
+        hex     => { push(Cell{t:T::HEX,v:{n:hex(ts,te)}}); };
+        oct     => { push(Cell{t:T::OCT,v:{n:oct(ts,te)}}); };
+        bin     => { push(Cell{t:T::BIN,v:{n:bin(ts,te)}}); };
+        dec     => { push(Cell{t:T::INT,v:{n:dec(ts,te)}}); };
 
-        any     => { push(ts[0]); };
-        cmd     => { push(strndupa(ts,te-ts)); };
-        id      => { push(strndupa(ts,te-ts)); };
+        "nop"   => { push(Cell{t : T::CMD, v : {op : Op::nop }}); };
+        "halt"  => { push(Cell{t : T::CMD, v : {op : Op::halt}}); };
+
+        "add"   => { push(Cell{t : T::CMD, v : {op : Op::add}}); };
+        "sub"   => { push(Cell{t : T::CMD, v : {op : Op::sub}}); };
+
+        id      => { push(Cell{t:T::ID ,v:{s:strndupa(ts,te-ts)}}); };
+        any     => { push(Cell{t:T::CHAR,v:{c:ts[0]}}); };
    *|;
 }%%

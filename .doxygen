@@ -24,6 +24,6 @@ EXTRACT_LOCAL_METHODS  = YES
 EXTRACT_ANON_NSPACES   = YES
 LAYOUT_FILE            = doc/DoxygenLayout.xml
 SORT_GROUP_NAMES       = YES
-REPEAT_BRIEF           = NO
+REPEAT_BRIEF           = YES
 CALL_GRAPH             = YES
 CALLER_GRAPH           = YES
