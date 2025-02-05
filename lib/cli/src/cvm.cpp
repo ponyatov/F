@@ -23,10 +23,9 @@ void nop() {}
 void halt() {
 #ifdef POSIX
     exit(0);
-#else   //
+#else  // POSIX
     for (;;)
         ;
-    POSIX
 #endif  // POSIX
 }
 
@@ -82,42 +81,42 @@ const char* op_dump(Op op) {
     }
 }
 
-#ifdef POSIX
+// #ifdef POSIX
 void dump() {
-    fprintf(stderr, "D:[ ");
+    printf( "D:[ ");
     for (uint i = 0; i < Dp; i++) {
         Cell c = D[i];
-        fprintf(stderr, "%s:", t_dump(c.t));
+        printf( "%s:", t_dump(c.t));
         switch (c.t) {
             case T::INT:
-                fprintf(stderr, "%i ", c.v.n);
+                printf( "%i ", c.v.n);
                 break;
             case T::HEX:
-                fprintf(stderr, "%x ", c.v.n);
+                printf( "%x ", c.v.n);
                 break;
             case T::OCT:
-                fprintf(stderr, "%o ", c.v.n);
+                printf( "%o ", c.v.n);
                 break;
             case T::BIN:
-                fprintf(stderr, "%i ", c.v.n);
+                printf( "%i ", c.v.n);
                 break;
             case T::NUM:
-                fprintf(stderr, "%f ", c.v.f);
+                printf( "%f ", c.v.f);
                 break;
             case T::CHAR:
-                fprintf(stderr, "%c ", c.v.c);
+                printf( "%c ", c.v.c);
                 break;
             case T::CMD:
-                fprintf(stderr, "%s ", op_dump(c.v.op));
+                printf( "%s ", op_dump(c.v.op));
                 break;
             case T::ID:
-                fprintf(stderr, "%s ", c.v.s);
+                printf( "%s ", c.v.s);
                 break;
             default:
-                fprintf(stderr, "%i ", c.v.n);
+                printf( "%i ", c.v.n);
                 break;
         }
     }
-    fprintf(stderr, "]\n");
+    printf( "]\n");
 }
-#endif  // POSIX
+// #endif  // POSIX

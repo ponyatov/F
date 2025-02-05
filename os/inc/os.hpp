@@ -25,8 +25,9 @@ extern void loop();
 /// @}
 
 #ifdef POSIX
-#include <stdio.h>
 #include <stdlib.h>
+#else // MCU
+#include <stdio.h>
 #include <assert.h>
 #include <string.h>
 #endif  // POSIX

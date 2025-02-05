@@ -5,14 +5,11 @@ char* yyfile = nullptr;
 int yyin = 0;
 int yylineno = 0;
 
+#include <stdio.h>
+
 void yyerror(const char* msg) {
-#ifdef POSIX
-    fprintf(stderr, "\n\n%s:%i %s\n\n", yyfile, yylineno, msg);
-    exit(-1);
-#else
-    for (;;)
-        ;  // halt
-#endif  // POSIX
+    printf( "\n\n%s:%i %s\n\n", yyfile, yylineno, msg);
+    abort();
 }
 
 #ifdef LINUX

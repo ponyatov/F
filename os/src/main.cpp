@@ -19,6 +19,8 @@ __attribute__((weak)) void setup() {}
 __attribute__((weak)) void arg(int argc, char *argv) {
 #ifdef POSIX
     fprintf(stderr, "\targ[%i] = <%s>\n", argc, argv);
+    #else
+    printf( "\targ[%i] = <%s>\n", argc, argv);
 #endif
 }
 

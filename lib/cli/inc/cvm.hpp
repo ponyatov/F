@@ -121,8 +121,13 @@ extern Cell pop();
 
 /// @name flow control
 /// @{
-extern void nop();   ///> @brief `( -- )` no operation
-extern void halt();  ///> @brief `( -- )` stop system
+extern void nop();   ///< @brief `( -- )` no operation
+extern void halt();  ///< @brief `( -- )` stop system
+
+#ifndef POSIX
+extern void abort(); ///<  @brief `( -- )` abort system
+#endif
+
 /// @}
 
 /// @name debug

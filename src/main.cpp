@@ -2,11 +2,11 @@
 #include "cli.hpp"
 
 void setup() {}
-void loop() { exit(0); }
+void loop() { halt(); }
 
 void arg(int argc, char *argv) {
+    printf( "\targ[%i] = <%s>\n", argc, argv);
 #ifdef POSIX
-    fprintf(stderr, "\targ[%i] = <%s>\n", argc, argv);
-#endif
     if (argc >= 1) cli(argv);
+#endif
 }

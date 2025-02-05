@@ -50,7 +50,7 @@ file(GLOB INC
     arch/inc arch/${ARCH}/inc
       os/inc   os/${OS}/inc
     # libs
-    lib lib/inc lib/*/inc
+    lib/inc lib/*/inc
     # CortexM/CubeMX
     hw/${HW}/Core/Inc
     hw/${HW}/Drivers/CMSIS/Include

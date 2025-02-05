@@ -47,7 +47,7 @@ void cli(char* p, char* pe) {
         "add"   => { push(Cell{t : T::CMD, v : {op : Op::add}}); };
         "sub"   => { push(Cell{t : T::CMD, v : {op : Op::sub}}); };
 
-        id      => { push(Cell{t:T::ID ,v:{s:strndupa(ts,te-ts)}}); };
+        id      => { push(Cell{t:T::ID ,v:{s:strndup(ts,te-ts)}}); };
         any     => { push(Cell{t:T::CHAR,v:{c:ts[0]}}); };
    *|;
 }%%
