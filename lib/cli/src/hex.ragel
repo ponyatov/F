@@ -20,7 +20,7 @@ int hex(char* p, char* pe) {
 
 %%{
     hex := |*
-        "0x"  => {                                              };
+        'x'   => {                                              };
         '+'   => { positive =  true;                            };
         '-'   => { positive = false;                            };
         [0-9] => { number = number << 4 | (ts[0] - '0'       ); };
