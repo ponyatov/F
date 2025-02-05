@@ -1,12 +1,11 @@
 #pragma once
 
+#include "hw.hpp"
+
 /// @defgroup vm vm
 /// @brief Virtual Machine
 /// @ingroup core
 /// @{
-
-typedef unsigned int uint;   ///< generic insigned int
-typedef unsigned char byte;  ///< byte alias
 
 /// @brief `<T:` type tag
 enum T : int {

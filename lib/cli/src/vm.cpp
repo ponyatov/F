@@ -23,14 +23,16 @@ void halt() {
 
 #ifdef POSIX
 void dump() {
-    fprintf(stderr,"D:[ ");
-    for (uint i=0;i<Dp;i++) {
-        fprintf(stderr,"%i:",i);
+    fprintf(stderr, "D:[ ");
+    for (uint i = 0; i < Dp; i++) {
+        fprintf(stderr, "%i:", i);
         Cell c = D[i];
         switch (c.t) {
-            default: fprintf(stderr,"?:? "); break;
+            default:
+                fprintf(stderr, "?:? ");
+                break;
         }
     }
-    fprintf(stderr,"]\n");
+    fprintf(stderr, "]\n");
 }
-#endif // POSIX
+#endif  // POSIX
