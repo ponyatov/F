@@ -1,7 +1,7 @@
 {
     "version": 4,
     "env":{
-        "coreInclude": [
+        "appInclude": [
             "${workspaceFolder}/inc/**",
             "${workspaceFolder}/tmp/**",
             "${workspaceFolder}/src/**"
@@ -11,13 +11,23 @@
             "${workspaceFolder}/cpu/inc/**",
             "${workspaceFolder}/arch/inc/**",
             "${workspaceFolder}/os/inc/**"
+        ],
+        "libInclude": [
+            "${workspaceFolder}/lib/led/inc/**",
+            "${workspaceFolder}/lib/core/inc/**"
         ]
     },
     "configurations": [
         {
             "name"                 : "cmake",
             "configurationProvider": "ms-vscode.cmake-tools",
-            "mergeConfigurations"  :  true
+            "mergeConfigurations"  :  true,
+            "includePath": [
+                "${appInclude}", "${crossInclude}", "${libInclude}"
+            ],
+            "defines": [
+                "HAVE_INITFINI_ARRAY", "HAVE_INIT_FINI"
+            ]
         }
     ]
 }

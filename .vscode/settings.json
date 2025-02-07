@@ -11,8 +11,7 @@
         { "command": "multiCommand.altx",
             "sequence": [ "workbench.action.files.saveAll",
                 { "command": "workbench.action.terminal.sendSequence",
-                    // "args": {"text": "\u000D clear ; LANG=C make run \u000D"}}]},
-                    "args": {"text": "\u000D clear ;  make -f ~/em/template -C . M=F lib \u000D"}}]},
+                    "args": {"text": "\u000D clear ; LANG=C make run \u000D"}}]},
         { "command": "multiCommand.alts",
             "sequence": [ "workbench.action.files.saveAll",
                 { "command": "workbench.action.terminal.sendSequence",
@@ -27,12 +26,12 @@
         "ref/**": true,
     },
     "files.associations": {
-        "*.mk": "makefile",
+        "*.mk": "makefile", "mk": "makefile", "cmake": "cmake",
         "*.ini": "flang", "*.f": "flang",
         "*.openocd": "properties", "*.gdb*": "properties",
         "*.ld": "linkerscript", "*.ld.fix": "linkerscript",
         "*.ioc": "properties",
-        "*.s": "arm", "*.S": "arm",
+        "*.s": "arm", "*.s.fix": "arm", "*.S": "arm",
         //
         ".boot*": "javascript", ".prettierrc": "jsonc",
         "*.service": "systemd-unit-file"
@@ -88,8 +87,10 @@
     "cmake.parallelJobs"    : 4,
     "cmake.useCMakePresets" : "always",
     "cmake.buildBeforeRun"  : true,
+    "cmake.saveBeforeBuild" : true,
     "cmake.debugConfig"     : {
-        "args": [ "${workspaceFolder}/lib/${workspaceFolderBasename}.ini" ] },
+        "args": [ "${workspaceFolder}/lib/app.ini" ] },
+    "cmake.allowCommentsInPresetsFile" : true,
 
     // Python
     "autopep8.path": ["${workspaceFolder}/bin/autopep8", "autopep8"],
