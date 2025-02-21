@@ -1,3 +1,3 @@
 /// @defgroup protocol protocol
-/// @brief I/O protocols
 /// @ingroup lib
+/// @brief I/O protocols
