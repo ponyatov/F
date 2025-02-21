@@ -1,12 +1,4 @@
-// #pragma once
-
-/// @defgroup vm vm
-/// @brief Virtual Machine
-/// @ingroup core
-// /// @{
-
-// typedef unsigned int uint;   ///< generic insigned int
-// typedef unsigned char byte;  ///< byte alias
+#pragma once
 
 // /// @brief `<T:` type tag
 // enum T : int { NIL, BOOL, INT, FLOAT, CHAR, STRING, ID };
@@ -83,12 +75,6 @@
 // /// @ingroup vm
 // /// @brief @ref commands
 // /// @{
-
-// /// @name flow control
-// /// @{
-// extern void nop();   ///> `( -- )` no operation
-// extern void halt();  ///> `( -- )` stop system
-// /// @}
 
 // /// @name debug
 // /// @{

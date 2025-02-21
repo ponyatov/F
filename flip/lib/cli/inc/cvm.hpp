@@ -1,7 +1,11 @@
 #pragma once
 
-#include "hw.hpp"
-#include "os.hpp"
+#include "types.hpp"
+
+/// @defgroup vm vm
+/// @brief Virtual Machine
+/// @ingroup core
+/// @{
 
 /// @defgroup cvm cvm
 /// @brief /c Virtual Machine
