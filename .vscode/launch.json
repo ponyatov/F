@@ -2,6 +2,24 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "lldb",
+            "request": "launch",
+            "name": "rust",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=${workspaceFolderBasename}",
+                    "--package=${workspaceFolderBasename}"
+                ],
+                "filter": {
+                    "name": "${workspaceFolderBasename}",
+                    "kind": "bin"
+                }
+            },
+            "args": ["1024", "578"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
             "name": "cortexM",
             "type": "cppdbg",
             "request": "launch",
