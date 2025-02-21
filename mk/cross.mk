@@ -6,10 +6,10 @@ HW ?= pc
 # HW ?= pillF030
 # HW ?= mega2560
 
-include   hw/$(HW).mk
-include  cpu/$(CPU).mk
-include arch/$(ARCH).mk
-include   os/$(OS).mk
+include   hw/$(HW)/$(HW).mk
+include  cpu/$(CPU)/$(CPU).mk
+include arch/$(ARCH)/$(ARCH).mk
+include   os/$(OS)/$(OS).mk
 
 .PHONY: elf
 elf: $(ELF)
