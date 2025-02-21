@@ -1,3 +1,3 @@
 /// @defgroup pillF103 pillF103
-/// @ingroup hw
+/// @ingroup pill
 /// @brief `cpu:` @ref stm32f103c8t
