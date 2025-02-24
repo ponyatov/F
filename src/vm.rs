@@ -19,34 +19,36 @@
 
 /// bytecode memory size, bytes
 const Msz: usize = 0x10000;
-/// return stack size, calls
-const Rsz: u16 = 0x100;
-/// data stack size, signed machine words (32 bit)
-const Dsz: u8 = 0x10;
+/// return stack size, [Addr]s
+const Rsz: usize = 0x100;
+/// data stack size, [Cell]s
+const Dsz: usize = 0x10;
 
-/// address word size in [M]
+/// single byte `=u8`
+type Byte = u8;
+/// address word size in [M] `=u16`
 type Addr = u16;
-/// (machine) integer / data word in [D]
+/// (machine) integer / data word in [D] `=i32`
 type Cell = i32;
 
-/// main memory
-static mut M: [u8; Msz] = [0; Msz];
+/// main memory, [Byte]s
+static mut M: [Byte; Msz] = [0; Msz];
 /// compiler pointer (first empty byte)
 static mut Cp: Addr = 0;
 /// instruction pointer (first byte of current command)
 static mut Ip: Addr = u16::MAX;
 
 /// return stack
-static mut R: [Addr; Rsz as usize] = [0; Rsz as usize];
+static mut R: [Addr; Rsz] = [0; Rsz];
 /// return stack pointer
 /// limited to 64K, not more then [Rsz]
-static mut Rp: u16 = 0;
+static mut Rp: usize = 0;
 
 /// data stack
-static mut D: [Cell; Dsz as usize] = [0; Dsz as usize];
+static mut D: [Cell; Dsz] = [0; Dsz];
 /// data stack pointer
 /// limited to 0x100, not more then [Dsz]
-static mut Dp: u8 = 0;
+static mut Dp: usize = 0;
 
 /// VM commands opcodes
 enum Op {
