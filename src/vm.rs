@@ -87,37 +87,55 @@ enum Op {
     depth = 0x17,
 }
 
+use std::fmt;
+
+// disassembler
+impl fmt::Display for Op {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match *self {
+            Op::nop => write!(f, "nop"),
+            Op::halt => write!(f, "halt"),
+            Op::jmp => write!(f, "jmp"),
+            Op::qjmp => write!(f, "qjmp"),
+            Op::call => write!(f, "call"),
+            Op::ret => write!(f, "ret"),
+            Op::lit => write!(f, "lit"),
+            _ => write!(f, "???"),
+        }
+    }
+}
+
 // flow control
 
-/// `( -- )` empty command: do nothing
+/// 0x00 `( -- )` empty command: do nothing
 fn nop() {}
 
-/// `( -- )` stop system
+/// 0xFF `( -- )` stop system
 fn halt() -> ! {
     std::process::exit(0);
 }
 
-/// `( -- )` unconditional jump
+/// 0x01 `( -- )` unconditional jump
 fn jmp() {
     todo!("");
 }
 
-/// `( bool -- )` jump if `false`
+/// 0x02 `( bool -- )` jump if `false`
 fn qjmp() {
     todo!("");
 }
 
-/// `(R: -- addr )` nested call
+/// 0x03 `(R: -- addr )` nested call
 fn call() {
     todo!("");
 }
 
-/// `(R: addr -- )` return from nested call
+/// 0x04 `(R: addr -- )` return from nested call
 fn ret() {
     todo!("");
 }
 
-/// `( -- n )` integer literal
+/// 0x05 `( -- n )` integer literal
 fn lit() {
     todo!("");
 }
@@ -176,6 +194,7 @@ fn main() -> ! {
         println!("\t{}", src);
     }
     // stub
+    println!("{}", Op::depth);
     nop();
     halt();
 }
