@@ -11,7 +11,7 @@ github: https://github.com/ponyatov/F
 - multiplatform
 
 #### Rust version
-- <a href="F/index.html">Rust version</a>
+- <a href="F/index.html">F Virtual Machine</a>
 
 #### Level zero / 0.0.x
 

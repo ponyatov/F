@@ -1,3 +1,3 @@
 # Rust version {#rust}
 
-<a href="F/index.html">Rust version</a>
+<a href="F/index.html">F Virtual Machine</a>
