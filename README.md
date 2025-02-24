@@ -10,6 +10,9 @@ github: https://github.com/ponyatov/F
     - uses @ref ograph as a unified data/program representation
 - multiplatform
 
+#### Rust version
+- <a href="F/index.html">Rust version</a>
+
 #### Level zero / 0.0.x
 
 - proof-of-concept implementation
@@ -17,6 +20,10 @@ github: https://github.com/ponyatov/F
         - calculator
         - file manipulations (one-liners for find/rename/transform)
         - embedded hardware control
+- minimal bytecode
+    - no objects/types
+    - no composite data data structs
+    - raw integer data stack
 - `L0` script language
     - @ref FORTH -like: postfix & stack (but typed data and name-bound storage)
     - concatenative programming
