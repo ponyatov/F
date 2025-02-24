@@ -115,19 +115,38 @@ fn halt() -> ! {
     std::process::exit(0);
 }
 
+/// get [Addr] from [M]`[addr]` (little endian)
+unsafe fn get(addr: Addr) -> Addr {
+    u16::from_le_bytes([M[addr as usize + 0], M[addr as usize + 1]])
+}
+
+/// `( n -- )` pop `n` from top of [D]
+unsafe fn pop() -> Cell {
+    assert!(Dp > 0);
+    Dp -= 1;
+    D[Dp]
+}
+
 /// 0x01 `( -- )` unconditional jump
-fn jmp() {
-    todo!("");
+unsafe fn jmp() {
+    Ip = get(Ip);
+    assert!((Ip as usize) < Msz);
 }
 
 /// 0x02 `( bool -- )` jump if `false`
-fn qjmp() {
-    todo!("");
+unsafe fn qjmp() {
+    if pop() != 0 {
+        jmp();
+    }
 }
 
 /// 0x03 `(R: -- addr )` nested call
-fn call() {
-    todo!("");
+unsafe fn call() {
+    assert!(Rp < Rsz);
+    let asz = std::mem::size_of::<Addr>() as Addr;
+    R[Rp] = Ip + asz;
+    Rp += 1;
+    jmp();
 }
 
 /// 0x04 `(R: addr -- )` return from nested call
