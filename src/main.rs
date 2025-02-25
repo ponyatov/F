@@ -12,7 +12,7 @@ fn main() -> ! {
         println!("\t{}", src);
     }
     // stub
-    println!("{}", Op::depth);
+    println!("{} {} {}", Op::nop, Op::halt, Op::depth);
     nop();
     halt();
 }
