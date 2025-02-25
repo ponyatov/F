@@ -3,7 +3,7 @@
 
 Object::Object() {
     ref = 0;
-    next = pool;  // \ register object in global @ref pool
+    next = pool;  // \ register object in global pool
     pool = this;  // /
 }
 
