@@ -12,6 +12,11 @@
             "targets"        :  ["all","install"]
         },
         {
+            "name"           :   "l496disco",
+            "configurePreset":   "l496disco",
+            "targets"        :  ["all","install"]
+        },
+        {
             "name"           :   "glibc",
             "configurePreset":   "glibc",
             "targets"        :  ["all","install"]
@@ -71,6 +76,14 @@
             "cacheVariables": {
                 "HW" :"f4disco",
                 "CPU":"stm32f407vgt", "SERIES": "STM32F4"
+            }
+        },
+        {
+            "name"          : "l496disco",
+            "inherits"      : "cortexM4",
+            "cacheVariables": {
+                "HW" :"l496disco",
+                "CPU":"stm32l496agi", "SERIES": "STM32L4"
             }
         },
         {
