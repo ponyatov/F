@@ -15,7 +15,8 @@ include arch/$(ARCH)/$(ARCH).mk
 include   os/$(OS)/$(OS).mk
 
 .PHONY: elf
-elf: $(ELF)
+elf: $(CWD)/hw/$(HW)/$(HW).ocd $(ELF)
+	openocd -f $< -c "program $(ELF) verify reset exit"
 
 .PHONY: dfu
 dfu: $(DFU)
