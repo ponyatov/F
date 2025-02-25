@@ -120,11 +120,32 @@ unsafe fn get(addr: Addr) -> Addr {
     u16::from_le_bytes([M[addr as usize + 0], M[addr as usize + 1]])
 }
 
+/// `( -- n )` push `n` to [D]
+unsafe fn push(n: Cell) {
+    assert!(Dp < Dsz);
+    D[Dp] = n;
+    Dp += 1;
+}
+
 /// `( n -- )` pop `n` from top of [D]
 unsafe fn pop() -> Cell {
     assert!(Dp > 0);
     Dp -= 1;
     D[Dp]
+}
+
+/// `(R: -- addr )` push return [Addr]ess
+unsafe fn rpush(addr: Addr) {
+    assert!(Rp < Rsz);
+    R[Rp] = addr;
+    Rp += 1;
+}
+
+/// `(R: addr -- )` pop return [Addr]ess
+unsafe fn rpop() -> Addr {
+    assert!(Rp > 0);
+    Rp -= 1;
+    R[Rp]
 }
 
 /// 0x01 `( -- )` unconditional jump
@@ -142,10 +163,7 @@ unsafe fn qjmp() {
 
 /// 0x03 `(R: -- addr )` nested call
 unsafe fn call() {
-    assert!(Rp < Rsz);
-    let asz = std::mem::size_of::<Addr>() as Addr;
-    R[Rp] = Ip + asz;
-    Rp += 1;
+    rpush(Ip + std::mem::size_of::<Addr>() as Addr);
     jmp();
 }
 
