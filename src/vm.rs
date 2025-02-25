@@ -51,7 +51,7 @@ static mut D: [Cell; Dsz] = [0; Dsz];
 static mut Dp: usize = 0;
 
 /// VM commands opcodes
-enum Op {
+pub enum Op {
     // flow control
     /// [nop] `( -- )` empty command
     nop = 0x00,
@@ -108,10 +108,10 @@ impl fmt::Display for Op {
 // flow control
 
 /// 0x00 `( -- )` empty command: do nothing
-fn nop() {}
+pub fn nop() {}
 
 /// 0xFF `( -- )` stop system
-fn halt() -> ! {
+pub fn halt() -> ! {
     std::process::exit(0);
 }
 
@@ -218,20 +218,4 @@ unsafe fn depth() {
     assert!(Dp < Dsz);
     D[Dp as usize] = Dp as Cell;
     Dp += 1;
-}
-
-/// POSIX program entry point
-fn main() -> ! {
-    // command line arguments
-    let args: Vec<String> = std::env::args().collect();
-    // program binary name
-    println!("{}", args[0]);
-    // process script files via parser/compiler
-    for src in &args[1..] {
-        println!("\t{}", src);
-    }
-    // stub
-    println!("{}", Op::depth);
-    nop();
-    halt();
 }
