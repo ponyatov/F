@@ -219,3 +219,17 @@ unsafe fn depth() {
     D[Dp as usize] = Dp as Cell;
     Dp += 1;
 }
+
+#[derive(Debug)]
+struct CubeSat {
+    id: u64,
+}
+
+#[derive(Debug)]
+enum StatusMessage {
+    Ok,
+}
+
+fn check_status(sat_id: CubeSat) -> StatusMessage {
+    StatusMessage::Ok
+}
