@@ -4,6 +4,7 @@ $(RUSTUP) $(CARGO):
 # rustup target add thumbv7em-none-eabihf
 # cargo install cargo-binutils
 # rustup component add llvm-tools
+# curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
 
 $(BIN)/$(BINFILE): target/debug/$(MODULE)
 	cp $< $@

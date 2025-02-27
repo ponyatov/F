@@ -43,6 +43,7 @@
         "rust-lang.rust-analyzer",
         "tamasfe.even-better-toml",
         "vadimcn.vscode-lldb",
+        "probe-rs.probe-rs-debugger",
         // F#
         // "ionide.ionide-fsharp",
         // "tintoy.msbuild-project-tools",
