@@ -7,11 +7,10 @@ $(RUSTUP) $(CARGO):
 # curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
 
 $(BIN)/$(BINFILE): target/debug/$(MODULE)
-	cp $< $@
 target/debug/$(MODULE): $(R) Cargo.toml .cargo/config.toml
 	cargo build
 
-$(ELF): target/$(RTARGET)/debug/fortex
+$(ELF): target/$(RTARGET)/debug/libfortex.d
 	cp $< $@
-target/$(RTARGET)/debug/fortex: $(R) Cargo.toml .cargo/config.toml
+target/$(RTARGET)/debug/libfortex.d: $(R) Cargo.toml .cargo/config.toml
 	cargo build --target $(RTARGET) -p fortex
