@@ -87,9 +87,8 @@ pub enum Op {
     depth = 0x17,
 }
 
-use std::fmt;
-
 // disassembler
+#[cfg(target_arch = "x86_64")]
 impl fmt::Display for Op {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match *self {
@@ -218,18 +217,4 @@ unsafe fn depth() {
     assert!(Dp < Dsz);
     D[Dp as usize] = Dp as Cell;
     Dp += 1;
-}
-
-#[derive(Debug)]
-struct CubeSat {
-    id: u64,
-}
-
-#[derive(Debug)]
-enum StatusMessage {
-    Ok,
-}
-
-fn check_status(sat_id: CubeSat) -> StatusMessage {
-    StatusMessage::Ok
 }

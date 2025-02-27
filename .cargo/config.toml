@@ -1,14 +1,4 @@
 [target.x86_64-unknown-linux-gnu]
 
-[target.thumbv7em-none-eabihf]
-runner = 'arm-none-eabi-gdb'
-# rustflags = [
-#   "-C", "link-arg=-Tlink.x",
-#   "-C", "linker=cortex-m-rt-ld", # <- CHANGED!
-#   "-Z", "linker-flavor=ld",
-#   "-Z", "thinlto=no",
-# ]
-
 [build]
 target = "x86_64-unknown-linux-gnu"
-# target = "thumbv7em-none-eabihf"
