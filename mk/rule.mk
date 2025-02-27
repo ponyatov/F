@@ -1,6 +1,6 @@
 $(BIN)/$(BINFILE): target/debug/$(MODULE)
 	cp $< $@
-target/debug/$(MODULE): $(R) Cargo.toml
+target/debug/$(MODULE): $(R) Cargo.toml .cargo/config.toml
 	cargo build
 
 # $(BIN)/$(BINFILE): $(C) $(H) $(MK) $(CM)
