@@ -25,4 +25,4 @@ ref/cortex-m-quickstart/README.md:
 
 .PHONY: fortex
 fortex: $(R) Cargo.toml fortex/Cargo.toml
-	cargo build -p fortex
+	cd $@ ; cargo build
