@@ -5,6 +5,7 @@
 
 #![no_main]
 #![no_std]
+#![allow(dead_code)]
 
 pub fn nop() {}
 

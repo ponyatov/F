@@ -40,4 +40,4 @@ P += $(wildcard django/tracker/settings.py)
 P += $(wildcard django/task/*.py)
 
 # Rust
-R += $(wildcard src/*.rs)
+R += $(wildcard src/*.rs) $(wildcard fortex/src/*.rs)

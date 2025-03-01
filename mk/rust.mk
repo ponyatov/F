@@ -18,3 +18,7 @@ $(ELF): target/$(RTARGET)/debug/libfortex.d
 	cp $< $@
 target/$(RTARGET)/debug/libfortex.d: $(R) Cargo.toml .cargo/config.toml
 	cargo build --target $(RTARGET) -p fortex
+
+.PHONY: fortex
+fortex: $(R) Cargo.toml fortex/Cargo.toml
+	cargo build -p fortex
