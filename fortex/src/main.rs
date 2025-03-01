@@ -5,7 +5,10 @@ use panic_halt as _;
 
 use cortex_m_rt::entry;
 
+use fortex::*;
+
 #[entry]
 fn main() -> ! {
-    loop {}
+    nop();
+    halt()
 }

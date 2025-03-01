@@ -25,4 +25,6 @@ ref/cortex-m-quickstart/README.md:
 
 .PHONY: fortex
 fortex: $(R) Cargo.toml fortex/Cargo.toml
-	cd $@ ; cargo build
+	cd $@ ;\
+		cargo build --target $(RTARGET) &&\
+		cargo size --bin $@ -- -A

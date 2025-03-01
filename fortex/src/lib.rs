@@ -5,11 +5,14 @@
 //! - target: thumbv7em-none-eabihf
 //!   - hw:   l496disco / f4disco/ iskrajs
 
-#![no_main]
 #![no_std]
 
-pub fn nop() {}
+use cortex_m::asm;
 
-pub fn halt() {
+pub fn nop() {
+    asm::nop();
+}
+
+pub fn halt() -> ! {
     loop {}
 }
