@@ -19,6 +19,10 @@ $(ELF): target/$(RTARGET)/debug/libfortex.d
 target/$(RTARGET)/debug/libfortex.d: $(R) Cargo.toml .cargo/config.toml
 	cargo build --target $(RTARGET) -p fortex
 
+RF += ref/cortex-m-quickstart/README.md
+ref/cortex-m-quickstart/README.md:
+	$(GITREF) https://github.com/rust-embedded/cortex-m-quickstart.git $(dir $@)
+
 .PHONY: fortex
 fortex: $(R) Cargo.toml fortex/Cargo.toml
 	cargo build -p fortex
