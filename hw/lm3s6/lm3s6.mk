@@ -1,1 +1,1 @@
-CPU = lm3s6965evb
+CPU = lm3s6965
