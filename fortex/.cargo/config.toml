@@ -1,4 +1,4 @@
-[target.thumbv7m-none-eabihf]
+[target.thumbv7m-none-eabi]
 runner = 'arm-none-eabi-gdb'
 
 [target.thumbv7em-none-eabihf]
@@ -11,5 +11,5 @@ runner = 'arm-none-eabi-gdb'
 # ]
 
 [build]
-target = "thumbv7m-none-eabihf"
+target = "thumbv7m-none-eabi"
 # target = "thumbv7em-none-eabihf"

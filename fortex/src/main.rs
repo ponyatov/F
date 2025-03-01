@@ -1,7 +1,13 @@
 // mod lib;
 
-use fortex::*;
+#![no_std]
+#![no_main]
 
-fn main() {
-    nop();
+use panic_halt as _;
+
+use cortex_m_rt::entry;
+
+#[entry]
+fn main() -> ! {
+    loop {}
 }
