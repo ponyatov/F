@@ -1,8 +1,11 @@
 [target.thumbv7m-none-eabi]
-runner = 'arm-none-eabi-gdb'
+# uncomment for QEMU/Cortex-M3
+runner = "qemu-system-arm -cpu cortex-m3 -machine lm3s6965evb -nographic -semihosting-config enable=on,target=native -kernel"
 
-[target.thumbv7em-none-eabihf]
-runner = 'arm-none-eabi-gdb'
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+# uncomment for real hw
+# runner = "gdb-multiarch -q -x fortex.gdb"
+
 # rustflags = [
 #   "-C", "link-arg=-Tlink.x",
 #   "-C", "linker=cortex-m-rt-ld", # <- CHANGED!
