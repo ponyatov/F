@@ -11,8 +11,8 @@ include mk/debug.mk
 include mk/clean.mk
 include mk/format.mk
 include mk/rule.mk
-include mk/rust.mk
 include mk/doc.mk
+include mk/rust.mk
 include mk/install.mk
 include mk/merge.mk
 include mk/llvm.mk
