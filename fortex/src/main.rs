@@ -1,3 +1,7 @@
-mod lib;
+// mod lib;
 
-fn main() {}
+use fortex::*;
+
+fn main() {
+    nop();
+}
