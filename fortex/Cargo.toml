@@ -3,6 +3,11 @@ name    = "fortex"
 version = "0.0.1"
 edition = "2021"
 
-[lib]
-path = "src/lib.rs"
-name = "fortex"
+[dependencies]
+panic-halt = "1.0.0"
+
+[[bin]]
+path  = "src/main.rs"
+name  = "fortex"
+test  = false
+bench = false
