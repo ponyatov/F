@@ -30,12 +30,16 @@
             "machine"           : "lm3s6965evb",
             // "gdbTarget": ":12345",
             "preLaunchTask"     : "cargo: fortex",
+            // "runToEntryPoint"   : "DefaultPreInit",
             "runToEntryPoint"   : "main",
             "preRestartCommands": [
                 "load",
-                "b Reset_Handler",
-                "b DefaultHandler",
-                "b SystemInit"
+                // "b main",
+                "break DefaultPreInit",
+                "break Reset",
+                // "b Reset_Handler",
+                // "b DefaultHandler",
+                // "b SystemInit"
             ]
         },
         {
