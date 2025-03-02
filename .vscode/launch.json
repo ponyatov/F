@@ -20,11 +20,15 @@
             "cwd": "${workspaceFolder}"
         },
         {
-            "name": "rust",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "cargo run ",
+            "name": "lm3s6",
+            "type": "cortex-debug",
+            "request": "attach",
+            "executable": "target/thumbv7m-none-eabi/debug/fortex",
             "cwd": "${workspaceFolder}/fortex",
+            "servertype": "qemu",
+            "preRestartCommands": [
+                "load",
+            ]
         },
         {
             "name": "cortexM",

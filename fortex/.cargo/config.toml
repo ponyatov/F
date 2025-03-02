@@ -1,6 +1,6 @@
 [target.thumbv7m-none-eabi]
 # uncomment for QEMU/Cortex-M3
-runner = "qemu-system-arm -cpu cortex-m3 -machine lm3s6965evb -nographic -semihosting-config enable=on,target=native -kernel"
+runner = "qemu-system-arm -cpu cortex-m3 -machine lm3s6965evb -nographic -semihosting-config enable=on,target=native -S -gdb tcp::12345 -kernel"
 
 [target.'cfg(all(target_arch = "arm", target_os = "none"))']
 # uncomment for real hw
