@@ -22,11 +22,13 @@
         {
             "name": "lm3s6",
             "type": "cortex-debug",
-            "request": "attach",
+            "request": "launch",
             "executable": "target/thumbv7m-none-eabi/debug/fortex",
             "cwd": "${workspaceFolder}/fortex",
             "servertype": "qemu",
+            // "gdbTarget": ":12345",
             "preLaunchTask": "cargo: fortex",
+            "runToMain": true,
             "preRestartCommands": [
                 "load",
             ]
