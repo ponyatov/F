@@ -6,12 +6,27 @@ runner = "qemu-system-arm -cpu cortex-m3 -machine lm3s6965evb -nographic -semiho
 # uncomment for real hw
 # runner = "gdb-multiarch -q -x fortex.gdb"
 
-# rustflags = [
-#   "-C", "link-arg=-Tlink.x",
+rustflags = [
+# Previously, the linker arguments --nmagic and -Tlink.x were set here.
+# They are now set by build.rs instead. The linker argument can still
+# only be set here, if a custom linker is needed.
+    # "-C", "link-arg=-Tlink.x",
+
+# By default, the LLD linker is used, which is shipped with the Rust
+# toolchain. If you run into problems with LLD, you can switch to the
+# GNU linker by uncommenting this line:
+    # "-C", "linker=arm-none-eabi-ld",
+
+# If you need to link to pre-compiled C libraries provided by a C toolchain
+# use GCC as the linker by uncommenting the three lines below:
+    # "-C", "linker=arm-none-eabi-gcc",
+    # "-C", "link-arg=-Wl,-Tlink.x",
+    # "-C", "link-arg=-nostartfiles",
+
 #   "-C", "linker=cortex-m-rt-ld", # <- CHANGED!
 #   "-Z", "linker-flavor=ld",
 #   "-Z", "thinlto=no",
-# ]
+]
 
 [build]
 # Pick ONE of these compilation targets:
