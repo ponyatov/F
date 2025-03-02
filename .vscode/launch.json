@@ -26,6 +26,7 @@
             "executable": "target/thumbv7m-none-eabi/debug/fortex",
             "cwd": "${workspaceFolder}/fortex",
             "servertype": "qemu",
+            "preLaunchTask": "cargo: fortex",
             "preRestartCommands": [
                 "load",
             ]
