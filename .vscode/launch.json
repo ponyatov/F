@@ -28,9 +28,12 @@
             "servertype": "qemu",
             // "gdbTarget": ":12345",
             "preLaunchTask": "cargo: fortex",
-            "runToMain": true,
+            "runToEntryPoint": "main",
             "preRestartCommands": [
                 "load",
+                "b Reset_Handler",
+                "b DefaultHandler",
+                "b SystemInit"
             ]
         },
         {
