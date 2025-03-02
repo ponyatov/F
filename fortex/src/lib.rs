@@ -13,6 +13,9 @@ pub fn nop() {
     asm::nop();
 }
 
+use cortex_m_semihosting::debug;
+
 pub fn halt() -> ! {
+    debug::exit(debug::EXIT_SUCCESS);
     loop {}
 }
