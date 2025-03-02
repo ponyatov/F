@@ -34,12 +34,10 @@
             "runToEntryPoint"   : "main",
             "preRestartCommands": [
                 "load",
-                // "b main",
-                "break DefaultPreInit",
+                // "break DefaultPreInit",
                 "break Reset",
-                // "b Reset_Handler",
-                // "b DefaultHandler",
-                // "b SystemInit"
+                "break ResetHandler",
+                "break DefaultHandler",
             ]
         },
         {
