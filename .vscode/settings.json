@@ -7,11 +7,11 @@
         { "command": "multiCommand.f12",
             "sequence": [ "workbench.action.files.saveAll",
                 { "command": "workbench.action.terminal.sendSequence",
-                    "args": {"text": "\u000D clear ; LANG=C make -C ${workspaceFolder} all \u000D"}}]},
+                    "args": {"text": "\u000D clear ; LANG=C make -C ${workspaceFolder} cpp \u000D"}}]},
         { "command": "multiCommand.altx",
             "sequence": [ "workbench.action.files.saveAll",
                 { "command": "workbench.action.terminal.sendSequence",
-                    "args": {"text": "\u000D clear ; LANG=C make -C ${workspaceFolder} fortex \u000D"}}]},
+                    "args": {"text": "\u000D clear ; LANG=C make -C ${workspaceFolder} run \u000D"}}]},
         { "command": "multiCommand.alts",
             "sequence": [ "workbench.action.files.saveAll",
                 { "command": "workbench.action.terminal.sendSequence",
@@ -20,6 +20,7 @@
 
     // files
     "files.exclude": {
+        ".stfolder": true,
         "doc/html/**": true,
         "bin/py*": true, "bin/pip*": true,
         "bin/?ctivate*": true, "bin/autopep*": true,
@@ -34,7 +35,8 @@
         "*.ini": "flang", "*.f": "flang",
         "*.ocd": "properties", "*.gdb*": "properties",
         "*.ld": "linkerscript", "*.ld.fix": "linkerscript",
-        "*.ioc": "properties", "memory.x": "linkerscript",
+        "memory.x": "linkerscript",
+        "*.ioc": "properties", "*.config": "properties",
         "*.s": "arm", "*.s.fix": "arm", "*.S": "arm",
         //
         ".boot*": "javascript", ".prettierrc": "jsonc",
@@ -113,6 +115,7 @@
     "rust-analyzer.cargo.target"    : "thumbv7m-none-eabi",
     // "rust-analyzer.cargo.target"    : "thumbv7em-none-eabihf",
     // "rust-analyzer.cargo.target"    : "wasm32-unknown-unknown",
+    // "rust-analyzer.cargo.target"    : "aarch64-unknown-linux-gnu",
     "[rust]": {
         "editor.defaultFormatter": "rust-lang.rust-analyzer",
         "editor.formatOnSave"    :  true
