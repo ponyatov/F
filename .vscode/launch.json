@@ -29,6 +29,8 @@
             // "gdbTarget": ":12345",
             "preLaunchTask": "cargo: fortex",
             "runToEntryPoint": "main",
+            "cpu": "cortex-m3",
+            "machine": "lm3s6965evb",
             "preRestartCommands": [
                 "load",
                 "b Reset_Handler",
