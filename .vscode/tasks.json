@@ -48,9 +48,10 @@
             "type"           :  "shell",
             "command"        :  "cargo",
             "args"           : ["build", "--target", "thumbv7m-none-eabi"],
-            "options"        : {"cwd": "${workspaceFolder}/fortex"},
+            "options"        : {"cwd": "${workspaceFolder}"},
             "problemMatcher" : ["$rustc"],
-            "presentation"   : {"showReuseMessage": false, "focus": true, "reveal": "silent"},
+            "presentation"   : {"showReuseMessage": false, "focus": true,
+                                "reveal": "silent", "close": true},
             "group"          : {"kind": "build", "isDefault": true}
         }
     ]
