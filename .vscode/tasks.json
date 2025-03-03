@@ -44,6 +44,16 @@
             "promptOnClose"  : false
         },
         {
+            "label"          :  "qemu: lm3s6",
+            "type"           :  "shell",
+            "command"        :  "qemu-system-arm",
+            "args"           : ["-machine","lm3s6965evb","-cpu","cortex-m3",
+                                "-nographic", "-semihosting",
+                                "-kernel","target/thumbv7m-none-eabi/debug/fortex"],
+            "options"        : {"cwd": "${workspaceFolder}"},
+            "problemMatcher" : []
+        },
+        {
             "label"          :  "cargo: lm3s6",
             "type"           :  "shell",
             "command"        :  "cargo",
