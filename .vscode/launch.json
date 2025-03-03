@@ -57,6 +57,12 @@
             "stopAtEntry": true, // don't disable!
             "postRemoteConnectCommands": [
                 {"text": "monitor reset halt"},
+                {"text": "set print asm-demangle on"},
+                {"text": "monitor arm semihosting enable"},
+                {"text": "break main"},
+                {"text": "break DefaultHandler"},
+                {"text": "break HardFault"},
+                {"text": "break rust_begin_unwind"},
                 {"text": "load"},
                 {"text": "monitor reset halt"}, // req
             ]
