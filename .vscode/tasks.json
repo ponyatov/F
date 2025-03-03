@@ -60,8 +60,18 @@
             "args"           : ["build", "--target", "thumbv7em-none-eabi"],
             "options"        : {"cwd": "${workspaceFolder}", "env": {"HW":"l496disco"}},
             "problemMatcher" : ["$rustc"],
-            "presentation"   : {"showReuseMessage": false, "focus": true, "reveal": "silent", "close": false},
+            "presentation"   : {"showReuseMessage": false, "focus": true, "reveal": "silent", "close": true},
             "group"          : {"kind": "build", "isDefault": true}
+        },
+        {
+            "label"          : "openocd: l496disco",
+            "type"           : "shell",
+            "command"        : "openocd",
+            "args"           : ["-f", "hw/l496disco/l496disco.ocd",
+                                "-c", "program target/thumbv7em-none-eabi/debug/fortex verify"],
+            "problemMatcher" : [],
+            "options"        : {"cwd": "${workspaceFolder}"},
+            "presentation"   : {"showReuseMessage": false, "focus": false, "close": true}
         },
     ]
 }

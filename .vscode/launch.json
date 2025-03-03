@@ -20,7 +20,7 @@
             "cwd": "${workspaceFolder}"
         },
         {
-            "name"               : "lm3s6",
+            "name"               : "rs:lm3s6",
             "type"               : "cortex-debug",
             "request"            : "launch",
             "executable"         : "target/thumbv7m-none-eabi/debug/fortex",
@@ -40,22 +40,25 @@
             ]
         },
         {
-            "name"               : "l496disco",
-            "type"               : "cortex-debug",
+            "name"               : "rs:l496disco",
+            "type"               : "cppdbg",
             "request"            : "launch",
-            "executable"         : "target/thumbv7m-none-eabi/debug/fortex",
+            "program"            : "target/thumbv7em-none-eabi/debug/fortex",
             "cwd"                : "${workspaceFolder}",
-            "servertype"         : "openocd",
-            "cpu"                : "cortex-m4",
-            // "gdbTarget": ":12345",
             "preLaunchTask"      : "cargo: l496disco",
-            "runToEntryPoint"    : "main",
-            "preRestartCommands" : [
-                "load",
-                "break Reset",
-                "break ResetHandler",
-                "break DefaultHandler",
-                "break DefaultPreInit",
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb-multiarch",
+            "miDebuggerArgs": "--silent",
+            "miDebuggerServerAddress": "localhost:12345",
+            "useExtendedRemote": true,
+            "setupCommands": [
+                {"text": "-enable-pretty-printPruning", "ignoreFailures": true}
+            ],
+            "stopAtEntry": true, // don't disable!
+            "postRemoteConnectCommands": [
+                {"text": "monitor reset halt"},
+                {"text": "load"},
+                {"text": "monitor reset halt"}, // req
             ]
         },
         {
