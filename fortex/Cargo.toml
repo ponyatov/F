@@ -1,7 +1,14 @@
 [package]
-name    = "fortex"
-version = "0.0.1"
-edition = "2021"
+name          =  "fortex"
+version       =  "0.0.1"
+edition       =  "2021"
+description   =  "FORTH/Cortex"
+authors       = ["Dmitry Ponyatov <dponyatov@gmail.com","@dponyatov"]
+license       =  "MIT"
+homepage      =  "https://t.me/dponyatov"
+documentation =  "https://docs.rs/fortex"
+repository    =  "https://github.com/dponyatov/fortex"
+keywords      = ["embedded", "forth", "cortex-m", "repl", "cli"]
 
 [dependencies]
 cortex-m = { version = "0.7.7", features = ["critical-section-single-core"] }

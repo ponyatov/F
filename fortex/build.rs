@@ -1,16 +1,19 @@
+#![allow(non_snake_case)]
+
 use std::env;
-use std::fs::File;
-use std::io::Write;
+use std::fs;
 use std::path::PathBuf;
 
 fn main() {
     // Put `memory.x` in our output directory
     // and ensure it's on the linker search path.
+    let hw = env::var_os("HW").unwrap();
+    let hw = hw.to_str().unwrap();
+    let ld = format!("hw/{}/{}.x", hw, hw);
     let out = &PathBuf::from(env::var_os("OUT_DIR").unwrap());
-    File::create(out.join("memory.x"))
-        .unwrap()
-        .write_all(include_bytes!("memory.x"))
-        .unwrap();
+    fs::write(out.join("memory.x"), fs::read_to_string(ld).unwrap()).unwrap();
+
+    //
     println!("cargo:rustc-link-search={}", out.display());
     println!("cargo:rerun-if-changed=memory.x");
 

@@ -44,15 +44,24 @@
             "promptOnClose"  : false
         },
         {
-            "label"          :  "cargo: fortex",
+            "label"          :  "cargo: lm3s6",
             "type"           :  "shell",
             "command"        :  "cargo",
             "args"           : ["build", "--target", "thumbv7m-none-eabi"],
-            "options"        : {"cwd": "${workspaceFolder}"},
+            "options"        : {"cwd": "${workspaceFolder}", "env": {"HW":"lm3s6"}},
             "problemMatcher" : ["$rustc"],
-            "presentation"   : {"showReuseMessage": false, "focus": true,
-                                "reveal": "silent", "close": true},
+            "presentation"   : {"showReuseMessage": false, "focus": true, "reveal": "silent", "close": false},
             "group"          : {"kind": "build", "isDefault": true}
-        }
+        },
+        {
+            "label"          :  "cargo: l496disco",
+            "type"           :  "shell",
+            "command"        :  "cargo",
+            "args"           : ["build", "--target", "thumbv7em-none-eabi"],
+            "options"        : {"cwd": "${workspaceFolder}", "env": {"HW":"l496disco"}},
+            "problemMatcher" : ["$rustc"],
+            "presentation"   : {"showReuseMessage": false, "focus": true, "reveal": "silent", "close": false},
+            "group"          : {"kind": "build", "isDefault": true}
+        },
     ]
 }
