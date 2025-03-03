@@ -121,6 +121,7 @@
         "editor.formatOnSave"    :  true
         // "diffEditor.ignoreTrimWhitespace": false
     },
+    "cortex-debug.gdbPath.linux": "gdb-multiarch",
 
     // F#
     "[fsharp]": {

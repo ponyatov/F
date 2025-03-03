@@ -20,24 +20,23 @@
             "cwd": "${workspaceFolder}"
         },
         {
-            "name"      : "lm3s6",
-            "type"      : "cortex-debug",
-            "request"   : "launch",
-            "executable": "target/thumbv7m-none-eabi/debug/fortex",
-            "cwd"       : "${workspaceFolder}/fortex",
-            "servertype"        : "qemu",
-            "cpu"               : "cortex-m3",
-            "machine"           : "lm3s6965evb",
+            "name"               : "lm3s6",
+            "type"               : "cortex-debug",
+            "request"            : "launch",
+            "executable"         : "target/thumbv7m-none-eabi/debug/fortex",
+            "cwd"                : "${workspaceFolder}/fortex",
+            "servertype"         : "qemu",
+            "cpu"                : "cortex-m3",
+            "machine"            : "lm3s6965evb",
             // "gdbTarget": ":12345",
-            "preLaunchTask"     : "cargo: fortex",
-            // "runToEntryPoint"   : "DefaultPreInit",
-            "runToEntryPoint"   : "main",
-            "preRestartCommands": [
+            "preLaunchTask"      : "cargo: fortex",
+            "runToEntryPoint"    : "main",
+            "preRestartCommands" : [
                 "load",
-                // "break DefaultPreInit",
                 "break Reset",
                 "break ResetHandler",
                 "break DefaultHandler",
+                "break DefaultPreInit",
             ]
         },
         {

@@ -1,0 +1,1 @@
+TARGET = $(ARCH)-none-eabi
