@@ -51,7 +51,10 @@
                                 "-nographic", "-semihosting",
                                 "-kernel","target/thumbv7m-none-eabi/debug/fortex"],
             "options"        : {"cwd": "${workspaceFolder}"},
-            "problemMatcher" : []
+            "problemMatcher" : [],
+            "presentation"   : {"showReuseMessage": false, "focus": true, "reveal": "silent", "close": false},
+            "dependsOn"      : ["cargo: lm3s6"],
+            "group"          : {"kind": "build", "isDefault": true}
         },
         {
             "label"          :  "cargo: lm3s6",
@@ -61,7 +64,7 @@
             "options"        : {"cwd": "${workspaceFolder}", "env": {"HW":"lm3s6"}},
             "problemMatcher" : ["$rustc"],
             "presentation"   : {"showReuseMessage": false, "focus": true, "reveal": "silent", "close": false},
-            "group"          : {"kind": "build", "isDefault": true}
+            "group"          : {"kind": "build"}
         },
         {
             "label"          :  "cargo: l496disco",
@@ -71,7 +74,7 @@
             "options"        : {"cwd": "${workspaceFolder}", "env": {"HW":"l496disco"}},
             "problemMatcher" : ["$rustc"],
             "presentation"   : {"showReuseMessage": false, "focus": true, "reveal": "silent", "close": true},
-            "group"          : {"kind": "build", "isDefault": true}
+            "group"          : {"kind": "build"}
         },
         {
             "label"          : "openocd: l496disco",
