@@ -10,12 +10,13 @@
 use cortex_m::asm;
 
 pub fn nop() {
+    hprintln!("nop");
     asm::nop();
 }
 
-use cortex_m_semihosting::debug;
+use cortex_m_semihosting::{debug, hprintln};
 
-pub fn halt() -> ! {
+pub fn halt()  {
+    hprintln!("halt");
     debug::exit(debug::EXIT_SUCCESS);
-    loop {}
 }
