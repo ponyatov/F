@@ -5,12 +5,14 @@
             "label"          : "project: install",
             "type"           : "shell",
             "command"        : "make install",
+            "presentation"   : {"focus": true},
             "problemMatcher" : []
         },
         {
             "label"          : "project: update",
             "type"           : "shell",
             "command"        : "make update",
+            "presentation"   : {"focus": true},
             "problemMatcher" : []
         },
         {
@@ -28,63 +30,11 @@
         {
             "label"          : "debug: openocd",
             "type"           : "shell",
-            "group"          : {"kind": "build"},
+            "group"          : {"kind": "build", "isDefault": true},
             "dependsOn"      : "CMake: build",
             "command"        : "openocd -f ${workspaceFolder}/hw/${command:cmake.activeConfigurePresetName}/${command:cmake.activeConfigurePresetName}.ocd -c \"program ${command:cmake.launchTargetPath} verify reset\"",
-            "problemMatcher" : []
-        },
-        {
-            "type"           : "cmake",
-            "label"          : "cmake: build",
-            "command"        : "build",
-            "targets"        : ["all"],
-            "preset"         : "${command:cmake.activeBuildPresetName}",
-            "group"          : "build",
             "problemMatcher" : [],
-            "promptOnClose"  : false
-        },
-        {
-            "label"          :  "qemu: lm3s6",
-            "type"           :  "shell",
-            "command"        :  "qemu-system-arm",
-            "args"           : ["-machine","lm3s6965evb","-cpu","cortex-m3",
-                                "-nographic", "-semihosting",
-                                "-kernel","target/thumbv7m-none-eabi/debug/fortex"],
-            "options"        : {"cwd": "${workspaceFolder}"},
-            "problemMatcher" : [],
-            "presentation"   : {"showReuseMessage": false, "focus": true, "reveal": "silent", "close": false},
-            "dependsOn"      : ["cargo: lm3s6"],
-            "group"          : {"kind": "build", "isDefault": true}
-        },
-        {
-            "label"          :  "cargo: lm3s6",
-            "type"           :  "shell",
-            "command"        :  "cargo",
-            "args"           : ["build", "--target", "thumbv7m-none-eabi"],
-            "options"        : {"cwd": "${workspaceFolder}", "env": {"HW":"lm3s6"}},
-            "problemMatcher" : ["$rustc"],
-            "presentation"   : {"showReuseMessage": false, "focus": true, "reveal": "silent", "close": false},
-            "group"          : {"kind": "build"}
-        },
-        {
-            "label"          :  "cargo: l496disco",
-            "type"           :  "shell",
-            "command"        :  "cargo",
-            "args"           : ["build", "--target", "thumbv7em-none-eabi"],
-            "options"        : {"cwd": "${workspaceFolder}", "env": {"HW":"l496disco"}},
-            "problemMatcher" : ["$rustc"],
-            "presentation"   : {"showReuseMessage": false, "focus": true, "reveal": "silent", "close": true},
-            "group"          : {"kind": "build"}
-        },
-        {
-            "label"          : "openocd: l496disco",
-            "type"           : "shell",
-            "command"        : "openocd",
-            "args"           : ["-f", "hw/l496disco/l496disco.ocd",
-                                "-c", "program target/thumbv7em-none-eabi/debug/fortex verify"],
-            "problemMatcher" : [],
-            "options"        : {"cwd": "${workspaceFolder}"},
-            "presentation"   : {"showReuseMessage": false, "focus": false, "close": true}
+            "presentation"   : {"showReuseMessage": false, "focus": false, "reveal": "silent", "close": true}
         },
     ]
 }

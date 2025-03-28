@@ -18,24 +18,23 @@ include(  os/${OS}/${OS}.cmake    )
 include(arch/${ARCH}/${ARCH}.cmake)
 include( cpu/${CPU}/${CPU}.cmake  )
 include(  hw/${HW}/${HW}.cmake    )
-include(             app.cmake    )
 
 string(TOUPPER ${HW}   HW_  )
 string(TOUPPER ${CPU}  CPU_ )
 string(TOUPPER ${ARCH} ARCH_)
 string(TOUPPER ${OS}   OS_  )
-string(TOUPPER ${APP}  APP_ )
 
 add_compile_options(
-    "-D${HW_}" "-D${CPU_}" "-D${ARCH_}" "-D${OS_}"
     -Wall -Wextra               # -Wpedantic
     -Wno-implicit-fallthrough   # ragel
+    -Wno-unused-function        # flex
+    -Wno-write-strings          # yacc
+    -Wno-unused-parameter       # stm32
     $<$<CONFIG:Debug>:-DDEBUG>
 )
 
 add_compile_definitions(
-    ${HW_} ${CPU_} ${ARCH_} ${OS_} ${APP_}
-    HAVE_INITFINI_ARRAY HAVE_INIT_FINI
+    ${HW_} ${CPU_} ${ARCH_} ${OS_}
 )
 
 add_link_options(

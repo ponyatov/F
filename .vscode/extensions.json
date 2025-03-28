@@ -5,6 +5,7 @@
         "tabnine.tabnine-vscode",
         "ms-vscode.makefile-tools",
         "IBM.output-colorizer",
+        "esbenp.prettier-vscode",
         // Linux
         "ms-vscode-remote.remote-ssh",
         "coolbear.systemd-unit-file",
@@ -30,28 +31,9 @@
         "daohong-emilio.yash",
         "rreverser.ragel",
         // embedded
-        "ms-vscode.hexeditor",
-        "zixuanwang.linkerscript",
         "dan-c-underwood.arm",
-        // ESP32
+        "zixuanwang.linkerscript",
+        "ms-vscode.vscode-serial-monitor",
         // "espressif.esp-idf-extension",
-        // Python
-        "ms-python.python",
-        "ms-python.autopep8",
-        // "batisteo.vscode-django",
-        // Rust
-        "rust-lang.rust-analyzer",
-        "tamasfe.even-better-toml",
-        "vadimcn.vscode-lldb",
-        "probe-rs.probe-rs-debugger",
-        "marus25.cortex-debug",
-        // F#
-        // "ionide.ionide-fsharp",
-        // "tintoy.msbuild-project-tools",
-        // "ms-dotnettools.csdevkit",
-        // "mnxn.fsharp-fsl-fsy",
-        // LLVM
-        "rreverser.llvm",
-        "revng.llvm-ir",
     ]
 }
