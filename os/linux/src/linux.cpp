@@ -1,11 +1,6 @@
 #include "os.hpp"
 // #include "cli.hpp"
 
-int main(int argc, char *argv[]) {
-    arg(0, argv[0]);
-    return 0;
-}
-
 // void cli(char* filename) {
 //     yyfile = filename;
 //     yylineno = 0;

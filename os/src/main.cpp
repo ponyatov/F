@@ -2,17 +2,17 @@
 // #include "syntax.hpp"
 // #include "vm.hpp"
 
-// #ifdef POSIX
-// __attribute__((weak)) int main(int argc, char *argv[]) {
-//     printf("setup:\n");
-//     setup();
-//     printf("arg:\n");
-//     arg(0, argv[0]);
-//     for (int i = 1; i < argc; i++) arg(i, argv[i]);
-//     printf("loop:\n");
-//     for (;;) loop();
-//     return 0;
-// }
+// #ifdef LINUX
+__attribute__((weak)) int main(int argc, char *argv[]) {
+    //     printf("setup:\n");
+    //     setup();
+    //     printf("arg:\n");
+    //     arg(0, argv[0]);
+    //     for (int i = 1; i < argc; i++) arg(i, argv[i]);
+    //     printf("loop:\n");
+    //     for (;;) loop();
+    return 0;
+}
 // #endif  // POSIX
 
 // __attribute__((weak)) void setup() {  //

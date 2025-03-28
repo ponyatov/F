@@ -28,6 +28,24 @@
             "problemMatcher" : []
         },
         {
+            "label"          : "build: elf",
+            "type"           : "shell",
+            "command"        : "make elf",
+            "problemMatcher" : []
+        },
+        {
+            "label"          : "build: dfu",
+            "type"           : "shell",
+            "command"        : "make dfu",
+            "problemMatcher" : []
+        },
+        {
+            "label"          : "build: run",
+            "type"           : "shell",
+            "command"        : "make run",
+            "problemMatcher" : []
+        },
+        {
             "label"          : "debug: openocd",
             "type"           : "shell",
             "group"          : {"kind": "build", "isDefault": true},
