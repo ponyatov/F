@@ -1,6 +1,4 @@
 *~
 *.swp
 *.log
-/target/
 !.gitignore
-.stfolder/
