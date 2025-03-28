@@ -12,37 +12,38 @@
             "targets"        :  ["all","install"]
         },
         {
-            "name"           :   "l496disco",
-            "configurePreset":   "l496disco",
-            "targets"        :  ["all","install"]
+            "name"            :  "f429disco",
+            "configurePreset" :  "f429disco",
+            "targets"         : ["all","install"]
         },
         {
-            "name"           :   "glibc",
-            "configurePreset":   "glibc",
-            "targets"        :  ["all","install"]
+            "name"            :  "linux",
+            "configurePreset" :  "linux",
+            "targets"         : ["all","install"]
         }
     ],
     "configurePresets": [
         {
-            "name"     : "common",
-            "hidden"   :  true,
-            "binaryDir": "${sourceDir}/tmp/${presetName}",
-            "generator": "Unix Makefiles",
-            "cacheVariables": {
-                "APP"                     : "${workspaceFolderBasename}",
+            "name"            : "common",
+            "hidden"          :  true,
+            "binaryDir"       : "${sourceDir}/tmp/${presetName}",
+            "generator"       : "Unix Makefiles",
+            "cacheVariables"  : {
                 "CMAKE_INSTALL_PREFIX"    : "${sourceDir}/bin",
                 "CMAKE_MODULE_PATH"       : "${sourceDir}/cmake",
-                "CMAKE_COLOR_DIAGNOSTICS" : false,
+                "CMAKE_COLOR_DIAGNOSTICS" :  false,
                 "CMAKE_BUILD_TYPE"        : "Debug",
-                "CMAKE_VERBOSE_MAKEFILE"  : false
+                "CMAKE_VERBOSE_MAKEFILE"  :  false
             }
         },
         {
-            "name"          :  "cortexM",
-            "hidden"        :   true,
-            "inherits"      :  "common",
-            "toolchainFile" :  "${sourceDir}/cmake/arm-none-eabi.cmake",
-            "cacheVariables": {"OS":"bare","CMAKE_EXECUTABLE_SUFFIX":".elf"}
+            "name"           : "cortexM",
+            "inherits"       : "common",
+            "hidden"         :  true,
+            "toolchainFile"  : "${sourceDir}/cmake/arm-none-eabi.cmake",
+            "cacheVariables" : {
+                "OS":"bare"
+            }
         },
         {
             "name"          :  "cortexM0",
@@ -51,61 +52,48 @@
             "cacheVariables": {"ARCH":"cortexM0"}
         },
         {
-            "name"          :  "cortexM3",
-            "hidden"        :   true,
-            "inherits"      :  "cortexM",
-            "cacheVariables": {"ARCH":"cortexM3"}
+            "name"           :  "cortexM3",
+            "hidden"         :   true,
+            "inherits"       :  "cortexM",
+            "cacheVariables" : {"ARCH":"cortexM3"}
         },
         {
-            "name"          :  "cortexM4",
-            "hidden"        :   true,
-            "inherits"      :  "cortexM",
-            "cacheVariables": {"ARCH":"cortexM4"}
+            "name"           : "cortexM4",
+            "inherits"       : "cortexM",
+            "hidden"         :  true,
+            "cacheVariables" : {"ARCH":"cortexM4"}
         },
         {
-            "name"          : "pillF103",
-            "inherits"      : "cortexM3",
-            "cacheVariables": {
-                "HW" :"pillF103",
-                "CPU":"stm32f103c8t", "SERIES": "STM32F1"
+            "name"           :  "pillF103",
+            "inherits"       :  "cortexM3",
+            "cacheVariables" : {"HW" :"pillF103",
+                                "CPU":"stm32f103c8t", "SERIES": "STM32F1"}
+        },
+        {
+            "name"           :  "f4disco",
+            "inherits"       :  "cortexM4",
+            "cacheVariables" : {"HW" :"f4disco",
+                                "CPU":"stm32f407vgt", "SERIES": "STM32F4"}
+        },
+        {
+            "name"           : "f429disco",
+            "inherits"       : "cortexM4",
+            "cacheVariables" : {
+                "HW" :"f429disco",
+                "CPU":"stm32f429zi", "SERIES": "STM32F4"
             }
         },
         {
-            "name"          : "f4disco",
-            "inherits"      : "cortexM4",
-            "cacheVariables": {
-                "HW" :"f4disco",
-                "CPU":"stm32f407vgt", "SERIES": "STM32F4"
-            }
+            "name"            : "pc",
+            "inherits"        : "common",
+            "hidden"          :  true,
+            "cacheVariables"  : {"HW":"pc", "CPU":"i5", "ARCH":"x86_64"}
         },
         {
-            "name"          : "l496disco",
-            "inherits"      : "cortexM4",
-            "cacheVariables": {
-                "HW" :"l496disco",
-                "CPU":"stm32l496agi", "SERIES": "STM32L4"
-            }
-        },
-        {
-            "name"          : "pc",
-            "inherits"      : "common",
-            "hidden"        : true,
-            "cacheVariables": {
-                "HW":"pc", "CPU":"i5", "ARCH":"x86_64"
-            }
-        },
-        {
-            "name"          : "linux",
-            "inherits"      : "pc",
-            "hidden"        : true,
-            "cacheVariables": {"OS":"linux"}
-        },
-        {
-            "name"         : "glibc",
-            "inherits"     : "linux",
-            "displayName"  : "x86_64-linux-gnu",
-            "description"  : "native host",
-            "toolchainFile": "${sourceDir}/cmake/x86_64-linux-gnu.cmake"
+            "name"            : "linux",
+            "inherits"        : "pc",
+            "toolchainFile"   : "${sourceDir}/cmake/x86_64-linux-gnu.cmake",
+            "cacheVariables"  : {"OS":"linux"}
         }
-   ]
+    ]
 }
