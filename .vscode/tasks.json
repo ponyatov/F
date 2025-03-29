@@ -43,6 +43,7 @@
             "label"          : "build: run",
             "type"           : "shell",
             "command"        : "make run",
+            "group"          : {"kind": "build", "isDefault": true},
             "problemMatcher" : []
         },
         {
